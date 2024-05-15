@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
     public bool isPc;
+
+    Animator animator;
     
 
     public void OnMove(InputAction.CallbackContext context)
@@ -60,7 +62,6 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     // Controller or JoyStick Movement (기존 pc는 movePlayerWithAim()로 수정
     public void movePlayer()
     {
@@ -106,4 +107,8 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World);
     }
+
+    // TODO
+    // 공격애니메이션 추가하기
+
 }
