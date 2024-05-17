@@ -109,6 +109,8 @@ public class PlayerController : MonoBehaviour
     }
 
     // TODO
-    // 공격애니메이션 추가하기
+    // 공격범위 내의 피격시스템
+    // Health 스크립트 관리 ( 하기전에 그 Code Monkey에서 했던 기법 한번 연구하기 )
+    // 대화시스템 관리
 
 }
