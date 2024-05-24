@@ -7,9 +7,15 @@ using static UnityEditor.FilePathAttribute;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public bool isPc;
+
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
+
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
-    public bool isPc;
+    
 
     Animator animator;
     
@@ -32,12 +38,18 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }
+
         if (isPc)
         {
             RaycastHit hit;
@@ -113,4 +125,10 @@ public class PlayerController : MonoBehaviour
     // Health 스크립트 관리 ( 하기전에 그 Code Monkey에서 했던 기법 한번 연구하기 )
     // 대화시스템 관리
 
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        healthBar.SetHealth(currentHealth);
+    }
 }
