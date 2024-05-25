@@ -5,6 +5,8 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     private AttributesManager _attributesManager;
+    private float _hitCooldown = 0.53f;
+    private Dictionary<GameObject, float> _hitTimes = new Dictionary<GameObject, float>();
 
     private void Start()
     {
@@ -14,12 +16,30 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(_attributesManager == null) return;
+
         // 충돌한 객체의 AttributesManager를 가져옵니다.
         var targetAttributesManager = other.GetComponent<AttributesManager>();
         if (targetAttributesManager != null)
-        {
-            // 대상에게 데미지를 입힙니다.
+        {          
+            if(_hitTimes.TryGetValue(other.gameObject, out var lastHitTime))
+            {
+                // 쿨다운 시간 내에 재충돌하면 무시
+                // 애니메이션이 검을 휘두르고 다시 올라올때 공격이 2번되던 현상 fix
+                if(Time.time - lastHitTime < _hitCooldown)
+                {
+                    return; // Cooldown 시간 내에 재충돌하면 무시
+                }
+            }
+            // 딕셔너리에 객체 추가 및 시간 업데이트.
             _attributesManager.DealDamage(other.gameObject);
+            _hitTimes[other.gameObject] = Time.time;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        // 충돌이 끝나면 대상 객체를 딕셔너리에서 삭제.
+        _hitTimes.Remove(other.gameObject);
     }
 }
