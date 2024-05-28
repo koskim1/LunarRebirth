@@ -7,13 +7,28 @@ using static UnityEditor.FilePathAttribute;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
+
     public bool isPc;
 
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
 
-    
+    private bool _isDashing = false;
+
+    private float _originalSpeed;
+    private float _speed = 8f;
+    private float _dashSpeed = 20f;
+    private float _dashDuration = 0.15f;
+    private float _slowDuration = 0.25f;
+    private float _slowTimeScale = 0.18f;
+
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _originalSpeed = _speed;
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -30,11 +45,35 @@ public class PlayerController : MonoBehaviour
         joystickLook = context.ReadValue<Vector2>();
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void OnDash(InputAction.CallbackContext context)
     {
-        
+        if(context.performed && !_isDashing)
+        {
+            StartCoroutine(Dash());
+        }
     }
+
+    private IEnumerator Dash()
+    {
+        _isDashing = true;
+        _speed = _dashSpeed;
+
+        yield return new WaitForSeconds(_dashDuration);
+
+        StartCoroutine(SlowTime());
+        _speed = _originalSpeed;
+        _isDashing = false;
+    }
+
+    private IEnumerator SlowTime()
+    {
+        Time.timeScale = _slowTimeScale;
+        yield return new WaitForSecondsRealtime(_slowDuration);
+        Time.timeScale = 1f;
+    }
+
+    // ----------------------------------------------------------------------------------------------
+
 
     // Update is called once per frame
     void Update()
@@ -73,7 +112,7 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.6f);
         }
 
-        transform.Translate(movement*speed*Time.deltaTime, Space.World);
+        transform.Translate(movement*_speed*Time.deltaTime, Space.World);
     }
 
     public void movePlayerWithAim()
@@ -106,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(move.x, 0f, move.y).normalized;
 
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+        transform.Translate(movement * _speed * Time.deltaTime, Space.World);
     }
 
     // TODO
