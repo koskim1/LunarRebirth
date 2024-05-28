@@ -5,18 +5,32 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     private AttributesManager _attributesManager;
-    private float _hitCooldown = 0.53f;
+    private float _hitCooldown = 0.15f;
     private Dictionary<GameObject, float> _hitTimes = new Dictionary<GameObject, float>();
+    private PlayerAnimation _playerAnimation;
+    private Animator _animator;
+    private BoxCollider _boxCollider;
+
+    public bool _canDealDamage = false;
+
+    
 
     private void Start()
     {
         // 부모 객체나 필요한 객체에서 AttributesManager를 가져옵니다.
         _attributesManager = GetComponentInParent<AttributesManager>();
+        _playerAnimation = GetComponent<PlayerAnimation>();
+        _boxCollider = GetComponent<BoxCollider>();
+    }
+
+    private void Update()
+    {
+        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(_attributesManager == null) return;
+        if(_attributesManager == null || !_canDealDamage) return;
 
         // 충돌한 객체의 AttributesManager를 가져옵니다.
         var targetAttributesManager = other.GetComponent<AttributesManager>();

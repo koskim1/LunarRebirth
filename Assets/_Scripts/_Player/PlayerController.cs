@@ -110,6 +110,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // TODO
-    // 공격하고 돌아올때 한번 더 공격되는 판정 수정
+    // 공격하고 돌아올때 한번 더 공격되는 판정 수정 ( 더 수정 )
+    // 그냥 부딪혔을 때 공격 들어가는거 수정
     // 대화시스템 관리
 }

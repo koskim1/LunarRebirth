@@ -6,6 +6,8 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField]
     private Animator animator;
+    private Sword _sword;
+    private BoxCollider _swordCollider;
 
     private bool isAttack = false;
 
@@ -14,6 +16,10 @@ public class PlayerAnimation : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        _sword = GetComponentInChildren<Sword>();
+        _swordCollider = _sword.GetComponent<BoxCollider>();
+
+        _swordCollider.enabled = false;
     }
 
     // Update is called once per frame
@@ -31,17 +37,23 @@ public class PlayerAnimation : MonoBehaviour
         {
             Debug.Log("Attack 실행");
             isAttack = true;
+            _sword._canDealDamage = true;
             animator.SetBool("isAttack", true);
-
-            // 공격이 끝나면 isAttack를 false로 설정
-            Invoke("ResetAttack", 0.1f); // 여기서 0.1f는 공격 애니메이션 길이에 따라 조절 가능
         }
     }
 
-    private void ResetAttack()
+
+    public void EnableDamage()
     {
-        Debug.Log("ResetAttack 실행");
+        _sword._canDealDamage = true;
+        _swordCollider.enabled = true;
+    }
+
+    public void DisableDamage()
+    {
+        _sword._canDealDamage = false;
         isAttack = false;
         animator.SetBool("isAttack", false);
+        _swordCollider.enabled = false;
     }
 }
