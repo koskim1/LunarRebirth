@@ -6,13 +6,6 @@ using UnityEngine.InputSystem;
 using static UnityEditor.FilePathAttribute;
 
 
-// TODO    
-// 대화시스템 관리
-// XP 관리, 체력 0이하면 Destroy
-// Level관리
-// UI 연결
-// 맵 디자인
-
 public class PlayerController : MonoBehaviour
 {
 

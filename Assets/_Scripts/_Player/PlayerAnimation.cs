@@ -18,6 +18,7 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         _sword = GetComponentInChildren<Sword>();
         _swordCollider = _sword.GetComponent<BoxCollider>();
+        
 
         _swordCollider.enabled = false;
     }
@@ -55,5 +56,35 @@ public class PlayerAnimation : MonoBehaviour
         isAttack = false;
         animator.SetBool("isAttack", false);
         _swordCollider.enabled = false;
+    }
+
+    public void Dead()
+    {
+        animator.SetBool("isDead", true);
+        // EnemyAnimation도 마찬가지지만 완전 원본 애니메이션 이름을 적어야 함
+        StartCoroutine(DestroyAfterAnimation("Die01_SwordAndShield"));
+    }
+
+    private IEnumerator DestroyAfterAnimation(string clipName)
+    {
+        float clipLength = GetAnimationClipLength(animator, clipName);
+        clipLength *= 4f;
+
+        yield return new WaitForSeconds(clipLength);
+
+        Destroy(gameObject);
+
+    }
+
+    private float GetAnimationClipLength(Animator animator, string clipName)
+    {
+        foreach(AnimationClip clip in animator.runtimeAnimatorController.animationClips)
+        {
+            if(clip.name == clipName)
+            {
+                return clip.length;
+            }
+        }
+        return 0f;
     }
 }

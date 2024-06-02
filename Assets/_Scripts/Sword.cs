@@ -7,8 +7,6 @@ public class Sword : MonoBehaviour
     private AttributesManager _attributesManager;
     private float _hitCooldown = 0.15f;
     private Dictionary<GameObject, float> _hitTimes = new Dictionary<GameObject, float>();
-    private PlayerAnimation _playerAnimation;
-    private Animator _animator;
     private BoxCollider _boxCollider;
 
     public bool _canDealDamage = false;
@@ -19,7 +17,6 @@ public class Sword : MonoBehaviour
     {
         // 부모 객체나 필요한 객체에서 AttributesManager를 가져옵니다.
         _attributesManager = GetComponentInParent<AttributesManager>();
-        //_playerAnimation = GetComponent<PlayerAnimation>();
         _boxCollider = GetComponent<BoxCollider>();
     }
 
@@ -32,7 +29,7 @@ public class Sword : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(_attributesManager == null || !_canDealDamage) return;
-
+        
         // 충돌한 객체의 AttributesManager를 가져옵니다.
         var targetAttributesManager = other.GetComponent<AttributesManager>();
         if (targetAttributesManager != null)
@@ -56,6 +53,9 @@ public class Sword : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         // 충돌이 끝나면 대상 객체를 딕셔너리에서 삭제.
-        _hitTimes.Remove(other.gameObject);
+        if(_hitTimes != null)
+        {
+            _hitTimes.Remove(other.gameObject);
+        }
     }
 }
