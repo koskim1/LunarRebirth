@@ -5,6 +5,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEditor.FilePathAttribute;
 
+
+// TODO    
+// 대화시스템 관리
+// XP 관리, 체력 0이하면 Destroy
+// Level관리
+// UI 연결
+// 맵 디자인
+
 public class PlayerController : MonoBehaviour
 {
 
@@ -148,8 +156,4 @@ public class PlayerController : MonoBehaviour
         transform.Translate(movement * _speed * Time.deltaTime, Space.World);
     }
 
-    // TODO
-    // 공격하고 돌아올때 한번 더 공격되는 판정 수정 ( 더 수정 )
-    // 그냥 부딪혔을 때 공격 들어가는거 수정
-    // 대화시스템 관리
 }

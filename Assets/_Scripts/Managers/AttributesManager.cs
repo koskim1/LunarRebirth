@@ -9,7 +9,7 @@ public class AttributesManager : MonoBehaviour
     public int maxHealth = 100;
     [SerializeField] int _health;
     [SerializeField] int _attack = 20;
-
+    [SerializeField] int _xp = 20;
 
 
     private void Start()
