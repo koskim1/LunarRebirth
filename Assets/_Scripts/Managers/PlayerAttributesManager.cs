@@ -19,6 +19,7 @@ public class PlayerAttributesManager : AttributesManager
     protected override void Start()
     {
         base.Start();
+        healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(maxHealth);
         UpdateXPUI();
 
@@ -38,12 +39,13 @@ public class PlayerAttributesManager : AttributesManager
     }
 
     // XPºÎºÐ
-    public void GainXP(int xp)
+    protected override void GainXP(int xp)
     {
         currentXP += xp;
         if (currentXP >= xpToNextLevel)
         {
             LevelUp();
+            UpdateXPUI();
         }
         UpdateXPUI();
     }
@@ -71,7 +73,7 @@ public class PlayerAttributesManager : AttributesManager
 
         if (levelText != null)
         {
-            levelText.text = "Level " + currentLevel.ToString();
+            levelText.text = $"Level : {currentLevel} ( {currentXP} / {xpToNextLevel} )";
         }
     }
 }

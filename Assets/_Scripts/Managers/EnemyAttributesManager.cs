@@ -13,12 +13,15 @@ public class EnemyAttributesManager : AttributesManager
         enemyAnimation = GetComponent<EnemyAnimation>();
 
         base.Start();
+        healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(maxHealth);
     }
 
     // DamageºÎºÐ
     protected override void TakeDamage(int damage)
     {
+        if (isDead) return;
+
         base.TakeDamage(damage);
         healthBar.SetHealth(_health);
     }

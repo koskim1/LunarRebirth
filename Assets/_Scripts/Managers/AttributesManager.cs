@@ -14,39 +14,24 @@ public abstract class AttributesManager : MonoBehaviour
     // UI 연결
     // 맵 디자인
 
-    // Health관련 함수
-    //public HealthBar healthBar;
-    //private PlayerAnimation playerAnimation;
-    //private EnemyAnimation enemyAnimation;
 
     public int maxHealth = 100;
     [SerializeField] protected int _health;
     [SerializeField] protected int _attack = 20;
-
-    //// XP관련 함수
-    //public int currentLevel = 1;
-    //public int currentXP = 0;
-    //public int xpToNextLevel = 100;
-
-    //// UI 관련 변수
-    //public Slider xpSlider;
-    //public TextMeshProUGUI levelText;
+    [SerializeField] protected int _xp = 20;
+    protected bool isDead = false;
 
     protected virtual void Start()
     {
-        // enemyAnimation = GetComponent<EnemyAnimation>();
         _health = maxHealth;
-        //healthBar.SetMaxHealth(maxHealth);
-
-        // UI 초기화
-        //UpdateXPUI();
     }
 
     protected virtual void TakeDamage(int damage)
     {
+        if(isDead) return;
+
         _health -= damage;
 
-        //healthBar.SetHealth(_health);
         if (_health <= 0)
         {
             Die();
@@ -55,25 +40,33 @@ public abstract class AttributesManager : MonoBehaviour
 
     public void DealDamage(GameObject target)
     {
-        var atm = target.GetComponent<AttributesManager>();
-        if (atm != null)
+        var enemy = target.GetComponent<EnemyAttributesManager>();
+        if(enemy != null)
         {
-            atm.TakeDamage(_attack);
+            enemy.TakeDamage(_attack);
+            // 적이 죽어도 계속때리면 xp가 애니메이션 끝날때까지 얻어지던거 수정
+            if(enemy._health <= 0 && !enemy.isDead)
+            {
+                GainXP(enemy._xp);
+                enemy.isDead = true;
+            }
         }
+
+        var player = target.GetComponent<PlayerAttributesManager>();
+        if(player != null)
+        {
+            player.TakeDamage(_attack);
+        }
+    }
+
+    protected virtual void GainXP(int xp)
+    {
+        // Override in PlayerAttributesManager to handle gaining XP
     }
 
     protected virtual void Die()
     {
-        //if (enemyAnimation != null)
-        //{
-        //    enemyAnimation.Dead();
-        //}
-        //else
-        //{
-        //    Debug.LogError("EnemyAnimation component not found");
-        //    Destroy(gameObject);
-        //}
-
+        isDead = true;
         Destroy(gameObject);
     }
 
