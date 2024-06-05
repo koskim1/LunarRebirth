@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
-public class AttributesManager : MonoBehaviour
+public abstract class AttributesManager : MonoBehaviour
 {
     // TODO
     // 죽으면 바로 파괴되지않고 애니메이션 실행 후 사망하는 연출.
@@ -12,30 +14,39 @@ public class AttributesManager : MonoBehaviour
     // UI 연결
     // 맵 디자인
 
-    public HealthBar healthBar;
-    private PlayerAnimation playerAnimation;
-    private EnemyAnimation enemyAnimation;
+    // Health관련 함수
+    //public HealthBar healthBar;
+    //private PlayerAnimation playerAnimation;
+    //private EnemyAnimation enemyAnimation;
 
     public int maxHealth = 100;
-    [SerializeField] int _health;
-    [SerializeField] int _attack = 20;
-    //[SerializeField] int _xp = 20;
+    [SerializeField] protected int _health;
+    [SerializeField] protected int _attack = 20;
 
+    //// XP관련 함수
+    //public int currentLevel = 1;
+    //public int currentXP = 0;
+    //public int xpToNextLevel = 100;
 
-    private void Start()
+    //// UI 관련 변수
+    //public Slider xpSlider;
+    //public TextMeshProUGUI levelText;
+
+    protected virtual void Start()
     {
-        enemyAnimation = GetComponent<EnemyAnimation>();
-
-
+        // enemyAnimation = GetComponent<EnemyAnimation>();
         _health = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //healthBar.SetMaxHealth(maxHealth);
+
+        // UI 초기화
+        //UpdateXPUI();
     }
 
-    public void TakeDamage(int damage)
+    protected virtual void TakeDamage(int damage)
     {
         _health -= damage;
 
-        healthBar.SetHealth(_health);
+        //healthBar.SetHealth(_health);
         if (_health <= 0)
         {
             Die();
@@ -51,16 +62,20 @@ public class AttributesManager : MonoBehaviour
         }
     }
 
-    private void Die()
+    protected virtual void Die()
     {
-        if (enemyAnimation != null)
-        {
-            enemyAnimation.Dead();
-        }
-        else
-        {
-            Debug.LogError("EnemyAnimation component not found");
-            Destroy(gameObject);
-        }
+        //if (enemyAnimation != null)
+        //{
+        //    enemyAnimation.Dead();
+        //}
+        //else
+        //{
+        //    Debug.LogError("EnemyAnimation component not found");
+        //    Destroy(gameObject);
+        //}
+
+        Destroy(gameObject);
     }
+
+    
 }
