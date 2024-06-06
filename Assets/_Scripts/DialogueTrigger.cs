@@ -6,10 +6,23 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    private DialogueManager dialogueManager;
+
     bool hasPlayer = false;
+
+    private void Start()
+    {
+        dialogueManager = FindObjectOfType<DialogueManager>();
+
+        if (dialogueManager == null)
+        {
+            Debug.LogError("dialogueManager이 설정되지 않았습니다.");
+        }
+    }
+
     public void TriggerDialogue()
     {
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        dialogueManager.StartDialogue(dialogue);
     }
 
     private void Update()
@@ -26,6 +39,8 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hasPlayer = true;
+
+            dialogueManager.ShowInteractionText(true);// 플레이어가 상호작용 가능한 범위에 들어오면
         }
     }
 
@@ -34,6 +49,7 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hasPlayer = false;
+            dialogueManager.ShowInteractionText(false);
         }
     }
 }

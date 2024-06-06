@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private float _speed = 8f;
     private float _dashSpeed = 20f;
     private float _dashDuration = 0.15f;
-    private float _slowDuration = 0.25f;
+    private float _slowDuration = 0.35f;
     private float _slowTimeScale = 0.18f;
 
 
