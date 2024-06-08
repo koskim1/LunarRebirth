@@ -2349,8 +2349,10 @@ MonoBehaviour:
   nameText: {fileID: 1360666224}
   dialogueText: {fileID: 266113738}
   animator: {fileID: 2109976496}
-  interactionPrefab: {fileID: 0}
-  interactionUIInstance: {fileID: 0}
+  interactionPrefab: {fileID: 6173659903904357106, guid: f018c45bc8c5c78448a50b49318b3e07,
+    type: 3}
+  interactionUIInstance: {fileID: 6173659903904357106, guid: f018c45bc8c5c78448a50b49318b3e07,
+    type: 3}
 --- !u!4 &737233379
 Transform:
   m_ObjectHideFlags: 0
