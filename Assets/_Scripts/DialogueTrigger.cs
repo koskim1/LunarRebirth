@@ -30,7 +30,16 @@ public class DialogueTrigger : MonoBehaviour
         if(hasPlayer && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("hasPlayer = true, TriggerDialogue ½ÇÇà");
-            TriggerDialogue();
+            float interactRange = 2f;
+            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange);
+            foreach(Collider collider in colliderArray)
+            {
+                if(collider.TryGetComponent(out PlayerController player))
+                {
+                    TriggerDialogue();
+                }
+            }
+            
         }
     }
 

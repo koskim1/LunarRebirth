@@ -12,10 +12,9 @@ public class DialogueManager : MonoBehaviour
 
     private Queue<string> sentences;
     private DialogueTrigger currentDialogueTrigger;
-
-    public GameObject interactionPrefab; // 말풍선 UI프리팹
-    public GameObject interactionUIInstance; // 동적으로 생성된 UI 인스턴스
+    
     private Transform currentNPC;
+    [SerializeField] private GameObject playerInteractUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,26 +74,15 @@ public class DialogueManager : MonoBehaviour
     {
         if (show)
         {
-            if (interactionUIInstance != null && currentNPC != null)
+            if (playerInteractUI != null)
             {
-                Debug.Log("interactionUIInstance == null && currentNPC != null");
-                interactionUIInstance = Instantiate(Resources.Load<GameObject>("Press To Talk"), currentNPC);
-                interactionUIInstance.transform.localPosition = new Vector3(0, 2, 0); // NPC 머리 위로 위치 조정
-            }
-            if (interactionUIInstance != null)
-            {
-                Debug.Log("interactionUIInstance != null");
-                interactionUIInstance = Instantiate(Resources.Load<GameObject>("Press To Talk"), currentNPC);
-                interactionUIInstance.transform.localPosition = new Vector3(0, 2, 0); // NPC 머리 위로 위치 조정
-                interactionUIInstance.SetActive(true);
+                playerInteractUI.SetActive(true);
             }
         }
         else
         {
-            if (interactionUIInstance != null)
-            {
-                interactionUIInstance.SetActive(false);
-            }
+            playerInteractUI.SetActive(false);
         }
+
     }
 }
