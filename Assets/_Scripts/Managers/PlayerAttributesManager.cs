@@ -8,12 +8,15 @@ public class PlayerAttributesManager : AttributesManager
     public HealthBar healthBar;
     public Slider xpSlider;
     public TextMeshProUGUI levelText;
+    public LevelUpUI levelUpUI;
 
     private PlayerAnimation playerAnimation;
 
     public int currentLevel = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 100;
+
+    private List<Ability> specialAblities = new List<Ability>();
 
     // Start is called before the first frame update
     protected override void Start()
@@ -61,7 +64,36 @@ public class PlayerAttributesManager : AttributesManager
 
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(_health);
+
+        // 레벨업 UI 표시
+        if(levelUpUI != null)
+        {
+            Debug.Log("레벨업UI");
+            levelUpUI.ShowLevelUpOptions();
+        }
     }
+
+    public void IncreaseStat(string statName, int amount)
+    {
+        switch (statName)
+        {
+            case "strength":
+                _attack += amount;
+                break;
+            case "agility":
+                // 예시로 민첩성 추가
+                break;
+            case "intelligence":
+                // 예시로 지능 추가
+                break;
+        }
+    }
+
+    public void AddAbility(Ability ability)
+    {
+        specialAblities.Add(ability);
+    }
+
 
     public void UpdateXPUI()
     {

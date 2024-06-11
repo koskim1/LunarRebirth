@@ -7,10 +7,7 @@ using TMPro;
 public abstract class AttributesManager : MonoBehaviour
 {
     // TODO
-    // 죽으면 바로 파괴되지않고 애니메이션 실행 후 사망하는 연출.
-    // 위에거 했고 이제 죽으면 콜라이더 꺼줘야할듯,, fadeout기능 넣어주면 최고  
-    // 대화시스템 관리
-    // XP 관리 & Level관리
+    // Level up 했을 때 UI 띄우고 스탯이랑 연동하기.
     // UI 연결
     // 맵 디자인
 
@@ -69,6 +66,4 @@ public abstract class AttributesManager : MonoBehaviour
         isDead = true;
         Destroy(gameObject);
     }
-
-    
 }

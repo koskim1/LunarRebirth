@@ -839,6 +839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPc: 1
+  canMove: 1
 --- !u!114 &6547773311602407668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,9 +868,11 @@ MonoBehaviour:
   maxHealth: 100
   _health: 0
   _attack: 20
+  _xp: 20
   healthBar: {fileID: 6023791000230880772}
   xpSlider: {fileID: 0}
   levelText: {fileID: 0}
+  levelUpUI: {fileID: 0}
   currentLevel: 1
   currentXP: 0
   xpToNextLevel: 10
