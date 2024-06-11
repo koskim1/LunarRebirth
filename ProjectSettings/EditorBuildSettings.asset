@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Project Data/Game/Scenes/Init.unity
-    guid: cc0b80ce7479f924fa29c695693d8ae8
-  - enabled: 1
-    path: Assets/Project Data/Game/Scenes/Game.unity
-    guid: 084dc0375fbbfaa42a59ea8b1109f0f5
+    path: Assets/Scenes/TopDownRTS.unity
+    guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects: {}

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -305,7 +305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3440,7 +3440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a805ac418cdaa1f4da21bd3eb9d9f457, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9cd44263994d454aae165031100f62b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3828,7 +3828,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a805ac418cdaa1f4da21bd3eb9d9f457, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9cd44263994d454aae165031100f62b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4395,6 +4395,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342904296026938099, guid: 5f0206a77fd9aa94683b77f7fe1e3e07,
+        type: 3}
+      propertyPath: isPc
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342904296026938099, guid: 5f0206a77fd9aa94683b77f7fe1e3e07,
+        type: 3}
+      propertyPath: canMove
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7508637296444315775, guid: 5f0206a77fd9aa94683b77f7fe1e3e07,
         type: 3}
@@ -5595,7 +5605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a805ac418cdaa1f4da21bd3eb9d9f457, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a9cd44263994d454aae165031100f62b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
