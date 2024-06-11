@@ -3289,7 +3289,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: HpCanvas
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4365545587271422818, guid: fc86dfe9ca2d5804081b4ca518fe80ac, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

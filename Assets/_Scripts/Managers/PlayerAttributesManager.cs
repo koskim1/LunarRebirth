@@ -58,9 +58,7 @@ public class PlayerAttributesManager : AttributesManager
         currentLevel++;
         currentXP -= xpToNextLevel;
         xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.5f);
-        maxHealth += 10;
         _health = maxHealth;
-        _attack += 5;
 
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(_health);
@@ -75,13 +73,20 @@ public class PlayerAttributesManager : AttributesManager
 
     public void IncreaseStat(string statName, int amount)
     {
+        Debug.Log($"IncreaseStat called with statName: {statName}, amount: {amount}");
+
         switch (statName)
         {
             case "strength":
                 _attack += amount;
                 break;
-            case "agility":
-                // 예시로 민첩성 추가
+            case "health":
+                _health += amount;
+                maxHealth = _health;
+
+                healthBar.SetMaxHealth(maxHealth);
+                healthBar.SetHealth(_health);
+
                 break;
             case "intelligence":
                 // 예시로 지능 추가
