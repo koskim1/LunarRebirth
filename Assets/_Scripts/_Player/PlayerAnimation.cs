@@ -8,6 +8,7 @@ public class PlayerAnimation : MonoBehaviour
     private Animator animator;
     private Sword _sword;
     private BoxCollider _swordCollider;
+    private PlayerController _playerController;
 
     private bool isAttack = false;
 
@@ -18,7 +19,7 @@ public class PlayerAnimation : MonoBehaviour
         animator = GetComponent<Animator>();
         _sword = GetComponentInChildren<Sword>();
         _swordCollider = _sword.GetComponent<BoxCollider>();
-        
+        _playerController = FindObjectOfType<PlayerController>();
 
         _swordCollider.enabled = false;
     }
@@ -26,7 +27,7 @@ public class PlayerAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && _playerController.canMove)
         {
             Attack();
         }

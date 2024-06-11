@@ -8,21 +8,27 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
+    private PlayerController playerController;
+
     public Animator animator;
 
     private Queue<string> sentences;
-    private DialogueTrigger currentDialogueTrigger;
     
     private Transform currentNPC;
     [SerializeField] private GameObject playerInteractUI;
     // Start is called before the first frame update
     void Start()
     {
+        playerController = FindObjectOfType<PlayerController>();
+
         sentences = new Queue<string>();
+
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
+        playerController.canMove = false;
+        
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
@@ -63,11 +69,10 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        playerController.canMove = true;
         animator.SetBool("IsOpen", false);
-
-        Debug.Log("End of conversation");
-
         ShowInteractionText(true);
+        Debug.Log("End of conversation");
     }
 
     public void ShowInteractionText(bool show)

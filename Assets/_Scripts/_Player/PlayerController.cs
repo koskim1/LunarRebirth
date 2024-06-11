@@ -9,7 +9,8 @@ using static UnityEditor.FilePathAttribute;
 public class PlayerController : MonoBehaviour
 {
 
-    public bool isPc;
+    public bool isPc = true;
+    public bool canMove = true;
 
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
@@ -28,6 +29,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        isPc = true;
+        canMove = true;
+
         _originalSpeed = _speed;
     }
 
@@ -79,7 +83,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPc)
+        if (isPc && canMove)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(mouseLook);
@@ -95,11 +99,11 @@ public class PlayerController : MonoBehaviour
         {
             if(joystickLook.x == 0 && joystickLook.y == 0)
             {
-                movePlayer();
+                if(canMove) movePlayer();
             }
             else
             {
-                movePlayerWithAim();
+                if (canMove) movePlayerWithAim();
             }
         }
     }
