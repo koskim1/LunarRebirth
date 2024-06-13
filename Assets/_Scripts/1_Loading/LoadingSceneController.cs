@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using TMPro;
 public class LoadingSceneController : MonoBehaviour
 {
     static string nextScene;
 
     [SerializeField] Image progressBar;
-
+    [SerializeField] TextMeshProUGUI progressText;
     public static void LoadScene(string sceneName)
     {
         nextScene = sceneName;
@@ -36,12 +36,15 @@ public class LoadingSceneController : MonoBehaviour
             if (op.progress < 0.9f)
             {
                 progressBar.fillAmount = op.progress;
+                progressText.text = "로딩중,,, "+(op.progress * 100).ToString("F0") + "%";
             }
             else
             {
                 timer += Time.unscaledDeltaTime;
                 progressBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
-                if(progressBar.fillAmount >= 1f)
+                progressText.text = "로딩 중,,, " +(Mathf.Lerp(0.9f, 1f, timer) * 100).ToString("F0") + "%";
+
+                if (progressBar.fillAmount >= 1f)
                 {
                     op.allowSceneActivation = true;
                     yield break;
