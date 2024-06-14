@@ -16,8 +16,6 @@ public class PlayerAttributesManager : AttributesManager
     public int currentXP = 0;
     public int xpToNextLevel = 100;
 
-    private List<Ability> specialAblities = new List<Ability>();
-
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -93,12 +91,6 @@ public class PlayerAttributesManager : AttributesManager
                 break;
         }
     }
-
-    public void AddAbility(Ability ability)
-    {
-        specialAblities.Add(ability);
-    }
-
 
     public void UpdateXPUI()
     {

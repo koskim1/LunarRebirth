@@ -13,6 +13,7 @@ public class LevelUpUI : MonoBehaviour
     private PlayerAttributesManager playerAttributesManager;
     private Vector3 targetScale = new Vector3(1, 1, 1);
     private Vector3 endScale = new Vector3(0, 0, 0);
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,8 +60,6 @@ public class LevelUpUI : MonoBehaviour
                 Time.timeScale = 1;
                 break;
             case 3:
-                Ability newAbility = new Ability("Fireball", "Throws a fireball", new Effect());
-                playerAttributesManager.AddAbility(newAbility);
                 Time.timeScale = 1;
                 break;
         }
