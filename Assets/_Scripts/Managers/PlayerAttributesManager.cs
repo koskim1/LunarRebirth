@@ -30,7 +30,7 @@ public class PlayerAttributesManager : AttributesManager
     }
 
     // DamageºÎºÐ
-    protected override void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
         healthBar.SetHealth(_health);

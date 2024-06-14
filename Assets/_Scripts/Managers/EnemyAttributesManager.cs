@@ -18,7 +18,7 @@ public class EnemyAttributesManager : AttributesManager
     }
 
     // DamageºÎºÐ
-    protected override void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (isDead) return;
 

@@ -23,7 +23,7 @@ public abstract class AttributesManager : MonoBehaviour
         _health = maxHealth;
     }
 
-    protected virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         if(isDead) return;
 
