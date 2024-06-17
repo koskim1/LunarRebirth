@@ -6,6 +6,13 @@ using DG.Tweening;
 
 public class LevelUpUI : MonoBehaviour
 {
+    /*
+      TODO
+    1. 레어카드 추가해서 확률적으로 나오게 만들기
+    2. 레어카드에 Fireball 만든거 추가 ( 능력 추가하기 )
+    3. Level (방) Generator 만들기. 아이작처럼
+    */
+
     public Button option1;
     public Button option2;
     public Button option3;
