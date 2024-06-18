@@ -59,14 +59,17 @@ public class LevelUpUI : MonoBehaviour
         switch (optionIndex)
         {
             case 1:
+                Debug.Log("1번째 옵션 선택");
                 playerAttributesManager.IncreaseStat("strength", 5);
                 Time.timeScale = 1;
                 break;
             case 2:
+                Debug.Log("2번째 옵션 선택");
                 playerAttributesManager.IncreaseStat("health", 15);
                 Time.timeScale = 1;
                 break;
             case 3:
+                Debug.Log("3번째 옵션 선택");
                 Time.timeScale = 1;
                 break;
         }
