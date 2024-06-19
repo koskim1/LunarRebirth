@@ -11,12 +11,21 @@ using UnityEngine;
 public class ScriptableCard : ScriptableObject
 {
     // field : SerializeField lets you reveal properties in the inspector like they were public fields
-    [field: SerializeField] public string CardName { get; private set; }
-    [field:SerializeField, TextArea] public string CardDescription { get; private set; }
-    [field: SerializeField] public Sprite Image { get; private set; }
+    [field: SerializeField] public string CardName { get; set; }
+    [field:SerializeField, TextArea] public string CardDescription { get; set; }
+    [field: SerializeField] public Sprite Image { get; set; }
 
-    [field:SerializeField] public CardElement Element { get; private set; }
-    [field: SerializeField] public CardRarity Rarity { get; private set; }
+    [field:SerializeField] public CardElement Element { get; set; }
+    [field: SerializeField] public CardRarity Rarity { get; set; }
+
+    public void Initialize(string cardName, string cardDescription, Sprite image, CardElement element, CardRarity rarity)
+    {
+        CardName = cardName;
+        CardDescription = cardDescription;
+        Image = image;
+        Element = element;
+        Rarity = rarity;
+    }
 }
 
 public enum CardElement

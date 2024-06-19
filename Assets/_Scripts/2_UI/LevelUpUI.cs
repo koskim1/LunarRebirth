@@ -18,13 +18,19 @@ public class LevelUpUI : MonoBehaviour
     public Button option3;
 
     private PlayerAttributesManager playerAttributesManager;
+    private CardGenerator cardGenerator;
+    private ScriptableCard card1, card2, card3;
+
     private Vector3 targetScale = new Vector3(1, 1, 1);
     private Vector3 endScale = new Vector3(0, 0, 0);
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
         playerAttributesManager = FindObjectOfType<PlayerAttributesManager>();
+        cardGenerator = new CardGenerator();
 
         if (playerAttributesManager == null)
         {
@@ -45,8 +51,12 @@ public class LevelUpUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void ShowLevelUpOptions()
+    public void ShowLevelUpOptions(ScriptableCard card1, ScriptableCard card2, ScriptableCard card3)
     {
+        this.card1 = card1;
+        this.card2 = card2;
+        this.card3 = card3;
+
         gameObject.SetActive(true);
         transform.DOScale(targetScale, .8f).OnComplete(()=> Time.timeScale = 0).SetEase(Ease.OutBounce);
         
@@ -54,22 +64,26 @@ public class LevelUpUI : MonoBehaviour
 
     public void SelectOption(int optionIndex)
     {
+        ScriptableCard selectedCard = null;
 
         // 나중에 랜덤으로 optionIndex나오게 설정해야함.
         switch (optionIndex)
         {
             case 1:
                 Debug.Log("1번째 옵션 선택");
-                playerAttributesManager.IncreaseStat("strength", 5);
+                selectedCard = card1;
+                //playerAttributesManager.IncreaseStat("strength", 5);
                 Time.timeScale = 1;
                 break;
             case 2:
                 Debug.Log("2번째 옵션 선택");
-                playerAttributesManager.IncreaseStat("health", 15);
+                selectedCard = card2;
+                //playerAttributesManager.IncreaseStat("health", 15);
                 Time.timeScale = 1;
                 break;
             case 3:
                 Debug.Log("3번째 옵션 선택");
+                selectedCard = card3;
                 Time.timeScale = 1;
                 break;
         }
