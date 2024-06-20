@@ -88,6 +88,18 @@ public class PlayerAttributesManager : AttributesManager
         }
     }
 
+    public void ApplyCardEffect(ScriptableCard card)
+    {
+        // 여기서 SO의 이름을 기반으로 IncreaseStat에 이름 전달해주고 이를 기반으로
+        // 스탯을 올려주는 시스템으로 개발 중.. 스탯들 더 추가해야함!!
+        switch (card.CardName)
+        {
+            case "Health":
+                IncreaseStat("health", 15);
+                break;
+        }
+    }
+
     public void IncreaseStat(string statName, int amount)
     {
         Debug.Log($"IncreaseStat called with statName: {statName}, amount: {amount}");

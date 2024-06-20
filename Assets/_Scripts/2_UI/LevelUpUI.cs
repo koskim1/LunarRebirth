@@ -132,6 +132,13 @@ public class LevelUpUI : MonoBehaviour
                 Time.timeScale = 1;
                 break;
         }
+
+        if(selectedCard != null)
+        {
+            playerAttributesManager.ApplyCardEffect(selectedCard);
+        }
+
+
         transform.DOScale(endScale, 0.3f).OnComplete(() => {
             gameObject.SetActive(false);
             Time.timeScale = 1f;
