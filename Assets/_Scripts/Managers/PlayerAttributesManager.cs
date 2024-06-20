@@ -12,6 +12,7 @@ public class PlayerAttributesManager : AttributesManager
 
     private PlayerAnimation _playerAnimation;
     private CardGenerator cardGenerator;
+    private CardCollection cardCollection;
 
     public int currentLevel = 1;
     public int currentXP = 0;
@@ -19,14 +20,20 @@ public class PlayerAttributesManager : AttributesManager
 
     // Start is called before the first frame update
     protected override void Start()
-    {
+    {                
         base.Start();
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(maxHealth);
         UpdateXPUI();
 
         _playerAnimation = GetComponent<PlayerAnimation>();
-        cardGenerator = new CardGenerator();
+        cardCollection = FindAnyObjectByType<CardCollection>();
+        if (cardCollection == null)
+        {
+            Debug.Log("CardCollection이 설정되지 않았습니다.");
+        }
+        cardGenerator = new CardGenerator(cardCollection);
+
     }
 
     // Damage부분

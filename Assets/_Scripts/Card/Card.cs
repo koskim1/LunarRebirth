@@ -10,5 +10,5 @@ using UnityEngine;
 //is a card
 public class Card : MonoBehaviour
 {
-    [field: SerializeField] public ScriptableCard CardData { get; private set; }
+    [field: SerializeField] public ScriptableCard CardData { get; set; }
 }

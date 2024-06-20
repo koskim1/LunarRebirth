@@ -16,9 +16,9 @@ public class LevelUpUI : MonoBehaviour
     public Button option1;
     public Button option2;
     public Button option3;
+    public GameObject cardPrefab;
 
-    private PlayerAttributesManager playerAttributesManager;
-    private CardGenerator cardGenerator;
+    private PlayerAttributesManager playerAttributesManager;   
     private ScriptableCard card1, card2, card3;
 
     private Vector3 targetScale = new Vector3(1, 1, 1);
@@ -29,8 +29,7 @@ public class LevelUpUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerAttributesManager = FindObjectOfType<PlayerAttributesManager>();
-        cardGenerator = new CardGenerator();
+        playerAttributesManager = FindObjectOfType<PlayerAttributesManager>();        
 
         if (playerAttributesManager == null)
         {
@@ -38,8 +37,8 @@ public class LevelUpUI : MonoBehaviour
         }
 
         // 이전에 등록된 모든 리스너 제거
-        option1.onClick.RemoveAllListeners(); 
-        option2.onClick.RemoveAllListeners(); 
+        option1.onClick.RemoveAllListeners();
+        option2.onClick.RemoveAllListeners();
         option3.onClick.RemoveAllListeners();
 
         option1.onClick.AddListener(() => SelectOption(1));
@@ -57,9 +56,36 @@ public class LevelUpUI : MonoBehaviour
         this.card2 = card2;
         this.card3 = card3;
 
+        // Create card UI elements 동적으로.
+        CreateCardUI(option1.transform, card1, 1);
+        CreateCardUI(option2.transform, card2, 2);
+        CreateCardUI(option3.transform, card3, 3);
+
         gameObject.SetActive(true);
         transform.DOScale(targetScale, .8f).OnComplete(()=> Time.timeScale = 0).SetEase(Ease.OutBounce);
         
+    }
+
+    private void CreateCardUI(Transform parent, ScriptableCard cardData, int optionIndex)
+    {
+        foreach(Transform child in parent)
+        {
+            Destroy(child.gameObject);
+        }
+
+        GameObject cardObject = Instantiate(cardPrefab, parent);
+        Card cardComponent = cardObject.GetComponent<Card>();
+        if(cardComponent != null)
+        {
+            cardComponent.CardData = cardData;
+        }
+
+        Button button = parent.GetComponent<Button>();
+        if(button != null)
+        {
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => SelectOption(optionIndex));
+        }
     }
 
     public void SelectOption(int optionIndex)

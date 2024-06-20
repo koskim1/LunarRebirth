@@ -4,32 +4,11 @@ using UnityEngine;
 
 public class CardGenerator
 {
-    public List<ScriptableCard> commonCards = new List<ScriptableCard>();
-    public List<ScriptableCard> rareCards = new List<ScriptableCard>();
-    public List<ScriptableCard> epicCards = new List<ScriptableCard>();
-    public List<ScriptableCard> legendaryCards = new List<ScriptableCard>();
+    private CardCollection cardCollection;
 
-    public CardGenerator()
+    public CardGenerator(CardCollection cardCollection)
     {
-        // 카드 목록 초기화
-        // Add example cards to each list
-        commonCards.Add(new ScriptableCard { CardName = "Common Card 1", CardDescription = "Common Description 1", Rarity = CardRarity.Common });
-        rareCards.Add(new ScriptableCard { CardName = "Rare Card 1", CardDescription = "Rare Description 1", Rarity = CardRarity.Rare });
-        epicCards.Add(new ScriptableCard { CardName = "Epic Card 1", CardDescription = "Epic Description 1", Rarity = CardRarity.Epic });
-        legendaryCards.Add(new ScriptableCard { CardName = "Legendary Card 1", CardDescription = "Legendary Description 1", Rarity = CardRarity.Legendary });
-
-        // 확인용 로그 출력
-        Debug.Log($"Common Cards: {commonCards.Count}");
-        Debug.Log($"Rare Cards: {rareCards.Count}");
-        Debug.Log($"Epic Cards: {epicCards.Count}");
-        Debug.Log($"Legendary Cards: {legendaryCards.Count}");
-    }
-
-    private ScriptableCard CreateCard(string name, string description, Sprite image, CardElement element, CardRarity rarity)
-    {
-        ScriptableCard card = ScriptableObject.CreateInstance<ScriptableCard>();
-        card.Initialize(name, description, image, element, rarity);
-        return card;
+        this.cardCollection = cardCollection;
     }
 
     public ScriptableCard GenerateCard()
@@ -38,19 +17,23 @@ public class CardGenerator
 
         if(randomValue < 70f)
         {
-            return commonCards[Random.Range(0, commonCards.Count)];
+            if (cardCollection.CommonCards.Count == 0) throw new System.Exception("No Common Cards");
+            return cardCollection.CommonCards[Random.Range(0, cardCollection.CommonCards.Count)];
         }
         else if(randomValue < 90f)
         {
-            return rareCards[Random.Range(0, rareCards.Count)];
+            if (cardCollection.RareCards.Count == 0) throw new System.Exception("No RareCards Cards");
+            return cardCollection.RareCards[Random.Range(0, cardCollection.RareCards.Count)];
         }
         else if(randomValue < 99f)
         {
-            return epicCards[Random.Range(0, epicCards.Count)];
+            if (cardCollection.EpicCards.Count == 0) throw new System.Exception("No EpicCards Cards");
+            return cardCollection.EpicCards[Random.Range(0, cardCollection.EpicCards.Count)];
         }
         else
         {
-            return legendaryCards[Random.Range(0, legendaryCards.Count)];
+            if (cardCollection.LegendaryCards.Count == 0) throw new System.Exception("No LegendaryCards Cards");
+            return cardCollection.LegendaryCards[Random.Range(0, cardCollection.LegendaryCards.Count)];
         }
     }
 }

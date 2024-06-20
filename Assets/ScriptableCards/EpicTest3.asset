@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CardName>k__BackingField: EpicTest3
   <CardDescription>k__BackingField: EpicTest3
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 9b35059b2ad7ea043aeec474f7ae428e,
+    type: 3}
   <Element>k__BackingField: 0
-  <Rarity>k__BackingField: 0
+  <Rarity>k__BackingField: 2

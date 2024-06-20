@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CardName>k__BackingField: common1
   <CardDescription>k__BackingField: common1
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: b3053dd856e8801469a38b07d8d4510a,
+    type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 0

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CardName>k__BackingField: RareTest2
   <CardDescription>k__BackingField: RareTest2
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 48d4584d33ade0c47b044259af52e8f7,
+    type: 3}
   <Element>k__BackingField: 0
-  <Rarity>k__BackingField: 0
+  <Rarity>k__BackingField: 1
