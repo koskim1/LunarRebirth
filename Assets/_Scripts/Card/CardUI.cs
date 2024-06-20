@@ -11,6 +11,7 @@ using TMPro;
 public class CardUI : MonoBehaviour
 {
     private Card _card;
+    private ScriptableCard _cardScript;
 
     [Header("Prefabs Elements")]
     [SerializeField] private Image _cardImage;
@@ -34,7 +35,9 @@ public class CardUI : MonoBehaviour
     private void Awake()
     {
         _card = GetComponent<Card>();
-        SetCardUI();
+        _cardScript = FindObjectOfType<ScriptableCard>();
+        //SetCardUI();
+        SetCardData(_cardScript);
     }
 
     private void OnValidate()
@@ -42,16 +45,28 @@ public class CardUI : MonoBehaviour
         Awake();
     }
 
-    private void SetCardUI()
+    public void SetCardData(ScriptableCard cardData)
     {
-        if(_card != null && _card.CardData != null)
+        if(cardData != null)
         {
-            SetCardTexts();
-            SetRarityBackground();
-            SetElementFrame();
-            SetCardImage();
+            _cardName.text = cardData.CardName;
+            _cardDescription.text = cardData.CardDescription;
+            _cardImage.sprite = cardData.Image;
+            SetRarityBackground(cardData.Rarity);
+            SetElementFrame(cardData.Element);
         }
     }
+
+    //private void SetCardUI()
+    //{
+    //    if(_card != null && _card.CardData != null)
+    //    {
+    //        SetCardTexts();
+    //        SetRarityBackground();
+    //        SetElementFrame();
+    //        SetCardImage();
+    //    }
+    //}
 
     private void SetCardTexts()
     {
@@ -60,9 +75,9 @@ public class CardUI : MonoBehaviour
     }
 
 
-    private void SetRarityBackground()
+    private void SetRarityBackground(CardRarity rarity)
     {
-        switch (_card.CardData.Rarity)
+        switch (rarity)
         {
             case CardRarity.Common:
                 _rarityBackground.sprite = _commonRarityBackground;
@@ -83,9 +98,9 @@ public class CardUI : MonoBehaviour
         }
     }
 
-    private void SetElementFrame()
+    private void SetElementFrame(CardElement element)
     {
-        switch (_card.CardData.Element)
+        switch (element)
         {
             case CardElement.Basic:
                 // do nothing - basic background
@@ -106,6 +121,4 @@ public class CardUI : MonoBehaviour
     {
         _cardImage.sprite = _card.CardData.Image;
     }
-
-
 }

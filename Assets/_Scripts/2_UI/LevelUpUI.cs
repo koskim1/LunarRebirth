@@ -56,36 +56,55 @@ public class LevelUpUI : MonoBehaviour
         this.card2 = card2;
         this.card3 = card3;
 
-        // Create card UI elements 동적으로.
-        CreateCardUI(option1.transform, card1, 1);
-        CreateCardUI(option2.transform, card2, 2);
-        CreateCardUI(option3.transform, card3, 3);
+        //ClearCardUI();
+
+        // 기존의 카드 UI를 업데이트
+        UpdateCardUI(option1, card1);
+        UpdateCardUI(option2, card2);
+        UpdateCardUI(option3, card3);
 
         gameObject.SetActive(true);
-        transform.DOScale(targetScale, .8f).OnComplete(()=> Time.timeScale = 0).SetEase(Ease.OutBounce);
-        
+
+
+        transform.DOScale(targetScale, .8f).OnComplete(()=> Time.timeScale = 0).SetEase(Ease.OutBounce);        
+    }
+    private void UpdateCardUI(Button button, ScriptableCard cardData)
+    {
+        CardUI cardUI = button.GetComponent<CardUI>();
+        if (cardUI != null)
+        {
+            cardUI.SetCardData(cardData);
+        }
     }
 
-    private void CreateCardUI(Transform parent, ScriptableCard cardData, int optionIndex)
+    private void ClearCardUI()
     {
-        foreach(Transform child in parent)
+        foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
+    }
 
-        GameObject cardObject = Instantiate(cardPrefab, parent);
+    private void CreateCardUI(ScriptableCard cardData, Vector3 position, int optionIndex)
+    {
+
+        GameObject cardObject = Instantiate(cardPrefab, position, Quaternion.identity, transform);
+        if (cardObject == null)
+        {
+            Debug.Log("cardObject NULL");
+        }
         Card cardComponent = cardObject.GetComponent<Card>();
         if(cardComponent != null)
         {
             cardComponent.CardData = cardData;
         }
-
-        Button button = parent.GetComponent<Button>();
-        if(button != null)
+        Button button = GetComponent<Button>();
+        if (button != null)
         {
-            button.onClick.RemoveAllListeners();
+            //button.onClick.RemoveAllListeners(); // 이전의 리스너 제거
             button.onClick.AddListener(() => SelectOption(optionIndex));
         }
+        cardObject.transform.SetParent(transform, false);
     }
 
     public void SelectOption(int optionIndex)
