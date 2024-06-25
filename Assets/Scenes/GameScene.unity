@@ -2660,6 +2660,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5953105118395181740, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: FloatingTextPrefab
+      value: 
+      objectReference: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,
+        type: 3}
     - target: {fileID: 6387555514011232176, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -3274,6 +3280,12 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 939282876}
+    - target: {fileID: 5953105118395181740, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: FloatingTextPrefab
+      value: 
+      objectReference: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,
+        type: 3}
     - target: {fileID: 6387555514011232176, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -4724,21 +4736,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3342904296026938099, guid: 5f0206a77fd9aa94683b77f7fe1e3e07,
-        type: 3}
-      propertyPath: isPc
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3342904296026938099, guid: 5f0206a77fd9aa94683b77f7fe1e3e07,
-        type: 3}
-      propertyPath: canMove
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6624643501140956319, guid: 5f0206a77fd9aa94683b77f7fe1e3e07,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7508637296444315775, guid: 5f0206a77fd9aa94683b77f7fe1e3e07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4817,6 +4814,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5953105118395181740, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: FloatingTextPrefab
+      value: 
+      objectReference: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,
+        type: 3}
     - target: {fileID: 6387555514011232176, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5929,6 +5932,8 @@ MonoBehaviour:
   _attack: 20
   _xp: 20
   healthBar: {fileID: 148155425}
+  FloatingTextPrefab: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,
+    type: 3}
 --- !u!1001 &1679441128
 PrefabInstance:
   m_ObjectHideFlags: 0
