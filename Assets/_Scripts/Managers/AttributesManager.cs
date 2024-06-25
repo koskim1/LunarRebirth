@@ -16,7 +16,7 @@ public abstract class AttributesManager : MonoBehaviour
     [SerializeField] protected int _health;
     [SerializeField] protected int _attack = 20;
     [SerializeField] protected int _xp = 20;
-    protected bool isDead = false;
+    public bool isDead = false;
 
     protected virtual void Start()
     {

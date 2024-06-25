@@ -18,8 +18,8 @@ TagManager:
   - PostProcessing
   - ScreenshotShare
   - Collidable
-  - 
-  - 
+  - Player
+  - Ground
   - 
   - 
   - 

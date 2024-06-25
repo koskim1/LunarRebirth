@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyAttributesManager : AttributesManager
 {
@@ -18,10 +19,12 @@ public class EnemyAttributesManager : AttributesManager
     public HealthBar healthBar;
     public GameObject FloatingTextPrefab;
 
+    
+
     // Start is called before the first frame update
     protected override void Start()
     {
-        enemyAnimation = GetComponent<EnemyAnimation>();
+        enemyAnimation = GetComponent<EnemyAnimation>();        
 
         base.Start();
         healthBar.SetMaxHealth(maxHealth);
@@ -37,16 +40,16 @@ public class EnemyAttributesManager : AttributesManager
 
         if (FloatingTextPrefab)
         {
-            var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
-            go.GetComponent<TextMeshPro>().text = damage.ToString();
+            ShowFloatingText(damage);
         }
         
         healthBar.SetHealth(_health);
     }
 
-    private void ShowFloatingText()
+    private void ShowFloatingText(int damage)
     {
-
+        var go = Instantiate(FloatingTextPrefab, transform.position, Quaternion.identity, transform);
+        go.GetComponent<TextMeshPro>().text = damage.ToString();
     }
 
     protected override void Die()
