@@ -63,10 +63,15 @@ public class LevelUpUI : MonoBehaviour
         UpdateCardUI(option2, card2);
         UpdateCardUI(option3, card3);
 
+        Cursor.lockState = CursorLockMode.Locked;
+
         gameObject.SetActive(true);
 
 
-        transform.DOScale(targetScale, .8f).OnComplete(()=> Time.timeScale = 0).SetEase(Ease.OutBounce);        
+        transform.DOScale(targetScale, .8f).OnComplete(() => {
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0;
+        }).SetEase(Ease.OutBounce);        
     }
     private void UpdateCardUI(Button button, ScriptableCard cardData)
     {

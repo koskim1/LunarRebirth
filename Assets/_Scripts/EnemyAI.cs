@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     private EnemyAttributesManager enemyAttributesManager;
+    private Animator animator;
 
     public Transform Player;
     public LayerMask whatIsGround, whatIsPlayer;
@@ -17,7 +18,7 @@ public class EnemyAI : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
-    public float timeBetweenAttacks;
+    private float timeBetweenAttacks = 1.1f;
     bool alreadyAttacked;
 
     //States
@@ -29,6 +30,7 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         enemyAttributesManager = GetComponent<EnemyAttributesManager>();
+        animator = GetComponent<Animator>();
 
         Player = GameObject.Find("Player").transform;
     }
@@ -68,8 +70,12 @@ public class EnemyAI : MonoBehaviour
 
         walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
-        if(Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
+        NavMeshHit hit;
+        // NavMesh.SamplePosition(Vector3 sourcePosition, out hit, float maxDistance, int areaMask)
+        // areaMask의 1은 Built-in Walkable이다
+        if (NavMesh.SamplePosition(walkPoint, out hit, walkPointRange, 1))
         {
+            walkPoint = hit.position;
             walkPointSet = true;
         }
     }
@@ -89,6 +95,7 @@ public class EnemyAI : MonoBehaviour
         if (!alreadyAttacked)
         {
             // attack code here
+            animator.SetBool("canAttack", true);
 
 
             //
@@ -100,6 +107,7 @@ public class EnemyAI : MonoBehaviour
 
     private void ResetAttack()
     {
+        animator.SetBool("canAttack", false);
         alreadyAttacked = false;
     }
 

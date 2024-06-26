@@ -2684,21 +2684,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1394430188935047078, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: m_Speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394430188935047078, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: m_Acceleration
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394430188935047078, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 120
-      objectReference: {fileID: 0}
     - target: {fileID: 6766172941759412689, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: cam
@@ -2759,11 +2744,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FemaleCharacterPBR
       objectReference: {fileID: 0}
-    - target: {fileID: 7647134206250791342, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8377083894452648759, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -2781,38 +2761,8 @@ PrefabInstance:
       objectReference: {fileID: 1392112658}
     - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
-      propertyPath: sightRange
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: attackRange
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: walkPointRange
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: playerInSightRange
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 4096
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: whatIsPlayer.m_Bits
-      value: 2048
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3401,7 +3351,7 @@ PrefabInstance:
     - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
@@ -5198,21 +5148,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1394430188935047078, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: m_Speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394430188935047078, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: m_Acceleration
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394430188935047078, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 120
-      objectReference: {fileID: 0}
     - target: {fileID: 6766172941759412689, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: cam
@@ -5273,11 +5208,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FemaleCharacterPBR (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 7647134206250791342, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8377083894452648759, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5295,38 +5225,8 @@ PrefabInstance:
       objectReference: {fileID: 1392112658}
     - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
-      propertyPath: sightRange
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: attackRange
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: walkPointRange
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: playerInSightRange
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
       propertyPath: timeBetweenAttacks
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: whatIsGround.m_Bits
-      value: 4096
-      objectReference: {fileID: 0}
-    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
-        type: 3}
-      propertyPath: whatIsPlayer.m_Bits
-      value: 2048
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
