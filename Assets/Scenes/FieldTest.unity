@@ -769,6 +769,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6766172941759412689, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 2026766123}
     - target: {fileID: 7019920669011962644, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -829,6 +834,21 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2026766123}
+    - target: {fileID: 8377083894452648759, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377083894452648759, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1783963860}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1858,6 +1878,7 @@ MonoBehaviour:
   _health: 0
   _attack: 20
   _xp: 20
+  isDead: 0
   healthBar: {fileID: 245928978}
   FloatingTextPrefab: {fileID: 0}
 --- !u!65 &889673384
@@ -2112,6 +2133,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6766172941759412689, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 2026766123}
     - target: {fileID: 7019920669011962644, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2172,6 +2198,21 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 2026766123}
+    - target: {fileID: 8377083894452648759, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377083894452648759, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1783963860}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4945,10 +4986,26 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8377083894452648759, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8377083894452648759, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8655510398148204826, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1783963860}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 776671933997705775, guid: cc91c8ba8b9a34f4d99e70d721f60b64, type: 3}
     - {fileID: 2705659740806769883, guid: cc91c8ba8b9a34f4d99e70d721f60b64, type: 3}
+    - {fileID: 677837632693612636, guid: cc91c8ba8b9a34f4d99e70d721f60b64, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7019920669011962644, guid: cc91c8ba8b9a34f4d99e70d721f60b64,
         type: 3}

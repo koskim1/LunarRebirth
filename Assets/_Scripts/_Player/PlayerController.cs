@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
 
+    private bool _canSlowDash = false;
     private bool _isDashing = false;
 
     private float _originalSpeed;
@@ -64,9 +65,16 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(_dashDuration);
 
-        StartCoroutine(SlowTime());
+        if (_canSlowDash){ 
+            StartCoroutine(SlowTime());
+        }
         _speed = _originalSpeed;
         _isDashing = false;
+    }
+
+    public void CanSlowDash()
+    {
+        _canSlowDash = true;
     }
 
     private IEnumerator SlowTime()

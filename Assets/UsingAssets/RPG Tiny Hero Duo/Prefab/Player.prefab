@@ -243,6 +243,7 @@ Transform:
   - {fileID: 4218254279110848952}
   - {fileID: 6047609391757024624}
   - {fileID: 8143195823173461613}
+  - {fileID: 3964636699827575544}
   m_Father: {fileID: 8248832895570738802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548554614752840414
@@ -403,6 +404,37 @@ Transform:
   - {fileID: 1505909300119812979}
   - {fileID: 8279517652197322492}
   m_Father: {fileID: 4376598951590679004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1518501632387707473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3964636699827575544}
+  m_Layer: 0
+  m_Name: FireballShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3964636699827575544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518501632387707473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.495, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6522260560034341664}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786738627181287054
 GameObject:
@@ -632,6 +664,7 @@ GameObject:
   - component: {fileID: 3342904296026938099}
   - component: {fileID: 6547773311602407668}
   - component: {fileID: 927581524522756286}
+  - component: {fileID: 6828453996116640147}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -869,6 +902,7 @@ MonoBehaviour:
   _health: 0
   _attack: 20
   _xp: 20
+  isDead: 0
   healthBar: {fileID: 6023791000230880772}
   xpSlider: {fileID: 0}
   levelText: {fileID: 0}
@@ -876,6 +910,21 @@ MonoBehaviour:
   currentLevel: 1
   currentXP: 0
   xpToNextLevel: 10
+--- !u!114 &6828453996116640147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2326310123746364156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31151b2c3f0678f48b3440a4a14f566a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Fireball: {fileID: 8104551673898448437, guid: 0ab9dadcf47a31843a40db9d502f7ac2,
+    type: 3}
+  shootPoint: {fileID: 3964636699827575544}
 --- !u!1 &2581158542874929666
 GameObject:
   m_ObjectHideFlags: 0

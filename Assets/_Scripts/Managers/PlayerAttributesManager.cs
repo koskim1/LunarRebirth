@@ -11,6 +11,8 @@ public class PlayerAttributesManager : AttributesManager
     public LevelUpUI levelUpUI;
 
     private PlayerAnimation _playerAnimation;
+    private PlayerController _playerController;
+    private FireballController _fireballController;    
     private CardGenerator cardGenerator;
     private CardCollection cardCollection;
 
@@ -27,6 +29,8 @@ public class PlayerAttributesManager : AttributesManager
         UpdateXPUI();
 
         _playerAnimation = GetComponent<PlayerAnimation>();
+        _playerController = GetComponent<PlayerController>();
+        _fireballController = GetComponent<FireballController>();
         cardCollection = FindAnyObjectByType<CardCollection>();
         if (cardCollection == null)
         {
@@ -97,6 +101,13 @@ public class PlayerAttributesManager : AttributesManager
             case "Health":
                 IncreaseStat("health", 15);
                 break;
+            case "Fireball":
+                _fireballController.EnableFireball();
+                break;
+            case "SlowDash":
+                _playerController.CanSlowDash();
+                break;
+
         }
     }
 
