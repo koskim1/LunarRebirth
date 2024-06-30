@@ -40,4 +40,9 @@ public class FireballController : MonoBehaviour
             rb.AddForce(transform.forward.normalized * shootSpeed, ForceMode.Impulse);
         } 
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }
