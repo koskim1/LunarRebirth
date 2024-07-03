@@ -19441,6 +19441,7 @@ GameObject:
   - component: {fileID: 5324837572427132109}
   - component: {fileID: 622573330492967977}
   - component: {fileID: 2480075901142884160}
+  - component: {fileID: -5173084094708249875}
   m_Layer: 0
   m_Name: Fire_Orb
   m_TagString: Untagged
@@ -24348,3 +24349,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.53249997
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-5173084094708249875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8104551673898448437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1261bc5986e9e46b84d56ca8399ef1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

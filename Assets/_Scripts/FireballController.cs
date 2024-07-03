@@ -7,7 +7,8 @@ public class FireballController : MonoBehaviour
     public GameObject Fireball;
     public Transform shootPoint;
 
-    private bool canShootFireball = false;
+
+    private bool canShootFireball = true;
     private float shootSpeed = 17f;
     // Start is called before the first frame update
     void Start()
@@ -41,8 +42,4 @@ public class FireballController : MonoBehaviour
         } 
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
 }
