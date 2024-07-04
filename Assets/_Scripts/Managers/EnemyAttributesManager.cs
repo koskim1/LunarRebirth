@@ -63,5 +63,15 @@ public class EnemyAttributesManager : AttributesManager
             Destroy(gameObject);
         }
 
+        isDead = true;
+
+        if (GameObject.FindWithTag("Player") != null)
+        {
+            PlayerAttributesManager player = GameObject.FindWithTag("Player").GetComponent<PlayerAttributesManager>();
+            if (player != null)
+            {
+                player.GainXP(_xp); // 경험치 증가 호출
+            }
+        }
     }
 }

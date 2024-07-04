@@ -53,7 +53,7 @@ public class PlayerAttributesManager : AttributesManager
     }
 
     // XPºÎºÐ
-    protected override void GainXP(int xp)
+    public override void GainXP(int xp)
     {
         currentXP += xp;
         if (currentXP >= xpToNextLevel)

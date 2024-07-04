@@ -13,9 +13,9 @@ public abstract class AttributesManager : MonoBehaviour
 
 
     public int maxHealth = 100;
-    [SerializeField] protected int _health;
-    [SerializeField] protected int _attack = 20;
-    [SerializeField] protected int _xp = 20;
+    [SerializeField] public int _health;
+    [SerializeField] public int _attack = 20;
+    [SerializeField] public int _xp = 20;
     public bool isDead = false;
 
     protected virtual void Start()
@@ -56,7 +56,7 @@ public abstract class AttributesManager : MonoBehaviour
         }
     }
 
-    protected virtual void GainXP(int xp)
+    public virtual void GainXP(int xp)
     {
         // Override in PlayerAttributesManager to handle gaining XP
     }
