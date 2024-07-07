@@ -1,22 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneManagers : MonoBehaviour
 {
+    public Animator animator;
+
     public void LoadScene()
     {
-        LoadingSceneController.LoadScene("GameScene");
+        animator.SetTrigger("FadeOut");
+        LoadingSceneController.LoadScene("GameScene");        
     }
 
     public void LoadTitleScene()
     {
-        LoadingSceneController.LoadScene("TitleScene");
+        animator.SetTrigger("FadeOut");
+        LoadingSceneController.LoadScene("TitleScene");        
     }
 
     public void QuitGame()
     {
+        animator.SetTrigger("FadeOut");
         Application.Quit();
     }
 }
