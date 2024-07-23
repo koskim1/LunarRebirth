@@ -5,10 +5,16 @@ public class SceneManagers : MonoBehaviour
 {
     public Animator animator;
 
-    public void LoadScene()
+    public void LoadIntroScene()
     {
         animator.SetTrigger("FadeOut");
-        LoadingSceneController.LoadScene("GameScene");        
+        LoadingSceneController.LoadScene("MainStory");        
+    }
+
+    public void LoadMainRoom()
+    {
+        animator.SetTrigger("FadeOut");
+        LoadingSceneController.LoadScene("MainRoom");
     }
 
     public void LoadTitleScene()
