@@ -49,7 +49,10 @@ public class DialogueTrigger : MonoBehaviour
         {
             hasPlayer = true;
 
-            dialogueManager.ShowInteractionText(true);// 플레이어가 상호작용 가능한 범위에 들어오면
+
+            // 플레이어가 상호작용 가능한 범위에 들어오면
+            // Press E to talk 처럼 상호작용가능하다고 UI 띄우기
+            dialogueManager.ShowInteractionText(true);
         }
     }
 
@@ -58,6 +61,9 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             hasPlayer = false;
+
+            // 플레이어가 상호작용 범위에서 멀어지면
+            // 상호작용 UI 지우기
             dialogueManager.ShowInteractionText(false);
         }
     }
