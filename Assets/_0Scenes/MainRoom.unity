@@ -364,7 +364,7 @@ MonoBehaviour:
   dialogue:
     name: Old Man
     sentences:
-    - "\uBC18\uAC11\uB124 \uC790"
+    - "\uBC18\uAC11\uB124 \uC790\uB124."
 --- !u!135 &1079731502
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -631,6 +631,11 @@ PrefabInstance:
       propertyPath: levelUpUI
       value: 
       objectReference: {fileID: 1492380275}
+    - target: {fileID: 8315163823154968239, guid: dd9b5a83c05e32c4ebe7a9915757ad72,
+        type: 3}
+      propertyPath: deathCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8838319043131989845, guid: dd9b5a83c05e32c4ebe7a9915757ad72,
         type: 3}
       propertyPath: m_Name
@@ -639,8 +644,18 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8838319043131989845, guid: dd9b5a83c05e32c4ebe7a9915757ad72,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2049621605}
   m_SourcePrefab: {fileID: 100100000, guid: dd9b5a83c05e32c4ebe7a9915757ad72, type: 3}
+--- !u!1 &1551930534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8838319043131989845, guid: dd9b5a83c05e32c4ebe7a9915757ad72,
+    type: 3}
+  m_PrefabInstance: {fileID: 1551930533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1714092800
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -837,6 +852,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6212438910145737807, guid: ff775f7ac68668f4bb72c8d75a649f7f,
+        type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7114441266778116853, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -858,6 +878,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1551930533}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2049621605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551930534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e11305b64b32fb49a43d2bce1104114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - name: Brian
+    sentences:
+    - Well Let's Begin
+    - "It's 2\uBC88\uC9F8 "
+    - "\uB610 \uC2DC\uC791\uC774\uAD70"
 --- !u!1 &2121409329
 GameObject:
   m_ObjectHideFlags: 0

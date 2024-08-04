@@ -19,7 +19,7 @@ public class PlayerAttributesManager : AttributesManager
     public int currentLevel = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 100;
-
+    public int deathCount = 0;
     // Start is called before the first frame update
     protected override void Start()
     {                
@@ -50,6 +50,7 @@ public class PlayerAttributesManager : AttributesManager
     protected override void Die()
     {
         _playerAnimation.Dead();
+        deathCount++;
     }
 
     // XPºÎºÐ

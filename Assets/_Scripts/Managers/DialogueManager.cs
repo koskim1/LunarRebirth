@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     public Animator animator;
 
-    private Queue<string> sentences;
+    public Queue<string> sentences;
     
     private Transform currentNPC;
     [SerializeField] private GameObject playerInteractUI;
@@ -44,6 +44,20 @@ public class DialogueManager : MonoBehaviour
         ShowInteractionText(false);
     }
 
+    public void StartMonologueDialogue(Dialogue dialogue)
+    {
+        playerController.canMove = false;
+
+        animator.SetBool("IsOpen", true);
+        nameText.text = dialogue.name;
+        sentences.Clear();
+
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+    }
+
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -71,7 +85,7 @@ public class DialogueManager : MonoBehaviour
     {
         playerController.canMove = true;
         animator.SetBool("IsOpen", false);
-        ShowInteractionText(true);
+        //ShowInteractionText(true);
         Debug.Log("End of conversation");
     }
 
@@ -88,6 +102,5 @@ public class DialogueManager : MonoBehaviour
         {
             playerInteractUI.SetActive(false);
         }
-
     }
 }
