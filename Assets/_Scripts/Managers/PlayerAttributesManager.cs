@@ -15,6 +15,7 @@ public class PlayerAttributesManager : AttributesManager
     private FireballController _fireballController;    
     private CardGenerator cardGenerator;
     private CardCollection cardCollection;
+    private SceneManagers sceneManagers;
 
     public int currentLevel = 1;
     public int currentXP = 0;
@@ -32,6 +33,8 @@ public class PlayerAttributesManager : AttributesManager
         _playerController = GetComponent<PlayerController>();
         _fireballController = GetComponent<FireballController>();
         cardCollection = FindAnyObjectByType<CardCollection>();
+        sceneManagers = FindAnyObjectByType<SceneManagers>();
+
         if (cardCollection == null)
         {
             Debug.Log("CardCollection이 설정되지 않았습니다.");
@@ -51,6 +54,7 @@ public class PlayerAttributesManager : AttributesManager
     {
         _playerAnimation.Dead();
         deathCount++;
+        sceneManagers.LoadMainRoom();
     }
 
     // XP부분

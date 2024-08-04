@@ -17,6 +17,12 @@ public class SceneManagers : MonoBehaviour
         LoadingSceneController.LoadScene("MainRoom");
     }
 
+    public void LoadDungeon()
+    {
+        animator.SetTrigger("FadeOut");
+        LoadingSceneController.LoadScene("GameScene");
+    }
+
     public void LoadTitleScene()
     {
         animator.SetTrigger("FadeOut");
