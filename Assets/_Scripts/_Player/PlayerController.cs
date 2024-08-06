@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _canSlowDash = false;
     private bool _isDashing = false;
+    private bool _canDash = true;
 
     private float _originalSpeed;
     private float _speed = 8f;
@@ -23,7 +24,8 @@ public class PlayerController : MonoBehaviour
     private float _dashDuration = 0.15f;
     private float _slowDuration = 0.35f;
     private float _slowTimeScale = 0.18f;
-
+    private float _dashCoolDown = 1.3f;
+    [SerializeField] private AnimationCurve dashCurve; // 대쉬 속도 제어 애니메이션    
 
 
     // Start is called before the first frame update
@@ -52,24 +54,40 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.performed && !_isDashing)
+        if(context.performed && !_isDashing && _canDash)
         {
             StartCoroutine(Dash());
         }
+
+        _isDashing = false;
     }
 
     private IEnumerator Dash()
     {
         _isDashing = true;
-        _speed = _dashSpeed;
+        _canDash = false;
+        float elapsedTime = 0f;
 
-        yield return new WaitForSeconds(_dashDuration);
+        while(elapsedTime < _dashDuration)
+        {
+            float t = elapsedTime / _dashDuration;
+            _speed = Mathf.Lerp(_dashSpeed, _originalSpeed, dashCurve.Evaluate(t));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
 
-        if (_canSlowDash){ 
+        if (_canSlowDash)
+        {
             StartCoroutine(SlowTime());
         }
         _speed = _originalSpeed;
-        _isDashing = false;
+
+        yield return new WaitForSeconds(_dashCoolDown);
+        _canDash = true;
+        //_speed = _dashSpeed;
+        //yield return new WaitForSeconds(_dashDuration);
+        //_speed = _originalSpeed;
+        
     }
 
     public void CanSlowDash()
