@@ -9,12 +9,15 @@ public class DialogueMonologue : MonoBehaviour
     private PlayerAttributesManager playerAttributesManager;
     private PlayerController playerController;
 
-    void Start()
+    private void Awake()
     {
         dialogueManager = FindObjectOfType<DialogueManager>();
         playerAttributesManager = FindObjectOfType<PlayerAttributesManager>();
         playerController = FindObjectOfType<PlayerController>();
+    }
 
+    void Start()
+    {        
         PlayerMonologue();
     }
 
@@ -25,7 +28,7 @@ public class DialogueMonologue : MonoBehaviour
             Debug.LogError("PlayerMonologue: 필요한 컴포넌트가 설정되지 않았습니다.");
             return;
         }
-
+        
         int deathCount = playerAttributesManager.deathCount;
         int deathSentence = dialogues[0].sentences.Length;
 

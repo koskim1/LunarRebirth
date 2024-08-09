@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Hp_Billboard : MonoBehaviour
 {
-    public Transform cam;
+    private Transform cam;
+
+    private void Start()
+    {
+        cam = Camera.main.transform;
+        
+    }
 
     private void LateUpdate()
     {

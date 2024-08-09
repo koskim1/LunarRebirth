@@ -17,7 +17,7 @@ public class DialogueManager : MonoBehaviour
     private Transform currentNPC;
     [SerializeField] private GameObject playerInteractUI;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerController = FindObjectOfType<PlayerController>();
 

@@ -3,14 +3,10 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-
 public class PlayerController : MonoBehaviour
 {
-
     public bool isPc = true;
     public bool canMove = true;
-
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
 
@@ -29,24 +25,20 @@ public class PlayerController : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         isPc = true;
         canMove = true;
-
         _originalSpeed = _speed;
     }
-
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
     }
-
     public void OnMouseLook(InputAction.CallbackContext context)
     {
         mouseLook = context.ReadValue<Vector2>();
     }
-
     public void OnJoysickLook(InputAction.CallbackContext context)
     {
         joystickLook = context.ReadValue<Vector2>();
@@ -54,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if(context.performed && !_isDashing && _canDash)
+        if (context.performed && !_isDashing && _canDash)
         {
             StartCoroutine(Dash());
         }
@@ -68,7 +60,7 @@ public class PlayerController : MonoBehaviour
         _canDash = false;
         float elapsedTime = 0f;
 
-        while(elapsedTime < _dashDuration)
+        while (elapsedTime < _dashDuration)
         {
             float t = elapsedTime / _dashDuration;
             _speed = Mathf.Lerp(_dashSpeed, _originalSpeed, dashCurve.Evaluate(t));
@@ -87,24 +79,20 @@ public class PlayerController : MonoBehaviour
         //_speed = _dashSpeed;
         //yield return new WaitForSeconds(_dashDuration);
         //_speed = _originalSpeed;
-        
+
     }
 
     public void CanSlowDash()
     {
         _canSlowDash = true;
     }
-
     private IEnumerator SlowTime()
     {
         Time.timeScale = _slowTimeScale;
         yield return new WaitForSecondsRealtime(_slowDuration);
         Time.timeScale = 1f;
     }
-
     // ----------------------------------------------------------------------------------------------
-
-
     // Update is called once per frame
     void Update()
     {
@@ -112,19 +100,17 @@ public class PlayerController : MonoBehaviour
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(mouseLook);
-
-            if(Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit))
             {
                 rotationTarget = hit.point;
             }
-
             movePlayerWithAim();
         }
         else
         {
-            if(joystickLook.x == 0 && joystickLook.y == 0)
+            if (joystickLook.x == 0 && joystickLook.y == 0)
             {
-                if(canMove) movePlayer();
+                if (canMove) movePlayer();
             }
             else
             {
@@ -136,31 +122,26 @@ public class PlayerController : MonoBehaviour
     public void movePlayer()
     {
         Vector3 movement = new Vector3(move.x, 0f, move.y).normalized;
-
-        if(movement != Vector3.zero)
+        if (movement != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.6f);
         }
-
-        transform.Translate(movement*_speed*Time.deltaTime, Space.World);
+        transform.Translate(movement * _speed * Time.deltaTime, Space.World);
     }
-
     public void movePlayerWithAim()
     {
         if (isPc)
         {
             var lookPos = rotationTarget - transform.position;
             lookPos.y = 0f;
-            if(lookPos != Vector3.zero)
+            if (lookPos != Vector3.zero)
             {
-               var rotation = Quaternion.LookRotation(lookPos);
-
-               Vector3 aimDirection = new Vector3(rotationTarget.x, 0f, rotationTarget.z);
-
-               if (aimDirection != Vector3.zero)
-               {
-                   transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.6f);
-               }
+                var rotation = Quaternion.LookRotation(lookPos);
+                Vector3 aimDirection = new Vector3(rotationTarget.x, 0f, rotationTarget.z);
+                if (aimDirection != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.6f);
+                }
             }
         }
         // If Controller or Mobile
@@ -172,10 +153,7 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDirection), 0.6f);
             }
         }
-
         Vector3 movement = new Vector3(move.x, 0f, move.y).normalized;
-
         transform.Translate(movement * _speed * Time.deltaTime, Space.World);
     }
-
 }

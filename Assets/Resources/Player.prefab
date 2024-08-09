@@ -2624,7 +2624,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!136 &4672556423628287479
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2755,8 +2755,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3baf0bf9cef232947bed5e079fa09d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPc: 0
-  canMove: 0
+  isPc: 1
+  canMove: 1
+  dashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.402576
+      value: 0.32546127
+      inSlope: 1.469842
+      outSlope: 1.469842
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.70316875
+      value: 0.59922385
+      inSlope: 1.1853312
+      outSlope: 1.1853312
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8519543936169167261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2794,6 +2836,7 @@ MonoBehaviour:
   currentLevel: 1
   currentXP: 0
   xpToNextLevel: 10
+  deathCount: 0
 --- !u!114 &2505581010853484483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3411,7 +3454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e24c6c5b13f1d24db8b37439b685c4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
 --- !u!224 &1522129297415454105 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6225830132305715951, guid: fc86dfe9ca2d5804081b4ca518fe80ac,
