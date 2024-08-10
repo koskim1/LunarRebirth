@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class Portal : MonoBehaviour
 {
     private SceneManagers sceneManagers;
-    private PlayerAttributesManager playerAttributesManager;
+    
     // Start is called before the first frame update
     void Start()
     {
         sceneManagers = FindAnyObjectByType<SceneManagers>();
-        playerAttributesManager = FindAnyObjectByType<PlayerAttributesManager>();
+    
     }
 
     // Update is called once per frame
