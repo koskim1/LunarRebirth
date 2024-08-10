@@ -6,6 +6,7 @@ public class SceneManagers : MonoBehaviour
 {
     public static SceneManagers Instance;
     private Animator animator;
+    private PlayerAttributesManager playerAttributesManager;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class SceneManagers : MonoBehaviour
 
     private void Start()
     {
-        
+        playerAttributesManager = FindAnyObjectByType<PlayerAttributesManager>();
     }
 
     private IEnumerator animatorOnOff()
@@ -47,7 +48,8 @@ public class SceneManagers : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if(player != null)
         {
-            player.transform.position = new Vector3(0, 0, -13f);
+            player.transform.position = new Vector3(0, 10f, -13f);
+            playerAttributesManager._health = playerAttributesManager.maxHealth;
         }
     }
 
