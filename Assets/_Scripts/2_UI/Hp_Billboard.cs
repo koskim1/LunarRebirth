@@ -6,10 +6,10 @@ public class Hp_Billboard : MonoBehaviour
 {
     private Transform cam;
 
-    private void Start()
+    private void Awake()
     {
         cam = Camera.main.transform;
-        
+
     }
 
     private void LateUpdate()
