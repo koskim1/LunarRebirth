@@ -6,6 +6,8 @@ public class EnemyAnimation : MonoBehaviour
 {
     private Animator animator;
 
+    private bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,20 +22,23 @@ public class EnemyAnimation : MonoBehaviour
 
     public void Dead()
     {
-        animator.SetBool("isDead", true);
+        if (isDead) return;
+        isDead = true;
+
+
         StartCoroutine(DestroyAfterAnimation("Die01_SwordAndShield"));
     }
 
     private IEnumerator DestroyAfterAnimation(string clipName)
     {
-        float clipLength = GetAnimationClipLength(animator, clipName);
+        animator.SetBool("isDead", true);
 
-        clipLength *= 4f;
+        float clipLength = GetAnimationClipLength(animator, clipName);
+        clipLength *= 3f;
 
         yield return new WaitForSeconds(clipLength);
 
         Destroy(gameObject);
-
     }
 
     private float GetAnimationClipLength(Animator animator, string clipName)
