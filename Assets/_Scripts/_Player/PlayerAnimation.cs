@@ -9,9 +9,10 @@ public class PlayerAnimation : MonoBehaviour
     private Sword _sword;
     private BoxCollider _swordCollider;
     private PlayerController _playerController;
+    private HealthBar _healthBar;
 
     private bool isAttack = false;
-
+    private bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class PlayerAnimation : MonoBehaviour
         _sword = GetComponentInChildren<Sword>();
         _swordCollider = _sword.GetComponent<BoxCollider>();
         _playerController = FindObjectOfType<PlayerController>();
+        _healthBar = GetComponentInChildren<HealthBar>();
 
         _swordCollider.enabled = false;
     }
@@ -61,6 +63,9 @@ public class PlayerAnimation : MonoBehaviour
 
     public void Dead()
     {
+        if (isDead) return;
+
+        isDead = true;
         animator.SetBool("isDead", true);
         // EnemyAnimation도 마찬가지지만 완전 원본 애니메이션 이름을 적어야 함
         StartCoroutine(DestroyAfterAnimation("Die01_SwordAndShield"));
@@ -71,10 +76,13 @@ public class PlayerAnimation : MonoBehaviour
         float clipLength = GetAnimationClipLength(animator, clipName);
         clipLength *= 4f;
 
-        yield return new WaitForSeconds(clipLength);
+        yield return new WaitForSeconds(clipLength);        
 
-        Destroy(gameObject);
-
+        SceneManagers.Instance.LoadMainRoom();
+        isDead = false;
+        animator.SetBool("isDead", false);
+        PlayerAttributesManager.Instance.deathCount++;
+        _healthBar.SetHealth(PlayerAttributesManager.Instance.maxHealth);
     }
 
     private float GetAnimationClipLength(Animator animator, string clipName)

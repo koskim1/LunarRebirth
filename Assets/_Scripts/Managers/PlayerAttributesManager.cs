@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class PlayerAttributesManager : AttributesManager
 {
+    public static PlayerAttributesManager Instance;
 
     public HealthBar healthBar;
     public Slider xpSlider;
@@ -17,26 +18,41 @@ public class PlayerAttributesManager : AttributesManager
     private CardGenerator cardGenerator;
     private CardCollection cardCollection;
     private SceneManagers sceneManagers;
+    private Animator animator;
 
     public int currentLevel = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 100;
     public int deathCount = 0;
 
-
-    // Start is called before the first frame update
-    protected override void Start()
-    {                
-        base.Start();
-        healthBar.SetMaxHealth(maxHealth);
-        healthBar.SetHealth(maxHealth);
-        UpdateXPUI();
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);            
+        }
+        else if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
 
         _playerAnimation = GetComponent<PlayerAnimation>();
         _playerController = GetComponent<PlayerController>();
         _fireballController = GetComponent<FireballController>();
+        animator = GetComponent<Animator>();
         cardCollection = FindAnyObjectByType<CardCollection>();
         sceneManagers = FindAnyObjectByType<SceneManagers>();
+        
+    }
+    // Start is called before the first frame update
+    protected override void Start()
+    {                
+        base.Start();        
+
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(maxHealth);
+        UpdateXPUI();
 
         if (cardCollection == null)
         {
@@ -44,6 +60,14 @@ public class PlayerAttributesManager : AttributesManager
         }
         cardGenerator = new CardGenerator(cardCollection);
 
+
+    }
+
+    private IEnumerator animatorOnOff()
+    {
+        animator.enabled = false;
+        yield return new WaitForSeconds(0f);
+        animator.enabled = true;
     }
 
     // Damage부분
@@ -55,9 +79,8 @@ public class PlayerAttributesManager : AttributesManager
 
     protected override void Die()
     {
+        StartCoroutine(animatorOnOff());
         _playerAnimation.Dead();
-        deathCount++;
-        sceneManagers.LoadMainRoom();
     }
 
     // XP부분
@@ -129,10 +152,10 @@ public class PlayerAttributesManager : AttributesManager
                 _attack += amount;
                 break;
             case "health":
-                _health += amount;
-                maxHealth = _health;
+                maxHealth += amount;
+                _health = maxHealth;
                 healthBar.SetMaxHealth(maxHealth);
-                healthBar.SetHealth(_health);
+                healthBar.SetHealth(maxHealth);
                 break;
             case "intelligence":
                 // 예시로 지능 추가
@@ -153,4 +176,6 @@ public class PlayerAttributesManager : AttributesManager
             levelText.text = $"Level : {currentLevel} ( {currentXP} / {xpToNextLevel} )";
         }
     }
+
+    
 }
