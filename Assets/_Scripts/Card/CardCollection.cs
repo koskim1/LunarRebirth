@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class CardCollection : MonoBehaviour
 {
+    public static CardCollection Instance;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     [field: SerializeField] public List<ScriptableCard> CommonCards { get; private set; } = new List<ScriptableCard>();
     [field: SerializeField] public List<ScriptableCard> RareCards { get; private set; } = new List<ScriptableCard>();
     [field: SerializeField] public List<ScriptableCard> EpicCards { get; private set; } = new List<ScriptableCard>();

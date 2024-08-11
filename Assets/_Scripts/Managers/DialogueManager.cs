@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
+    public static DialogueManager Instance;
+
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
 
@@ -19,10 +21,19 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         playerController = FindObjectOfType<PlayerController>();
 
         sentences = new Queue<string>();
-
     }
 
     public void StartDialogue(Dialogue dialogue)
