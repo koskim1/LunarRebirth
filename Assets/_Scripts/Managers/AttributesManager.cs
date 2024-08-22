@@ -64,6 +64,5 @@ public abstract class AttributesManager : MonoBehaviour
     protected virtual void Die()
     {
         isDead = true;
-        Destroy(gameObject);
     }
 }

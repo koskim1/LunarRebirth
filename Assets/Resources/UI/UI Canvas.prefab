@@ -600,6 +600,7 @@ GameObject:
   - component: {fileID: 4980810091418867914}
   - component: {fileID: 5869962379547748629}
   - component: {fileID: 3700807368627454872}
+  - component: {fileID: 4025580443748198809}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -696,6 +697,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4025580443748198809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593871301343667671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5dee22f7f76cd14a8b0297036267cb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2808654365135422267
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +774,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD14C\uC2A4\uD2B8 \uAD6C\uBB38"
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 56bcd057abbe8d24ba7ef30ea021a7d3, type: 2}
   m_sharedMaterial: {fileID: -2391555956172390876, guid: 56bcd057abbe8d24ba7ef30ea021a7d3,

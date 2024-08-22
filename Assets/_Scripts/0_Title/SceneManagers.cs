@@ -49,7 +49,7 @@ public class SceneManagers : MonoBehaviour
         if(player != null)
         {
             player.transform.position = new Vector3(0, 10f, -13f);
-            playerAttributesManager._health = playerAttributesManager.maxHealth;
+            PlayerAttributesManager.Instance._health = PlayerAttributesManager.Instance.maxHealth;
         }
     }
 

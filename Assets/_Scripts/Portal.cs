@@ -5,19 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
-    private SceneManagers sceneManagers;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        sceneManagers = FindAnyObjectByType<SceneManagers>();
-    
-    }
+    public static Portal Instance;
 
-    // Update is called once per frame
-    void Update()
+    private SceneManagers sceneManagers;
+
+    private void Awake()
     {
-        
+        sceneManagers = GameObject.Find("SceneManager").GetComponent<SceneManagers>();
     }
 
     private void OnTriggerEnter(Collider other)

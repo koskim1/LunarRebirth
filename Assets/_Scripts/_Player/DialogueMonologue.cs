@@ -13,7 +13,7 @@ public class DialogueMonologue : MonoBehaviour
     {
         dialogueManager = FindObjectOfType<DialogueManager>();
         playerAttributesManager = FindObjectOfType<PlayerAttributesManager>();
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = FindObjectOfType<PlayerController>(); 
     }
 
     void Start()
@@ -29,7 +29,7 @@ public class DialogueMonologue : MonoBehaviour
             return;
         }
         
-        int deathCount = playerAttributesManager.deathCount;
+        int deathCount = PlayerAttributesManager.Instance.deathCount;
         int deathSentence = dialogues[0].sentences.Length;
 
         if(deathCount >= deathSentence)

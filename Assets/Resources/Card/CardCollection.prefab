@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1614147066406301585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3394186520172907943}
+  - component: {fileID: 1028726323128020253}
+  m_Layer: 0
+  m_Name: CardCollection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3394186520172907943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614147066406301585}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1028726323128020253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614147066406301585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae0e7dd19fdae849a4527ac9e7e03c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <CommonCards>k__BackingField:
+  - {fileID: 11400000, guid: 94f440431e2430c49b1a3c2e9307d88f, type: 2}
+  - {fileID: 11400000, guid: 73a9daa8659d99f4b95329ab8828fa16, type: 2}
+  - {fileID: 11400000, guid: 60a230f88af74ee488897eddbf882ce7, type: 2}
+  <RareCards>k__BackingField:
+  - {fileID: 11400000, guid: af761d8810a6f6048904b1155fcb56f7, type: 2}
+  - {fileID: 11400000, guid: 6a9071c89ac6be84a831e2979c7a8697, type: 2}
+  - {fileID: 11400000, guid: 06aa68623803958488d0a89988deecbd, type: 2}
+  - {fileID: 11400000, guid: 39615cfe3e5ac034b8e3bdbacc1c98ed, type: 2}
+  <EpicCards>k__BackingField:
+  - {fileID: 11400000, guid: 128862ffbfdaa9f4aa9c852f6338db1e, type: 2}
+  - {fileID: 11400000, guid: 5908d6aba4130d941ad2933a5560c1f1, type: 2}
+  - {fileID: 11400000, guid: 3a8c54e77f2c0e044a0c865e626c55c7, type: 2}
+  <LegendaryCards>k__BackingField:
+  - {fileID: 11400000, guid: 4d344efc37a96c441af9332c03587c88, type: 2}
+  - {fileID: 11400000, guid: 30278941f5c960b41a25bd98c1da7ba0, type: 2}
+  - {fileID: 11400000, guid: 65ff8a32522e6b24f85412c21e481fb1, type: 2}
