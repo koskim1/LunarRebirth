@@ -71,6 +71,7 @@ public class LevelUpUI : MonoBehaviour
         UpdateCardUI(option3, card3);
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
 
         gameObject.SetActive(true);
 
@@ -156,5 +157,7 @@ public class LevelUpUI : MonoBehaviour
             Time.timeScale = 1f;
         }
         );
+
+        Cursor.visible = false;
     }
 }

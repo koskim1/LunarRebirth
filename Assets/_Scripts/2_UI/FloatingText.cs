@@ -8,6 +8,19 @@ public class FloatingText : MonoBehaviour
     public Vector3 Offset = new Vector3(0, 3, 0);
     public Vector3 RandomizeIntensity = new Vector3(0.5f, 0, 0);
 
+    private Transform cam;
+
+    private void Awake()
+    {
+        cam = Camera.main.transform;
+
+    }
+
+    private void LateUpdate()
+    {
+        transform.LookAt(transform.position + cam.forward);
+    }
+
     void Start()
     {
         Destroy(gameObject, DestroyTime);

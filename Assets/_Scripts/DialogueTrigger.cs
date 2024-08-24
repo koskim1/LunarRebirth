@@ -85,9 +85,4 @@ public class DialogueTrigger : MonoBehaviour
 
         transform.DORotate(targetRotation.eulerAngles, 2.5f);
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, 7.5f);
-    }
 }

@@ -23,13 +23,15 @@ public class PlayerController : MonoBehaviour
     private float _dashCoolDown = 1.3f;
     [SerializeField] private AnimationCurve dashCurve; // 대쉬 속도 제어 애니메이션    
 
+    private Transform cameraTransform;
 
     // Start is called before the first frame update
     void Awake()
     {
         isPc = true;
-        canMove = true;
-        _originalSpeed = _speed;
+        canMove = false;
+        _originalSpeed = _speed;        
+        cameraTransform = Camera.main.transform;
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -110,39 +112,69 @@ public class PlayerController : MonoBehaviour
         {
             if (joystickLook.x == 0 && joystickLook.y == 0)
             {
-                if (canMove) movePlayer();
+                //if (canMove) movePlayer();
             }
             else
             {
-                if (canMove) movePlayerWithAim();
+                //if (canMove) movePlayerWithAim();
             }
         }
     }
+
     // Controller or JoyStick Movement (기존 pc는 movePlayerWithAim()로 수정
     public void movePlayer()
     {
         Vector3 movement = new Vector3(move.x, 0f, move.y).normalized;
+
+        //카메라 Y축 회전 기반 이동방향 전환
+        movement = cameraTransform.TransformDirection(movement);
+        movement.y = 0f;
+
         if (movement != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.6f);
         }
         transform.Translate(movement * _speed * Time.deltaTime, Space.World);
     }
+
+    // PC Ver
     public void movePlayerWithAim()
     {
         if (isPc)
         {
-            var lookPos = rotationTarget - transform.position;
-            lookPos.y = 0f;
-            if (lookPos != Vector3.zero)
+            Vector3 movement = new Vector3(move.x, 0f, move.y).normalized;
+
+            //카메라 Y축 회전 기반 이동방향 전환
+            movement = cameraTransform.TransformDirection(movement);
+            movement.y = 0f;
+
+            transform.Translate(movement * _speed * Time.deltaTime, Space.World);
+
+            // 이게 1버전 with out Ray
+            if (movement != Vector3.zero)
             {
-                var rotation = Quaternion.LookRotation(lookPos);
-                Vector3 aimDirection = new Vector3(rotationTarget.x, 0f, rotationTarget.z);
-                if (aimDirection != Vector3.zero)
-                {
-                    transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.6f);
-                }
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.05f); // 빠르게 회전하게 설정
             }
+
+
+            // 이게 2버전 with Ray 갠취가 1버전이라 잠시 주석처리.
+            // 캐릭터 회전, 마우스 방향(rotationTarget) 바라보게 설정
+            //var lookPos = rotationTarget - transform.position;
+            //lookPos.y = 0f;
+            //if (lookPos != Vector3.zero)
+            //{
+            //    var rotation = Quaternion.LookRotation(lookPos);
+            //    Vector3 aimDirection = new Vector3(rotationTarget.x, 0f, rotationTarget.z);
+            //    if (aimDirection != Vector3.zero)
+            //    {
+            //        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.6f);
+            //    }
+            //}
+
+
+
+            //transform.Translate(movement * _speed * Time.deltaTime, Space.World);
+
         }
         // If Controller or Mobile
         else
@@ -153,7 +185,11 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(aimDirection), 0.6f);
             }
         }
-        Vector3 movement = new Vector3(move.x, 0f, move.y).normalized;
-        transform.Translate(movement * _speed * Time.deltaTime, Space.World);
+        //Vector3 movement = new Vector3(move.x, 0f, move.y).normalized;
+        ////카메라 Y축 회전 기반 이동방향 전환
+        //movement = cameraTransform.TransformDirection(movement);
+        //movement.y = 0f;
+
+        //transform.Translate(movement * _speed * Time.deltaTime, Space.World);
     }
 }

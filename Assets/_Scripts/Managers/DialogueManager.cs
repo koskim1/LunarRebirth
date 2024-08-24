@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Cinemachine;
 using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     private PlayerController playerController;
+    private CinemachineBrain cinemachineBrain;
 
     public Animator animator;
 
@@ -32,14 +34,20 @@ public class DialogueManager : MonoBehaviour
         }
 
         playerController = FindObjectOfType<PlayerController>();
-
+        cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
         sentences = new Queue<string>();
+
+        Cursor.visible = false;
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
         playerController.canMove = false;
-        
+
+        Cursor.visible = true;
+
+        cinemachineBrain.enabled = false;
+
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
@@ -58,6 +66,9 @@ public class DialogueManager : MonoBehaviour
     public void StartMonologueDialogue(Dialogue dialogue)
     {
         playerController.canMove = false;
+        cinemachineBrain.enabled = false;
+
+        Cursor.visible = true;
 
         animator.SetBool("IsOpen", true);
         nameText.text = dialogue.name;
@@ -97,6 +108,9 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         playerController.canMove = true;
+        cinemachineBrain.enabled = true;
+        Cursor.visible = false;        
+
         animator.SetBool("IsOpen", false);
         //ShowInteractionText(true);
         Debug.Log("End of conversation");
