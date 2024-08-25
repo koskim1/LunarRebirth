@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool _canSlowDash = false;
     private bool _isDashing = false;
     private bool _canDash = true;
+    private bool _lockOn = false;
 
     private float _originalSpeed;
     private float _speed = 8f;
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AnimationCurve dashCurve; // 대쉬 속도 제어 애니메이션    
 
     private Transform cameraTransform;
-
+    private LockOn lockOn;
     // Start is called before the first frame update
     void Awake()
     {
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
         canMove = false;
         _originalSpeed = _speed;        
         cameraTransform = Camera.main.transform;
+
+        lockOn = GetComponent<LockOn>();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -54,6 +57,20 @@ public class PlayerController : MonoBehaviour
         }
 
         _isDashing = false;
+    }
+
+    public void LockOn(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _lockOn = !_lockOn;
+
+            if (_lockOn)
+            {
+                LookAtTarget();
+                _lockOn = false;
+            }
+        }
     }
 
     private IEnumerator Dash()
@@ -94,6 +111,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(_slowDuration);
         Time.timeScale = 1f;
     }
+
+    public void LookAtTarget()
+    {
+        lockOn.FindLockOnTarget();
+    }
+
+
     // ----------------------------------------------------------------------------------------------
     // Update is called once per frame
     void Update()
@@ -153,7 +177,7 @@ public class PlayerController : MonoBehaviour
             // 이게 1버전 with out Ray
             if (movement != Vector3.zero)
             {
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.05f); // 빠르게 회전하게 설정
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.03f); // 빠르게 회전하게 설정
             }
 
 

@@ -2549,6 +2549,7 @@ GameObject:
   - component: {fileID: 8519543936169167261}
   - component: {fileID: 8315163823154968239}
   - component: {fileID: 2505581010853484483}
+  - component: {fileID: 5197548967244557970}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -2575,6 +2576,7 @@ Transform:
   - {fileID: 5564834477971607606}
   - {fileID: 7318468019192015514}
   - {fileID: 1522129297415454105}
+  - {fileID: 1371458157787722464}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5049159936708501205
@@ -2738,6 +2740,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 17ec18eb-5bb8-4ccd-acd3-d67860b8ed9b
     m_ActionName: Player/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5962003193036783397}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: LockOn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b0a4e3da-8a54-4555-ba46-f56212932c8d
+    m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -2756,7 +2774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPc: 1
-  canMove: 1
+  canMove: 0
   dashCurve:
     serializedVersion: 2
     m_Curve:
@@ -2852,6 +2870,56 @@ MonoBehaviour:
   Fireball: {fileID: 8104551673898448437, guid: 0ab9dadcf47a31843a40db9d502f7ac2,
     type: 3}
   shootPoint: {fileID: 903025957517428749}
+--- !u!114 &5197548967244557970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838319043131989845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d59f1401ecfbeff479bf80c6cf20bb8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockOnRadius: 6
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  minViewAngle: -70
+  maxViewAngle: 70
+  targetEnemy: []
+--- !u!1 &8951295188678207575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1371458157787722464}
+  m_Layer: 11
+  m_Name: FollwTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1371458157787722464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8951295188678207575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.677, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3618080527403323722}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9027417171822190217
 GameObject:
   m_ObjectHideFlags: 0
