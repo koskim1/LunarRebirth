@@ -12,7 +12,8 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
 
     private PlayerController playerController;
-    private CinemachineBrain cinemachineBrain;
+    [SerializeField]private CinemachineFreeLook cinemachineFreeLook;
+    [SerializeField]private CinemachineFreeLook enemyLook;
 
     public Animator animator;
 
@@ -34,20 +35,37 @@ public class DialogueManager : MonoBehaviour
         }
 
         playerController = FindObjectOfType<PlayerController>();
-        cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
         sentences = new Queue<string>();
 
         Cursor.visible = false;
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void StartDialogue(Dialogue dialogue, DialogueTrigger npc)
     {
         playerController.canMove = false;
 
         Cursor.visible = true;
 
-        cinemachineBrain.enabled = false;
-
+        cinemachineFreeLook.enabled = false;
+        // NPC에게 LookAt 설정
+        if (enemyLook != null)
+        {            
+            if (npc != null)
+            {
+                enemyLook.enabled = true;
+                enemyLook.m_LookAt = npc.transform;
+                enemyLook.m_XAxis.m_MaxSpeed = 0.0f;
+                enemyLook.m_YAxis.m_MaxSpeed = 0.0f;
+            }
+            else
+            {
+                Debug.LogWarning("DialogueTrigger 컴포넌트를 NPC에서 찾을 수 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Cinemachine LookAt 카메라가 설정되지 않았습니다.");
+        }
         animator.SetBool("IsOpen", true);
 
         nameText.text = dialogue.name;
@@ -66,7 +84,8 @@ public class DialogueManager : MonoBehaviour
     public void StartMonologueDialogue(Dialogue dialogue)
     {
         playerController.canMove = false;
-        cinemachineBrain.enabled = false;
+        cinemachineFreeLook.enabled = false;
+        enemyLook.enabled = false;
 
         Cursor.visible = true;
 
@@ -108,7 +127,8 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         playerController.canMove = true;
-        cinemachineBrain.enabled = true;
+        cinemachineFreeLook.enabled = true;
+        enemyLook.enabled = true;
         Cursor.visible = false;        
 
         animator.SetBool("IsOpen", false);

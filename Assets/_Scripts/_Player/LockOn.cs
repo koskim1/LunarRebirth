@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class LockOn : MonoBehaviour
 {
@@ -10,12 +11,15 @@ public class LockOn : MonoBehaviour
     [SerializeField] float maxViewAngle = 360f;
 
     [SerializeField] List<EnemyAttributesManager> targetEnemy = new List<EnemyAttributesManager>();
-
     [SerializeField] Transform lockOnImage;
+
+    [SerializeField] CinemachineFreeLook playerCam; // 기본 플레이어Cam
+    [SerializeField] CinemachineFreeLook enemyCam; // 타겟 바라보게 enemyCam연결
 
     EnemyAttributesManager currentTarget;
     Vector3 currentTargetPosition;
 
+    public bool isFindTarget = false;
     private bool isLockOn = false;
     private Transform cameraTransform;
     // Start is called before the first frame update
@@ -27,11 +31,12 @@ public class LockOn : MonoBehaviour
     private void Start()
     {
         lockOnImage.gameObject.SetActive(false);
+        enemyCam.Priority = 0;
     }
 
     private void Update()
     {
-        if (isLockOn)
+        if (isFindTarget)
         {
             if (isTargetRange())
             {
@@ -99,6 +104,10 @@ public class LockOn : MonoBehaviour
                     currentTarget = targetEnemy[i];
                 }
             }
+
+            enemyCam.Priority = 11;
+            enemyCam.m_LookAt = targetEnemy[0].transform;
+
         }
 
         if(currentTarget != null)
@@ -119,11 +128,16 @@ public class LockOn : MonoBehaviour
         currentTargetPosition = currentTarget.transform.position;
 
         lockOnImage.position = Camera.main.WorldToScreenPoint(currentTargetPosition);
+
+        Vector3 dir = (currentTargetPosition - transform.position).normalized;
+        dir.y = transform.position.y;
+
+        transform.forward = Vector3.Lerp(transform.forward, dir, Time.deltaTime * 20f);
     }
 
     private void FindTarget()
     {
-        isLockOn = true;
+        isFindTarget = true;
 
         lockOnImage.gameObject.SetActive(true);
     }
@@ -142,10 +156,11 @@ public class LockOn : MonoBehaviour
         }
     }
 
-    private void ResetTarget()
+    public void ResetTarget()
     {
-        isLockOn = false;
+        isFindTarget = false;
         targetEnemy.Clear();
         lockOnImage.gameObject.SetActive(false);
+        enemyCam.Priority = 0;
     }
 }

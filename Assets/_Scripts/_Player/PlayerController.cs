@@ -63,12 +63,14 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            _lockOn = !_lockOn;
+            _lockOn = _lockOn ? false : true;
 
             if (_lockOn)
             {
                 LookAtTarget();
-                _lockOn = false;
+            }else
+            {
+                lockOn.ResetTarget();
             }
         }
     }

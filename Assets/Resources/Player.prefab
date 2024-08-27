@@ -2889,6 +2889,9 @@ MonoBehaviour:
   minViewAngle: 0
   maxViewAngle: 360
   targetEnemy: []
+  lockOnImage: {fileID: 0}
+  playerCam: {fileID: 0}
+  enemyCam: {fileID: 0}
 --- !u!1 &8951295188678207575
 GameObject:
   m_ObjectHideFlags: 0
