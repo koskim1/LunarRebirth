@@ -2882,12 +2882,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d59f1401ecfbeff479bf80c6cf20bb8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockOnRadius: 6
+  lockOnRadius: 12
   targetLayer:
     serializedVersion: 2
     m_Bits: 16384
-  minViewAngle: -70
-  maxViewAngle: 70
+  minViewAngle: 0
+  maxViewAngle: 360
   targetEnemy: []
 --- !u!1 &8951295188678207575
 GameObject:
