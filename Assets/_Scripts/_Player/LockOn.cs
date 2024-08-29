@@ -27,6 +27,9 @@ public class LockOn : MonoBehaviour
     void Awake()
     {
         cameraTransform = Camera.main.transform;
+        enemyCam.GetRig(0).m_LookAt = this.transform;
+        enemyCam.GetRig(1).m_LookAt = this.transform;
+        enemyCam.GetRig(2).m_LookAt = this.transform;
     }
 
     private void Start()
@@ -43,6 +46,13 @@ public class LockOn : MonoBehaviour
             {
                 Debug.Log("Update문 if 트루");
                 LookAtTarget();
+
+                // 플레이어 입력에 따라 enemyCam의 카메라가 회전하도록 설정
+                float horizontal = Input.GetAxis("Mouse X");
+                float vertical = Input.GetAxis("Mouse Y");
+
+                enemyCam.m_XAxis.Value += horizontal;
+                enemyCam.m_YAxis.Value += vertical;
             }
             else
             {
@@ -74,10 +84,6 @@ public class LockOn : MonoBehaviour
     {
         Collider[] findTarget = Physics.OverlapSphere(transform.position, lockOnRadius, targetLayer);
         List<EnemyAttributesManager> potentialTargets = new List<EnemyAttributesManager>();
-        //if(findTarget.Length <= 0) 
-        //{
-        //    return false;
-        //}
 
         foreach (Collider collider in findTarget)
         {
@@ -100,45 +106,6 @@ public class LockOn : MonoBehaviour
                     }
                 }
             }
-
-            //for (int i = 0; i < findTarget.Length; i++)
-            //{
-            //    EnemyAttributesManager target = findTarget[i].GetComponent<EnemyAttributesManager>();
-
-            //    if (target != null)
-            //    {
-            //        Vector3 targetDir = target.transform.position - transform.position;
-
-            //        float viewAngle = Vector3.Angle(targetDir, cameraTransform.forward);
-
-            //        if (viewAngle > minViewAngle && viewAngle < maxViewAngle)
-            //        {
-            //            RaycastHit hit;
-
-            //            if(Physics.Linecast(transform.position,
-            //                target.transform.position,out hit, targetLayer))
-            //            {                        
-            //                targetEnemy.Add(target);
-            //                Debug.Log($"targetEnemy추가합니다 : {targetEnemy[i]}");
-            //            }
-            //        }
-            //        else
-            //        {
-            //            Debug.Log("플레이어 앵글에 없어 ResetTarget()");
-            //            ResetTarget();
-            //        }
-            //    }
-            //}        
-
-            //if (targetEnemy.Count > 0 && isTargetRange())
-            //{
-            //    LockOnTarget();
-            //}
-            //else if(targetEnemy.Count == 0 || !isTargetRange())
-            //{
-            //    ResetTarget();
-            //}
-
         }
 
         if (potentialTargets.Count > 0)
@@ -159,7 +126,6 @@ public class LockOn : MonoBehaviour
             if(distanceFromTarget < shortDistance)
             {
                 Debug.Log("LockOnTarget for문");
-                //여기
                 shortDistance = distanceFromTarget;
                 currentTarget = target;
             }
@@ -171,7 +137,7 @@ public class LockOn : MonoBehaviour
             Debug.Log("enemy캠 조절, FindTarget()으로 이동");
             currentTargetPosition = currentTarget.transform.position;
             enemyCam.Priority = 11;
-            enemyCam.m_LookAt = currentTarget.transform;
+            enemyCam.m_LookAt = currentTarget.transform;            
             FindTarget();
 
             // 타겟 사망시 이미지 끄게 이벤트 구독
@@ -234,17 +200,5 @@ public class LockOn : MonoBehaviour
         currentTarget = null;
         lockOnImage.gameObject.SetActive(false);
         enemyCam.Priority = 0;
-
-        //targetEnemy.Clear();
-        //targetEnemy = null;
-        //targetEnemy = new List<EnemyAttributesManager>();
-        //Debug.Log($"{targetEnemy.Count}");
-        //isFindTarget = false;
-        //currentTarget = null;
-        //lockOnImage.gameObject.SetActive(false);
-        //enemyCam.Priority = 0;
-
-        //EditorUtility.SetDirty(this); // 에디터에 객체가 수정되었음을 알림
-        //Debug.Log("List Cleared and Marked Dirty. Current Count: " + targetEnemy.Count);
     }
 }
