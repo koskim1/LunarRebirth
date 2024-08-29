@@ -63,12 +63,14 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            _lockOn = _lockOn ? false : true;
+            _lockOn = !_lockOn;
 
             if (_lockOn)
             {
-                LookAtTarget();
-            }else
+                lockOn.ResetTarget();
+                lockOn.FindLockOnTarget();
+            }
+            else
             {
                 lockOn.ResetTarget();
             }
@@ -114,10 +116,6 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void LookAtTarget()
-    {
-        lockOn.FindLockOnTarget();
-    }
 
 
     // ----------------------------------------------------------------------------------------------

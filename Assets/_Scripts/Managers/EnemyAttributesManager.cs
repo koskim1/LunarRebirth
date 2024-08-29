@@ -14,7 +14,7 @@ public class EnemyAttributesManager : AttributesManager
      - 2 사정거리안에 오면 Player에게 다가가기
      - 3 공격사정거리 안에 오면 Player 공격하기
     */
-
+    public event System.Action Ondeath;
     private EnemyAnimation enemyAnimation;
     public HealthBar healthBar;
     public GameObject FloatingTextPrefab;
@@ -63,6 +63,7 @@ public class EnemyAttributesManager : AttributesManager
             Destroy(gameObject);
         }
 
+        Ondeath?.Invoke();
         isDead = true;
 
         if (GameObject.FindWithTag("Player") != null)
