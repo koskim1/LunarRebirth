@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private Transform cameraTransform;
     private LockOn lockOn;
+    private Animator playerAnimator;
     // Start is called before the first frame update
     void Awake()
     {
@@ -35,10 +36,13 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform;
 
         lockOn = GetComponent<LockOn>();
+        playerAnimator = GetComponent<Animator>();
     }
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
+        playerAnimator.SetFloat("x", move.x);
+        playerAnimator.SetFloat("y", move.y);
     }
     public void OnMouseLook(InputAction.CallbackContext context)
     {
