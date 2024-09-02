@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
-
         _isDashing = false;
     }
 
@@ -85,6 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         _isDashing = true;
         _canDash = false;
+        playerAnimator.SetBool("isDash", true);
         float elapsedTime = 0f;
 
         while (elapsedTime < _dashDuration)
@@ -101,8 +101,10 @@ public class PlayerController : MonoBehaviour
         }
         _speed = _originalSpeed;
 
+        playerAnimator.SetBool("isDash", false);
         yield return new WaitForSeconds(_dashCoolDown);
         _canDash = true;
+        
         //_speed = _dashSpeed;
         //yield return new WaitForSeconds(_dashDuration);
         //_speed = _originalSpeed;

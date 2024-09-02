@@ -2830,6 +2830,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5049159936708501205}
+  attackIndex: 0
+  attackResetTime: 0.4
 --- !u!114 &8315163823154968239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2886,12 +2888,12 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 16384
-  minViewAngle: 0
-  maxViewAngle: 360
-  targetEnemy: []
+  minViewAngle: 0.01
+  maxViewAngle: 359.99
   lockOnImage: {fileID: 0}
   playerCam: {fileID: 0}
   enemyCam: {fileID: 0}
+  isFindTarget: 0
 --- !u!1 &8951295188678207575
 GameObject:
   m_ObjectHideFlags: 0

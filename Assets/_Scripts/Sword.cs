@@ -11,18 +11,11 @@ public class Sword : MonoBehaviour
 
     public bool _canDealDamage = false;
 
-    
-
     private void Start()
     {
         // 부모 객체나 필요한 객체에서 AttributesManager를 가져옵니다.
         _attributesManager = GetComponentInParent<AttributesManager>();
         _boxCollider = GetComponent<BoxCollider>();
-    }
-
-    private void Update()
-    {
-        
     }
 
     // 무기 프리펩 교체시 isTrigger 켜져있는지 항상 확인~~

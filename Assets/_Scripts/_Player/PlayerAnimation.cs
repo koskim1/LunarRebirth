@@ -14,6 +14,9 @@ public class PlayerAnimation : MonoBehaviour
     private bool isAttack = false;
     private bool isDead = false;
 
+    [SerializeField] private int attackIndex = 0;
+    [SerializeField] private float attackResetTime = 1.5f;
+    private float lastAttackTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,31 +36,67 @@ public class PlayerAnimation : MonoBehaviour
         {
             Attack();
         }
+
+        if(Time.time -lastAttackTime > attackResetTime)
+        {
+            ResetAttack();
+        }
     }
 
     private void Attack()
     {
-        if (!isAttack)
+
+        Debug.Log("Attack 실행");
+        isAttack = true;
+        lastAttackTime = Time.time;
+
+        _sword._canDealDamage = true;
+
+        PlayAttackAnimation();
+        attackIndex++;
+        
+    }
+
+    private void PlayAttackAnimation()
+    {
+        if (attackIndex == 0)
         {
-            Debug.Log("Attack 실행");
-            isAttack = true;
-            _sword._canDealDamage = true;
-            animator.SetBool("isAttack", true);
+            animator.SetBool("hit1", true);
+        }
+        else if (attackIndex == 1)
+        {
+            animator.SetBool("hit2", true);
+        }
+        else if (attackIndex == 2)
+        {
+            animator.SetBool("hit3", true);
+        }
+        else
+        {
+            ResetAttack();
         }
     }
 
+    private void ResetAttack()
+    {
+        attackIndex = 0;
+        animator.SetBool("hit1", false);
+        animator.SetBool("hit2", false);
+        animator.SetBool("hit3", false);
+    }
 
+    // 애니메이션 이벤트로 관리.
     public void EnableDamage()
     {
         _sword._canDealDamage = true;
         _swordCollider.enabled = true;
     }
 
+    // 애니메이션 이벤트로 관리.
     public void DisableDamage()
     {
         _sword._canDealDamage = false;
         isAttack = false;
-        animator.SetBool("isAttack", false);
         _swordCollider.enabled = false;
     }
 
