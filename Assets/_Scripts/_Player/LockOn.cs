@@ -62,10 +62,10 @@ public class LockOn : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, lockOnRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawWireSphere(transform.position, lockOnRadius);
+    //}
 
     //LockOn 버튼을 누를 때 한번만 호출되는 함수
     public void TryLockOnTarget()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyCinemachineSingleton : MonoBehaviour
 {
-    EnemyCinemachineSingleton Instance;
+    public static EnemyCinemachineSingleton Instance;
 
     private void Awake()
     {
@@ -17,6 +17,5 @@ public class EnemyCinemachineSingleton : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
 }

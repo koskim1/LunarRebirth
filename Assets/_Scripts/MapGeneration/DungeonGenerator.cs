@@ -8,12 +8,15 @@ public class DungeonGenerator : MonoBehaviour
     {
         public bool visited = false;
         public bool[] status = new bool[4];
+        public int distanceFromStart;
     }
 
     public Vector2 size;
     public int startPos = 0;
     public GameObject room;
     public Vector2 offset;
+    public GameObject bossPrefab;
+    public GameObject[] enemyPrefab;
 
     List<Cell> board;
 
@@ -21,12 +24,6 @@ public class DungeonGenerator : MonoBehaviour
     void Start()
     {
         MazeGenerator();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void GenerateDungeon()
@@ -41,9 +38,22 @@ public class DungeonGenerator : MonoBehaviour
                 {
                     var newRoom = Instantiate(room, new Vector3(i * offset.x, 0, -j * offset.y),
                     Quaternion.identity, transform).GetComponent<RoomBehaviour>();
+
                     newRoom.UpdateRoom(currentCell.status);
 
-                    newRoom.name += " " + i + "-" + j;
+                    // 마지막 방 체크
+                    // 이렇게 해두면 난이도나 방사이즈가 달라져도 항상 마지막방에 보스.
+                    if(i == size.x -1 && j == size.y -1)
+                    {
+                        newRoom.SpawnBoss();
+                    }
+                    else
+                    {
+                        // 일반 방에 적 생성
+                        SpawnEnemies(newRoom, currentCell.distanceFromStart);
+                    }
+
+                    newRoom.name = room.name + " " + i + "-" + j;
                 }
                 
             }
@@ -74,6 +84,7 @@ public class DungeonGenerator : MonoBehaviour
             k++;
 
             board[currentCell].visited = true;
+            board[currentCell].distanceFromStart = path.Count;
 
             // Last Cell of our board
             if(currentCell == board.Count - 1)
@@ -143,6 +154,26 @@ public class DungeonGenerator : MonoBehaviour
 
         GenerateDungeon();
     }
+
+
+    void SpawnEnemies(RoomBehaviour room, int distanceFromStart)
+    {
+        // 던전 길이에 따른 적 강도 설정
+
+        // 깊이에 따라 적 선택
+        int enemyIndex = Mathf.Min(distanceFromStart / 2, enemyPrefab.Length - 1);
+
+        // 랜덤으로 적 수 선택
+        int enemyCount = Random.Range(3, 6);
+
+        for(int i = 0; i < enemyCount; i++)
+        {
+            var enemy = Instantiate(enemyPrefab[enemyIndex], room.transform.position
+                + new Vector3(Random.Range(-28, 28), 0, Random.Range(-30, 20)), Quaternion.identity, room.transform);
+            room.enemies.Add(enemy);
+        }
+    }
+
 
     List<int> CheckNeighbors(int currentCell)
     {
