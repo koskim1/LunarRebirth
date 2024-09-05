@@ -19,6 +19,7 @@ public class EnemyAttributesManager : AttributesManager
     public HealthBar healthBar;
     public GameObject FloatingTextPrefab;
 
+    public RoomBehaviour currentRoom;
     
 
     // Start is called before the first frame update
@@ -62,6 +63,8 @@ public class EnemyAttributesManager : AttributesManager
         {
             Destroy(gameObject);
         }
+
+        currentRoom.OnEnemyKilled(gameObject);
 
         Ondeath?.Invoke();
         isDead = true;
