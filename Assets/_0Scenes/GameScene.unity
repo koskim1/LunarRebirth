@@ -482,6 +482,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5336564577734240478, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5336564577734240478, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -926,7 +931,7 @@ MonoBehaviour:
   size: {x: 4, y: 4}
   startPos: 0
   room: {fileID: 8485498356581720850, guid: 2230416b262966e48bebf57ff29a280a, type: 3}
-  offset: {x: 60, y: 60}
+  offset: {x: 61, y: 58}
   bossPrefab: {fileID: 6615308912986884640, guid: 822c23fdf69b82f469cdbb4aabcef388,
     type: 3}
   enemyPrefab:

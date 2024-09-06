@@ -8,6 +8,7 @@ TagManager:
   - Npc
   - Enemy
   - Portal
+  - Wall
   layers:
   - Default
   - TransparentFX

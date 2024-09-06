@@ -20,6 +20,8 @@ public class DungeonGenerator : MonoBehaviour
 
     List<Cell> board;
 
+    private RoomBehaviour[,] roomGrid; // 2D 배열로 각 방을 저장
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,9 @@ public class DungeonGenerator : MonoBehaviour
 
     void GenerateDungeon()
     {
-        for(int i = 0; i < size.x; i++)
+        roomGrid = new RoomBehaviour[(int)size.x, (int)size.y]; // roomGrid 초기화
+
+        for (int i = 0; i < size.x; i++)
         {
             for(int j=0; j < size.y; j++)
             {
@@ -54,6 +58,20 @@ public class DungeonGenerator : MonoBehaviour
                     }
 
                     newRoom.name = room.name + " " + i + "-" + j;
+                    roomGrid[i, j] = newRoom; // 방을 roomGrid에 저장
+
+                    // 이웃 방 설정
+                    if (i > 0 && roomGrid[i - 1, j] != null) // 왼쪽 방이 있을 때만 설정
+                    {
+                        newRoom.neighborRooms[3] = roomGrid[i - 1, j];
+                        roomGrid[i - 1, j].neighborRooms[2] = newRoom;
+                    }
+
+                    if (j > 0 && roomGrid[i, j - 1] != null) // 위쪽 방이 있을 때만 설정
+                    {
+                        newRoom.neighborRooms[0] = roomGrid[i, j - 1];
+                        roomGrid[i, j - 1].neighborRooms[1] = newRoom;
+                    }
                 }
                 
             }
