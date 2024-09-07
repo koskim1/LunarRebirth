@@ -12,7 +12,7 @@ public class CameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(Instance == null)
         {

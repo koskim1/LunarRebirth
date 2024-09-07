@@ -128,7 +128,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPc && canMove)
+        if (isPc && canMove && !PauseMenu.isPaused)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(mouseLook);
