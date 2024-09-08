@@ -70,7 +70,12 @@ public class SceneManagers : MonoBehaviour
     {
         StartCoroutine(animatorOnOff());
         animator.SetTrigger("FadeOut");
-        LoadingSceneController.LoadScene("TitleScene");        
+
+        if(PlayerAttributesManager.Instance != null)
+        {
+            Destroy(PlayerAttributesManager.Instance.gameObject);
+        }
+        LoadingSceneController.LoadScene("TitleScene");
     }
 
     public void QuitGame()

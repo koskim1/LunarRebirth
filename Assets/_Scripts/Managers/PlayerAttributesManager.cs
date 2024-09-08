@@ -19,6 +19,7 @@ public class PlayerAttributesManager : AttributesManager
     private CardCollection cardCollection;
     private SceneManagers sceneManagers;
     private Animator animator;
+    private UIManager uiManager;
 
     public int currentLevel = 1;
     public int currentXP = 0;
@@ -36,14 +37,14 @@ public class PlayerAttributesManager : AttributesManager
         {
             Destroy(gameObject);
         }
-
+        
         _playerAnimation = GetComponent<PlayerAnimation>();
         _playerController = GetComponent<PlayerController>();
         _fireballController = GetComponent<FireballController>();
         animator = GetComponent<Animator>();
         cardCollection = FindAnyObjectByType<CardCollection>();
         sceneManagers = FindAnyObjectByType<SceneManagers>();
-        
+        uiManager = FindAnyObjectByType<UIManager>();
     }
     // Start is called before the first frame update
     protected override void Start()
@@ -59,8 +60,6 @@ public class PlayerAttributesManager : AttributesManager
             Debug.Log("CardCollection이 설정되지 않았습니다.");
         }
         cardGenerator = new CardGenerator(cardCollection);
-
-
     }
 
     private IEnumerator animatorOnOff()

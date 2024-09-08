@@ -9,7 +9,6 @@ public class Hp_Billboard : MonoBehaviour
     private void Awake()
     {
         cam = Camera.main.transform;
-
     }
 
     private void LateUpdate()
