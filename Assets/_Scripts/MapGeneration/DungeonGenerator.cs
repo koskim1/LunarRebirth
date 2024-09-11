@@ -94,7 +94,7 @@ public class DungeonGenerator : MonoBehaviour
 
         Stack<int> path = new Stack<int>();
 
-        // Keep Track where we at.
+        // 현재 어딘지 계속 추적
         int k = 0;
 
         while (k < 1000)
@@ -104,13 +104,13 @@ public class DungeonGenerator : MonoBehaviour
             board[currentCell].visited = true;
             board[currentCell].distanceFromStart = path.Count;
 
-            // Last Cell of our board
+            // 현재 보드의 마지막 셀
             if(currentCell == board.Count - 1)
             {
                 break;
             }
 
-            //Check the cell's neighbors
+            // 각 셀의 이웃들 체크하기.
             List<int> neighbors = CheckNeighbors(currentCell);
 
             if(neighbors.Count == 0)
@@ -132,17 +132,17 @@ public class DungeonGenerator : MonoBehaviour
 
                 if(newCell > currentCell)
                 {
-                    //down or right
+                    // 오른쪽 or 아래
                     if(newCell - 1 == currentCell)
                     {
-                        // right
+                        // 오른쪽
                         board[currentCell].status[2] = true;
                         currentCell = newCell;
                         board[currentCell].status[3] = true;
                     }
                     else
                     {
-                        // down
+                        // 아래
                         board[currentCell].status[1] = true;
                         currentCell = newCell;
                         board[currentCell].status[0] = true;
@@ -150,17 +150,17 @@ public class DungeonGenerator : MonoBehaviour
                 }
                 else
                 {
-                    //up or left
+                    // 왼쪽 or 위
                     if (newCell + 1 == currentCell)
                     {
-                        // left
+                        // 왼쪽
                         board[currentCell].status[3] = true;
                         currentCell = newCell;
                         board[currentCell].status[2] = true;
                     }
                     else
                     {
-                        // up
+                        // 위
                         board[currentCell].status[0] = true;
                         currentCell = newCell;
                         board[currentCell].status[1] = true;
