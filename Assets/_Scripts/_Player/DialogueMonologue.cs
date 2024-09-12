@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class DialogueMonologue : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class DialogueMonologue : MonoBehaviour
     private DialogueManager dialogueManager;
     private PlayerAttributesManager playerAttributesManager;
     private PlayerController playerController;
+    public PlayableDirector introTimeline; // 맨 초반 타임라인
+
 
     private void Awake()
     {
@@ -17,8 +20,20 @@ public class DialogueMonologue : MonoBehaviour
     }
 
     void Start()
-    {        
-        PlayerMonologue();
+    {
+        if (introTimeline != null)
+        {
+            introTimeline.stopped += OnTimelineEnd; // 타임라인이 끝나면 실행될 함수 등록
+            introTimeline.Play(); // 타임라인 재생
+        }
+    }
+
+    private void OnTimelineEnd(PlayableDirector director)
+    {
+        if (director == introTimeline) // 타임라인 종료 시 모놀로그 실행
+        {
+            PlayerMonologue();
+        }
     }
 
     private void PlayerMonologue()

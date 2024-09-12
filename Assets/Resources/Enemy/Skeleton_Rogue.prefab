@@ -1911,6 +1911,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7829854493445231310}
+  - component: {fileID: 5932518945623690555}
+  - component: {fileID: 628297150532771116}
   - component: {fileID: 6152402108677837924}
   - component: {fileID: 8629578993171948888}
   - component: {fileID: 2980832280677175825}
@@ -1947,6 +1949,49 @@ Transform:
   - {fileID: 8827719748586184368}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5932518945623690555
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485804474061867124}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ee590938d7a2ac940972632de683d578, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &628297150532771116
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7485804474061867124}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!136 &6152402108677837924
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1990,9 +2035,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
-  sightRange: 0
-  attackRange: 0
+  walkPointRange: 5
+  sightRange: 7
+  attackRange: 1.5
   playerInSightRange: 0
   playerInAttackRange: 0
 --- !u!114 &2980832280677175825
@@ -2022,7 +2067,7 @@ MonoBehaviour:
   maxHealth: 100
   _health: 0
   _attack: 20
-  _xp: 20
+  _xp: 1
   isDead: 0
   healthBar: {fileID: 1922323685726785331}
   FloatingTextPrefab: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,

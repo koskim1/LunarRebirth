@@ -935,9 +935,10 @@ MonoBehaviour:
   bossPrefab: {fileID: 6615308912986884640, guid: 822c23fdf69b82f469cdbb4aabcef388,
     type: 3}
   enemyPrefab:
-  - {fileID: 6615308912986884640, guid: 822c23fdf69b82f469cdbb4aabcef388, type: 3}
-  - {fileID: 919132149155446097, guid: dd46b692c96213e47ac4d7cfcc6accb5, type: 3}
-  - {fileID: 919132149155446097, guid: 65fe20b3ace699e44b8473c667cce626, type: 3}
+  - {fileID: 8102276934802283046, guid: 8abed245dfce97e4aafd8043912bbd48, type: 3}
+  - {fileID: 7485804474061867124, guid: 25496acfd72eb294eb820cabe9edf703, type: 3}
+  - {fileID: 1386470198327433399, guid: c545f3823ed0be442bc689c6615aa4e3, type: 3}
+  - {fileID: 3047416377377393562, guid: 9e061e2c02fee57468c8385021da7a35, type: 3}
 --- !u!4 &1099776728
 Transform:
   m_ObjectHideFlags: 0

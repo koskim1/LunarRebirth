@@ -6,14 +6,6 @@ using UnityEngine.AI;
 
 public class EnemyAttributesManager : AttributesManager
 {
-    /*
-     TODO.
-    1. NavMeshAgent로 AI설정해주기.
-    2. State설정해주기.
-     - 1 사정거리안에 Player없을 때 방황하기
-     - 2 사정거리안에 오면 Player에게 다가가기
-     - 3 공격사정거리 안에 오면 Player 공격하기
-    */
     public event System.Action Ondeath;
     private EnemyAnimation enemyAnimation;
     public HealthBar healthBar;

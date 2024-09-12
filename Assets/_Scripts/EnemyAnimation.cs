@@ -7,6 +7,8 @@ public class EnemyAnimation : MonoBehaviour
     private Animator animator;
     private CapsuleCollider capsuleCollider;
     private HealthBar healthBar;
+    private Sword _sword;
+    private BoxCollider _swordCollider;
 
     private bool isDead = false;
 
@@ -15,15 +17,13 @@ public class EnemyAnimation : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         capsuleCollider = GetComponent<CapsuleCollider>();
-        healthBar = GetComponentInChildren<HealthBar>();
+        healthBar = GetComponentInChildren<HealthBar>();        
+        _sword = GetComponentInChildren<Sword>();
+        if (_sword != null)
+        {
+            _swordCollider = _sword.GetComponent<BoxCollider>();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Dead()
     {
         if (isDead) return;
@@ -53,4 +53,25 @@ public class EnemyAnimation : MonoBehaviour
         }
         return 0f;
     }
+
+    // 애니메이션 이벤트로 관리.
+    public void EnableDamage()
+    {
+        if(_sword != null)
+        {
+            _sword._canDealDamage = true;
+            _swordCollider.enabled = true;
+        }
+    }
+
+    // 애니메이션 이벤트로 관리.
+    public void DisableDamage()
+    {
+        if(_sword != null)
+        {
+            _sword._canDealDamage = false;
+            _swordCollider.enabled = false;
+        }        
+    }
+
 }
