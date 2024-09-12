@@ -9,9 +9,11 @@ public class PlayerAnimation : MonoBehaviour
     private Sword _sword;
     private BoxCollider _swordCollider;
     private PlayerController _playerController;
-    private HealthBar _healthBar;
+    private PlayerHealthBar _healthBar;
 
+#pragma warning disable 414
     private bool isAttack = false;
+#pragma warning restore 414
     private bool isDead = false;
 
     [SerializeField] private int attackIndex = 0;
@@ -24,7 +26,7 @@ public class PlayerAnimation : MonoBehaviour
         _sword = GetComponentInChildren<Sword>();
         _swordCollider = _sword.GetComponent<BoxCollider>();
         _playerController = FindObjectOfType<PlayerController>();
-        _healthBar = GetComponentInChildren<HealthBar>();
+        _healthBar = FindObjectOfType<PlayerHealthBar>();
 
         _swordCollider.enabled = false;
     }

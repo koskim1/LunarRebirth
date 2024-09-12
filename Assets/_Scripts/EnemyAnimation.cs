@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyAnimation : MonoBehaviour
 {
     private Animator animator;
+    private CapsuleCollider capsuleCollider;
+    private HealthBar healthBar;
 
     private bool isDead = false;
 
@@ -12,6 +14,8 @@ public class EnemyAnimation : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
+        healthBar = GetComponentInChildren<HealthBar>();
     }
 
     // Update is called once per frame
@@ -25,18 +29,15 @@ public class EnemyAnimation : MonoBehaviour
         if (isDead) return;
         isDead = true;
 
-
-        StartCoroutine(DestroyAfterAnimation("Die01_SwordAndShield"));
+        StartCoroutine(DestroyAfterAnimation());
     }
 
-    private IEnumerator DestroyAfterAnimation(string clipName)
+    private IEnumerator DestroyAfterAnimation()
     {
         animator.SetBool("isDead", true);
-
-        float clipLength = GetAnimationClipLength(animator, clipName);
-        clipLength *= 3f;
-
-        yield return new WaitForSeconds(clipLength);
+        capsuleCollider.enabled = false;
+        healthBar.gameObject.SetActive(false);
+        yield return new WaitForSeconds(8f);
 
         Destroy(gameObject);
     }

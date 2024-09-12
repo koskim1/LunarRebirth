@@ -64,7 +64,7 @@ public class EnemyAttributesManager : AttributesManager
             Destroy(gameObject);
         }
 
-        currentRoom.OnEnemyKilled(gameObject);
+        //currentRoom.OnEnemyKilled(gameObject);
 
         Ondeath?.Invoke();
         isDead = true;

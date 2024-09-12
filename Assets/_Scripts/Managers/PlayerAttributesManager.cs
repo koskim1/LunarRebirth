@@ -7,7 +7,7 @@ public class PlayerAttributesManager : AttributesManager
 {
     public static PlayerAttributesManager Instance;
 
-    public HealthBar healthBar;
+    public PlayerHealthBar healthBar;
     public Slider xpSlider;
     public TextMeshProUGUI levelText;
     public LevelUpUI levelUpUI;
