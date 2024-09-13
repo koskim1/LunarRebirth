@@ -14,6 +14,7 @@ public class DialogueManager : MonoBehaviour
     private PlayerController playerController;
     [SerializeField]private CinemachineFreeLook cinemachineFreeLook;
     [SerializeField]private CinemachineFreeLook enemyLook;
+    [SerializeField]private CinemachineVirtualCamera afterDeadCam;
 
     public Animator animator;
 
@@ -45,7 +46,7 @@ public class DialogueManager : MonoBehaviour
         playerController.canMove = false;
 
         Cursor.visible = true;
-
+        afterDeadCam.enabled = true;
         cinemachineFreeLook.enabled = false;
         // NPC에게 LookAt 설정
         if (enemyLook != null)
@@ -86,7 +87,7 @@ public class DialogueManager : MonoBehaviour
         playerController.canMove = false;
         cinemachineFreeLook.enabled = false;
         enemyLook.enabled = false;
-
+        afterDeadCam.enabled = true;
         Cursor.visible = true;
 
         animator.SetBool("IsOpen", true);
@@ -129,6 +130,7 @@ public class DialogueManager : MonoBehaviour
         playerController.canMove = true;
         cinemachineFreeLook.enabled = true;
         enemyLook.enabled = true;
+        afterDeadCam.enabled = false;
         Cursor.visible = false;        
 
         animator.SetBool("IsOpen", false);

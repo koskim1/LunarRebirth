@@ -796,6 +796,7 @@ MonoBehaviour:
   dialogueText: {fileID: 266113738}
   cinemachineFreeLook: {fileID: 0}
   enemyLook: {fileID: 0}
+  afterDeadCam: {fileID: 0}
   animator: {fileID: 2109976496}
   playerInteractUI: {fileID: 888828549}
 --- !u!4 &737233379

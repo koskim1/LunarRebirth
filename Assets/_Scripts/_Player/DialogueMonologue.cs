@@ -21,10 +21,13 @@ public class DialogueMonologue : MonoBehaviour
 
     void Start()
     {
-        if (introTimeline != null)
+        if (introTimeline != null && PlayerAttributesManager.Instance.deathCount == 0)
         {
             introTimeline.stopped += OnTimelineEnd; // 타임라인이 끝나면 실행될 함수 등록
             introTimeline.Play(); // 타임라인 재생
+        }else
+        {
+            PlayerMonologue();
         }
     }
 
