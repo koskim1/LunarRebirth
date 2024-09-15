@@ -9,7 +9,8 @@ public class FireballController : MonoBehaviour
 
     private Fireball fireball;
 
-    private bool canShootFireball = false;
+    // 테스트중
+    private bool canShootFireball = true;
     private float shootSpeed = 17f;
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,6 @@ public class FireballController : MonoBehaviour
         canShootFireball = true;
     }
 
-    // Update is called once per frame
     void SpawnAndShoot()
     {
         GameObject fireball = Instantiate(Fireball, shootPoint.transform.position, shootPoint.rotation);

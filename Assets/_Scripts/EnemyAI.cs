@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +13,22 @@ public class EnemyAI : MonoBehaviour
     public Transform Player;
     public LayerMask whatIsGround, whatIsPlayer;
 
+    public enum EnemyType
+    {
+        Mage,
+        Minion,
+        Warrior,
+        Rogue,
+    }
+
+    public EnemyType enemyType;
+
+    [Header("Mage Attack Settings")]
+    public GameObject fireballPrefab;
+    public Transform firePoint;
+    public float fireballSpeed = 20f;
+
+    [Header("Patroling")]
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -21,8 +38,10 @@ public class EnemyAI : MonoBehaviour
     private float timeBetweenAttacks = 1.1f;
     bool alreadyAttacked;
 
+    [Header("States")]
     //States
-    public float sightRange, attackRange;
+    public float sightRange;
+    public float attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
     // Start is called before the first frame update
@@ -33,6 +52,18 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();
 
         Player = GameObject.Find("Player").transform;
+
+        switch (enemyType)
+        {
+            case EnemyType.Mage:
+                sightRange = 10f;
+                attackRange = 10f;
+                break;
+            case EnemyType.Minion:
+                sightRange = 7;
+                attackRange = 1.5f;
+                break;
+        }
     }
 
     private void Update()
@@ -94,8 +125,17 @@ public class EnemyAI : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            // attack code here
-            animator.SetBool("canAttack", true);
+            // 적 유형에 따라 공격방식 다르게
+            switch (enemyType)
+            {
+                case EnemyType.Mage:
+                    PerformMageAttack();
+                    break;
+                case EnemyType.Minion:
+                    PerformMinionAttack();
+                    break;
+            }
+
 
 
             //
@@ -103,6 +143,26 @@ public class EnemyAI : MonoBehaviour
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
 
+    }
+
+    private void PerformMageAttack()
+    {
+        animator.SetBool("canSpell", true);
+
+        Invoke(nameof(ShootFireball), 0.8f);
+    }
+
+    private void ShootFireball()
+    {
+        GameObject fireball = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
+
+        Vector3 direction = (Player.position - firePoint.position).normalized;
+        fireball.GetComponent<Rigidbody>().velocity = direction * fireballSpeed;
+    }
+
+    private void PerformMinionAttack()
+    {
+        animator.SetBool("canAttack", true);        
     }
 
     private void ResetAttack()

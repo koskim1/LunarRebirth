@@ -6,20 +6,6 @@ using DG.Tweening;
 
 public class LevelUpUI : MonoBehaviour
 {
-    /*
-      TODO
-    1. 페이드 인, 페이드 아웃, 스토리 진행되게.. (초반 인트로)
-    페이드 인 ( 검은화면 -> 밝은화면 )
-    페이드 아웃 ( 밝은화면 -> 검은화면 )
-    . 1 - 검정화면에서 스토리 진행이 먼저 나온다.
-    . 2 - 말이 다 끝났으면 페이드 인
-    . 3 - npc대화하기.
-    . 4 - 문으로 통하면 바로 게임스테이지로 들어가게 설정.
-
-    2. 파이어볼 맞으면 데미지 들어가게 설정.
-    3. Level (방) Generator 만들기. 아이작처럼
-    */
-
     public Button option1;
     public Button option2;
     public Button option3;
@@ -30,8 +16,6 @@ public class LevelUpUI : MonoBehaviour
 
     private Vector3 targetScale = new Vector3(1, 1, 1);
     private Vector3 endScale = new Vector3(0, 0, 0);
-
-    
 
     // Start is called before the first frame update
     void Start()

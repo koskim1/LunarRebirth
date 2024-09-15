@@ -6,12 +6,6 @@ using TMPro;
 
 public abstract class AttributesManager : MonoBehaviour
 {
-    // TODO
-    // Level up 했을 때 UI 띄우고 스탯이랑 연동하기.
-    // UI 연결
-    // 맵 디자인
-
-
     public int maxHealth = 100;
     [SerializeField] public int _health;
     [SerializeField] public int _attack = 20;

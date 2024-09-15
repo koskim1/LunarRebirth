@@ -2,28 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class EnemyFireball : MonoBehaviour
 {
     public GameObject impactVFX;
-
-    // 플레이어가 자신이 쏜 파이어볼에 데미지 안입게 수정해야함
-    // 플레이어 Fireball이랑, EnemyFireball을 나눠서 관리하기로함.
     private void OnCollisionEnter(Collision collisionInfo)
     {
-        if(collisionInfo.collider.CompareTag("Enemy"))
-        {            
-            EnemyAttributesManager enemy = collisionInfo.collider.GetComponent<EnemyAttributesManager>();
-            if (enemy != null)
-            {
-                var impact = Instantiate(impactVFX, collisionInfo.contacts[0].point, Quaternion.identity) as GameObject;
-
-                Destroy(impact, 2f);
-
-                enemy.TakeDamage(35);
-                Destroy(gameObject);
-            }
-        }
-        else if (collisionInfo.collider.CompareTag("Player")){
+        if (collisionInfo.collider.CompareTag("Player"))
+        {
             PlayerAttributesManager player = collisionInfo.collider.GetComponent<PlayerAttributesManager>();
             if (player != null)
             {
