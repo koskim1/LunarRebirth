@@ -44,6 +44,9 @@ public class EnemyAI : MonoBehaviour
     public float attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    [Header("Warrior Sheild Setting")]
+    public bool isShielding = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -63,6 +66,10 @@ public class EnemyAI : MonoBehaviour
                 sightRange = 7;
                 attackRange = 1.5f;
                 break;
+            case EnemyType.Warrior:
+                sightRange = 9f;
+                attackRange = 1.4f;
+                break;
         }
     }
 
@@ -76,6 +83,7 @@ public class EnemyAI : MonoBehaviour
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+
     }
 
     private void Patrolling()
@@ -115,6 +123,12 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent.SetDestination(Player.position);
         navMeshAgent.speed = 6f;
+
+        if(enemyType == EnemyType.Warrior)
+        {
+            animator.SetBool("isShielding", true);
+            isShielding = true;
+        }
     }
     private void AttackPlayer()
     {
@@ -134,6 +148,9 @@ public class EnemyAI : MonoBehaviour
                 case EnemyType.Minion:
                     PerformMinionAttack();
                     break;
+                case EnemyType.Warrior:
+                    PerformWarriorAttack();
+                    break;
             }
 
 
@@ -149,7 +166,8 @@ public class EnemyAI : MonoBehaviour
     {
         animator.SetBool("canSpell", true);
 
-        Invoke(nameof(ShootFireball), 0.8f);
+        // 쿨다운 밸런스 조절좀 해야할듯
+        Invoke(nameof(ShootFireball), 1.2f);
     }
 
     private void ShootFireball()
@@ -158,6 +176,8 @@ public class EnemyAI : MonoBehaviour
 
         Vector3 direction = (Player.position - firePoint.position).normalized;
         fireball.GetComponent<Rigidbody>().velocity = direction * fireballSpeed;
+
+        animator.SetBool("canSpell", false);
     }
 
     private void PerformMinionAttack()
@@ -168,7 +188,14 @@ public class EnemyAI : MonoBehaviour
     private void ResetAttack()
     {
         animator.SetBool("canAttack", false);
+        animator.SetBool("canAxeAttack", false);
         alreadyAttacked = false;
+    }
+
+    private void PerformWarriorAttack()
+    {
+        isShielding = false;
+        animator.SetBool("canAxeAttack", true);
     }
 
     private void OnDrawGizmosSelected()

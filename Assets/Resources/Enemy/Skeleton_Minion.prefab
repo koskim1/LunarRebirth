@@ -2019,7 +2019,7 @@ GameObject:
   - component: {fileID: 3862938343862456851}
   m_Layer: 14
   m_Name: Skeleton_Minion
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2168,6 +2168,10 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
+  enemyType: 1
+  fireballPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
+  fireballSpeed: 20
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   sightRange: 7
@@ -2942,5 +2946,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5726524, y: 1.4971945, z: 0.22225039}
-  m_Center: {x: -0.000012229486, y: 0.41917035, z: -0.00000005587939}
+  m_Size: {x: 0.5019041, y: 1.338605, z: 0.30966008}
+  m_Center: {x: -0.13642336, y: 0.33987558, z: 0.04370479}

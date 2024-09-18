@@ -12,7 +12,8 @@ public class EnemyAttributesManager : AttributesManager
     public GameObject FloatingTextPrefab;
 
     public RoomBehaviour currentRoom;
-    
+
+    private float damageReduction = 0.5f;
 
     // Start is called before the first frame update
     protected override void Start()
@@ -28,6 +29,12 @@ public class EnemyAttributesManager : AttributesManager
     public override void TakeDamage(int damage)
     {
         if (isDead) return;
+
+        EnemyAI enemyAI = GetComponent<EnemyAI>();
+        if(enemyAI != null && enemyAI.enemyType == EnemyAI.EnemyType.Warrior && enemyAI.isShielding)
+        {
+            damage = Mathf.RoundToInt(damage * damageReduction);
+        }
 
         base.TakeDamage(damage);
 
