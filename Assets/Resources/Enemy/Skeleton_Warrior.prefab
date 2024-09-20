@@ -1309,10 +1309,12 @@ MonoBehaviour:
   fireballSpeed: 20
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
+  timeBetweenAttacks: 1.1
   sightRange: 7
   attackRange: 1.5
   playerInSightRange: 0
   playerInAttackRange: 0
+  isShielding: 0
 --- !u!114 &5112146372956487979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3080,5 +3082,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9885863, y: 1.2520461, z: 0.28187057}
-  m_Center: {x: 9.360307e-26, y: 0.375181, z: -0.000012278557}
+  m_Size: {x: 0.9885863, y: 1.378381, z: 0.28187057}
+  m_Center: {x: -0.0000000071481194, y: 0.43834847, z: -0.00001228611}

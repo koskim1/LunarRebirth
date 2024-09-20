@@ -35,6 +35,7 @@ public class EnemyAI : MonoBehaviour
     public float walkPointRange;
 
     //Attacking
+    [SerializeField]
     private float timeBetweenAttacks = 1.1f;
     bool alreadyAttacked;
 
@@ -61,14 +62,23 @@ public class EnemyAI : MonoBehaviour
             case EnemyType.Mage:
                 sightRange = 10f;
                 attackRange = 10f;
+                timeBetweenAttacks = 1.8f;
                 break;
             case EnemyType.Minion:
                 sightRange = 7;
                 attackRange = 1.5f;
+                timeBetweenAttacks = 1.6f;
+                break;
+            case EnemyType.Rogue:
+                sightRange = 7;
+                attackRange = 1.5f;
+                navMeshAgent.speed = 6f;
+                timeBetweenAttacks = 1.167f;
                 break;
             case EnemyType.Warrior:
                 sightRange = 9f;
                 attackRange = 1.4f;
+                timeBetweenAttacks = 1.067f;
                 break;
         }
     }
@@ -112,11 +122,20 @@ public class EnemyAI : MonoBehaviour
         NavMeshHit hit;
         // NavMesh.SamplePosition(Vector3 sourcePosition, out hit, float maxDistance, int areaMask)
         // areaMask의 1은 Built-in Walkable이다
-        if (NavMesh.SamplePosition(walkPoint, out hit, walkPointRange, 1))
+        // -1은 AllAreas인데 Walkable로 했을때는 가끔 혼자 갈수없는 구역에 가려고 정지되어있어서 그냥 AllAreas로 수정
+        if (NavMesh.SamplePosition(walkPoint, out hit, walkPointRange, NavMesh.AllAreas))
         {
-            walkPoint = hit.position;
-            walkPointSet = true;
+            NavMeshPath path = new NavMeshPath();
+            if (navMeshAgent.CalculatePath(hit.position, path))
+            {
+                if (path.status == NavMeshPathStatus.PathComplete)
+                {
+                    walkPoint = hit.position;
+                    walkPointSet = true;
+                }
+            }
         }
+        
     }
 
     private void ChasePlayer()
@@ -147,6 +166,9 @@ public class EnemyAI : MonoBehaviour
                     break;
                 case EnemyType.Minion:
                     PerformMinionAttack();
+                    break;
+                case EnemyType.Rogue:
+                    PerformRogueAttack();
                     break;
                 case EnemyType.Warrior:
                     PerformWarriorAttack();
@@ -189,7 +211,13 @@ public class EnemyAI : MonoBehaviour
     {
         animator.SetBool("canAttack", false);
         animator.SetBool("canAxeAttack", false);
+        animator.SetBool("canRogueAttack", false);
         alreadyAttacked = false;
+    }
+
+    private void PerformRogueAttack()
+    {
+        animator.SetBool("canRogueAttack", true);
     }
 
     private void PerformWarriorAttack()

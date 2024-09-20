@@ -2174,10 +2174,12 @@ MonoBehaviour:
   fireballSpeed: 20
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
+  timeBetweenAttacks: 1.1
   sightRange: 7
   attackRange: 1.5
   playerInSightRange: 0
   playerInAttackRange: 0
+  isShielding: 0
 --- !u!1 &8182986760630703093
 GameObject:
   m_ObjectHideFlags: 0
