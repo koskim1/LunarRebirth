@@ -11,8 +11,7 @@ public class LockOn : MonoBehaviour
     [SerializeField] LayerMask targetLayer;
     [SerializeField] float minViewAngle = 0f;
     [SerializeField] float maxViewAngle = 360f;
-
-    //[SerializeField] List<EnemyAttributesManager> targetEnemy = new List<EnemyAttributesManager>();
+    
     [SerializeField] Transform lockOnImage;
 
     [SerializeField] CinemachineFreeLook playerCam; // 기본 플레이어Cam
@@ -23,28 +22,31 @@ public class LockOn : MonoBehaviour
 
     public bool isFindTarget = false;
     private Transform cameraTransform;
-    // Start is called before the first frame update
+
     void Awake()
     {
         cameraTransform = Camera.main.transform;
         enemyCam.GetRig(0).m_LookAt = this.transform;
         enemyCam.GetRig(1).m_LookAt = this.transform;
         enemyCam.GetRig(2).m_LookAt = this.transform;
+
+        enemyCam.m_LookAt = this.transform;
+        enemyCam.m_Follow = this.transform;
+
+        enemyCam.Priority = 0;
     }
 
     private void Start()
     {
         lockOnImage.gameObject.SetActive(false);
-        enemyCam.Priority = 0;
     }
-    //여기서부터
+
     private void Update()
     {
         if (isFindTarget && currentTarget != null)
         {
             if (isTargetRange())
             {
-                Debug.Log("Update문 if 트루");
                 LookAtTarget();
 
                 // 플레이어 입력에 따라 enemyCam의 카메라가 회전하도록 설정
@@ -56,7 +58,6 @@ public class LockOn : MonoBehaviour
             }
             else
             {
-                Debug.Log("Update문 if FALSE");
                 ResetTarget();
             }
         }
@@ -92,7 +93,6 @@ public class LockOn : MonoBehaviour
             if (target != null)
             {
                 Vector3 targetDir = target.transform.position - transform.position;
-
                 float viewAngle = Vector3.Angle(targetDir, cameraTransform.forward);
 
                 if (viewAngle > minViewAngle && viewAngle < maxViewAngle)
@@ -135,9 +135,15 @@ public class LockOn : MonoBehaviour
         if(currentTarget != null)
         {
             Debug.Log("enemy캠 조절, FindTarget()으로 이동");
-            currentTargetPosition = currentTarget.transform.position;
+            currentTargetPosition = currentTarget.transform.position;            
+
+            enemyCam.m_LookAt = currentTarget.transform;
+
+            // enemyCam의 위치와 회전을 playerCam과 동일하게 설정
+            SynchronizeCameras();
+
             enemyCam.Priority = 11;
-            enemyCam.m_LookAt = currentTarget.transform;            
+
             FindTarget();
 
             // 타겟 사망시 이미지 끄게 이벤트 구독
@@ -199,6 +205,23 @@ public class LockOn : MonoBehaviour
         isFindTarget = false;
         currentTarget = null;
         lockOnImage.gameObject.SetActive(false);
+
         enemyCam.Priority = 0;
+
+        // enemyCam의 LookAt을 플레이어로 재설정
+        enemyCam.m_LookAt = this.transform;
+
     }
+
+    private void SynchronizeCameras()
+    {
+        // enemyCam의 위치와 회전을 playerCam과 동일하게 설정
+        enemyCam.transform.position = playerCam.transform.position;
+        enemyCam.transform.rotation = playerCam.transform.rotation;
+
+        // 필요에 따라 추가적으로 카메라의 상태를 동기화
+        enemyCam.m_XAxis.Value = playerCam.m_XAxis.Value;
+        enemyCam.m_YAxis.Value = playerCam.m_YAxis.Value;
+    }
+
 }
