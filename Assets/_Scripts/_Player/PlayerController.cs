@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
     private LockOn lockOn;
     private Animator playerAnimator;
+
+    public GameObject minimap;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -149,6 +152,11 @@ public class PlayerController : MonoBehaviour
                 //if (canMove) movePlayerWithAim();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ToggleMinimap();
+        }
     }
 
     // Controller or JoyStick Movement (기존 pc는 movePlayerWithAim()로 수정
@@ -221,5 +229,11 @@ public class PlayerController : MonoBehaviour
         //movement.y = 0f;
 
         //transform.Translate(movement * _speed * Time.deltaTime, Space.World);
+    }
+
+    private void ToggleMinimap()
+    {
+        bool isActive = minimap.activeSelf;
+        minimap.SetActive(!isActive);
     }
 }

@@ -20,7 +20,7 @@ public class DungeonGenerator : MonoBehaviour
 
     List<Cell> board;
 
-    private RoomBehaviour[,] roomGrid; // 2D 배열로 각 방을 저장
+    public RoomBehaviour[,] roomGrid; // 2D 배열로 각 방을 저장
 
     // Start is called before the first frame update
     void Start()
