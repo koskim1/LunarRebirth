@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private bool _canSlowDash = false;
     private bool _isDashing = false;
-    private bool _canDash = true;
+    [SerializeField]private bool _canDash = true;
     private bool _lockOn = false;
 
     private float _originalSpeed;
@@ -41,6 +41,12 @@ public class PlayerController : MonoBehaviour
         lockOn = GetComponent<LockOn>();
         playerAnimator = GetComponent<Animator>();
     }
+
+    private void OnEnable()
+    {
+        _canDash = true;
+    }
+
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();

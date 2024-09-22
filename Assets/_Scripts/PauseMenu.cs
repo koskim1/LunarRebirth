@@ -7,6 +7,9 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameObject optionMenu;
+
+    // 버그땜에 테스트
+    public GameObject goToTitleMenu;
     public AudioMixer audioMixer;
     public static bool isPaused;
     // Start is called before the first frame update
@@ -14,6 +17,9 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         optionMenu.SetActive(false);
+
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     private void Update()
@@ -49,8 +55,7 @@ public class PauseMenu : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
+        ResumeGame();
         SceneManagers.Instance.LoadTitleScene();       
     }
 

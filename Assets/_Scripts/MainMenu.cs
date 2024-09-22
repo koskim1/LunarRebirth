@@ -10,11 +10,13 @@ public class MainMenu : MonoBehaviour
     //public Button goBackToGameBtn;
     public Button optionBtn;
     public Button quitBtn;
+    public Button continueBtn;
 
     public AudioMixer audioMixer;
 
     public GameObject mainMenu;
     public GameObject optionMenu;
+    
     void Awake()
     {
         SceneManagers sceneManager = SceneManagers.Instance;
@@ -22,6 +24,7 @@ public class MainMenu : MonoBehaviour
         startGameBtn.onClick.AddListener(sceneManager.LoadIntroScene);
         optionBtn.onClick.AddListener(OpenOptionMenu);
         quitBtn.onClick.AddListener(Application.Quit);
+        continueBtn.onClick.AddListener(sceneManager.LoadMainRoom);
     }
 
     private void OpenOptionMenu()

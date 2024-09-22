@@ -5,7 +5,25 @@ using UnityEngine.UI;
 using TMPro;
 public class PlayerAttributesManager : AttributesManager
 {
-    public static PlayerAttributesManager Instance;
+    private static PlayerAttributesManager _instance;
+    public static PlayerAttributesManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                // 인스턴스가 없으면 새로 생성
+                GameObject playerPrefab = Resources.Load<GameObject>("PlayerPrefab");
+                GameObject player = Instantiate(playerPrefab);
+                _instance = player.GetComponent<PlayerAttributesManager>();
+            }
+            return _instance;
+        }
+        set
+        {
+            _instance = value;
+        }
+    }
 
     public PlayerHealthBar healthBar;
     public Slider xpSlider;
@@ -28,16 +46,22 @@ public class PlayerAttributesManager : AttributesManager
 
     private void Awake()
     {
-        if(Instance == null)
+        if(_instance == null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);            
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+
+            InitializeComponents();
         }
         else if (Instance != null)
-        {
+        {           
             Destroy(gameObject);
         }
         
+
+    }
+    private void InitializeComponents()
+    {
         _playerAnimation = GetComponent<PlayerAnimation>();
         _playerController = GetComponent<PlayerController>();
         _fireballController = GetComponent<FireballController>();
@@ -46,6 +70,7 @@ public class PlayerAttributesManager : AttributesManager
         sceneManagers = FindAnyObjectByType<SceneManagers>();
         uiManager = FindAnyObjectByType<UIManager>();
     }
+
     // Start is called before the first frame update
     protected override void Start()
     {                
