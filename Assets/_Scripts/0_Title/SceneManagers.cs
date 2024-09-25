@@ -43,6 +43,12 @@ public class SceneManagers : MonoBehaviour
             CameraFollow.Instance.gameObject.SetActive(false);
             UIManager.Instance.gameObject.SetActive(false);
         }
+
+        if(PlayerAttributesManager.Instance != null)
+        {
+            PlayerAttributesManager.Instance.ResetPlayerAttribute();
+        }
+
         LoadingSceneController.LoadScene("MainStory");
         animator.SetTrigger("FadeOut");
     }

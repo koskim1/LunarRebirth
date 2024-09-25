@@ -10,8 +10,9 @@ public class EnemyAttributesManager : AttributesManager
     private EnemyAnimation enemyAnimation;
     public HealthBar healthBar;
     public GameObject FloatingTextPrefab;
-
     public RoomBehaviour currentRoom;
+
+    private EnemyAI enemyAI;
 
     private float damageReduction = 0.5f;
 
@@ -19,6 +20,7 @@ public class EnemyAttributesManager : AttributesManager
     protected override void Start()
     {
         enemyAnimation = GetComponent<EnemyAnimation>();        
+        enemyAI = GetComponent<EnemyAI>();
 
         base.Start();
         healthBar.SetMaxHealth(maxHealth);
@@ -74,7 +76,8 @@ public class EnemyAttributesManager : AttributesManager
             if (player != null)
             {
                 player.GainXP(_xp); // 경험치 증가 호출
+                player.AddMLP(enemyAI.mlpValue);
             }
         }
-    }
+    }    
 }

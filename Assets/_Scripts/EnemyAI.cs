@@ -48,6 +48,8 @@ public class EnemyAI : MonoBehaviour
     [Header("Warrior Sheild Setting")]
     public bool isShielding = false;
 
+    [Header("MoonLightPoint")]
+    public int mlpValue;
     // Start is called before the first frame update
     void Awake()
     {
@@ -63,22 +65,26 @@ public class EnemyAI : MonoBehaviour
                 sightRange = 10f;
                 attackRange = 10f;
                 timeBetweenAttacks = 1.8f;
+                mlpValue = Random.Range(10, 25);
                 break;
             case EnemyType.Minion:
                 sightRange = 7;
                 attackRange = 1.5f;
                 timeBetweenAttacks = 1.6f;
+                mlpValue = Random.Range(5, 15);
                 break;
             case EnemyType.Rogue:
                 sightRange = 7;
                 attackRange = 1.5f;
                 navMeshAgent.speed = 6f;
                 timeBetweenAttacks = 1.167f;
+                mlpValue = Random.Range(7, 18);
                 break;
             case EnemyType.Warrior:
                 sightRange = 9f;
                 attackRange = 1.4f;
                 timeBetweenAttacks = 1.067f;
+                mlpValue = Random.Range(8, 20);
                 break;
         }
     }

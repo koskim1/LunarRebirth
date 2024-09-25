@@ -43,7 +43,7 @@ public class PlayerAttributesManager : AttributesManager
     public int currentXP = 0;
     public int xpToNextLevel = 100;
     public int deathCount = 0;
-
+    public int currentMLP = 0;
     private void Awake()
     {
         if(_instance == null)
@@ -71,6 +71,19 @@ public class PlayerAttributesManager : AttributesManager
         uiManager = FindAnyObjectByType<UIManager>();
     }
 
+    public void ResetPlayerAttribute()
+    {
+        base.maxHealth = 100;
+        base._health = 100;
+        base._attack = 20;
+        base._xp = 20;
+        currentLevel = 0;
+        currentXP = 0;
+        xpToNextLevel = 10;
+        deathCount = 0;
+        currentMLP = 0;        
+    }
+
     // Start is called before the first frame update
     protected override void Start()
     {                
@@ -79,6 +92,7 @@ public class PlayerAttributesManager : AttributesManager
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(maxHealth);
         UpdateXPUI();
+        UpdateMLPUI();
 
         if (cardCollection == null)
         {
@@ -87,6 +101,17 @@ public class PlayerAttributesManager : AttributesManager
         cardGenerator = new CardGenerator(cardCollection);
     }
 
+    public void AddMLP(int amount)
+    {        
+        currentMLP += amount;
+        UpdateMLPUI();
+        Debug.Log($"현재 MLP는 {currentMLP} 입니다");
+    }
+
+    private void UpdateMLPUI()
+    {
+        // 테스트 후 UI 업데이트 시켜주기
+    }
     private IEnumerator animatorOnOff()
     {
         animator.enabled = false;
