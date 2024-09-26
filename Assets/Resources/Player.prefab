@@ -2769,11 +2769,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3618080527403323722}
+  - component: {fileID: 5962003193036783397}
   - component: {fileID: 5049159936708501205}
   - component: {fileID: 8905998525580181505}
   - component: {fileID: 4672556423628287479}
   - component: {fileID: 2830208738742086459}
-  - component: {fileID: 5962003193036783397}
   - component: {fileID: 8519543936169167261}
   - component: {fileID: 8315163823154968239}
   - component: {fileID: 2505581010853484483}
@@ -2808,6 +2808,64 @@ Transform:
   - {fileID: 3928147881296811271}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5962003193036783397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8838319043131989845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3baf0bf9cef232947bed5e079fa09d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPc: 1
+  canMove: 0
+  _canDash: 1
+  dashCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.402576
+      value: 0.32546127
+      inSlope: 1.469842
+      outSlope: 1.469842
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.70316875
+      value: 0.59922385
+      inSlope: 1.1853312
+      outSlope: 1.1853312
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  minimap: {fileID: 93176131200483387}
 --- !u!95 &5049159936708501205
 Animator:
   serializedVersion: 5
@@ -2990,63 +3048,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &5962003193036783397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8838319043131989845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3baf0bf9cef232947bed5e079fa09d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isPc: 1
-  canMove: 0
-  dashCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.402576
-      value: 0.32546127
-      inSlope: 1.469842
-      outSlope: 1.469842
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.70316875
-      value: 0.59922385
-      inSlope: 1.1853312
-      outSlope: 1.1853312
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  minimap: {fileID: 93176131200483387}
 --- !u!114 &8519543936169167261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3083,10 +3084,12 @@ MonoBehaviour:
   xpSlider: {fileID: 0}
   levelText: {fileID: 0}
   levelUpUI: {fileID: 0}
+  mlpText: {fileID: 0}
   currentLevel: 1
   currentXP: 0
   xpToNextLevel: 10
   deathCount: 0
+  currentMLP: 0
 --- !u!114 &2505581010853484483
 MonoBehaviour:
   m_ObjectHideFlags: 0

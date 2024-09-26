@@ -11,6 +11,7 @@ public class EnemyAttributesManager : AttributesManager
     public HealthBar healthBar;
     public GameObject FloatingTextPrefab;
     public RoomBehaviour currentRoom;
+    public GameObject SoulPrefab;
 
     private EnemyAI enemyAI;
 
@@ -65,8 +66,10 @@ public class EnemyAttributesManager : AttributesManager
             Destroy(gameObject);
         }
 
-        currentRoom.OnEnemyKilled(gameObject);
+        // MLP소울 생성 ( 상점기능 위해 )
+        SpawnMLPSoul();
 
+        currentRoom.OnEnemyKilled(gameObject);
         Ondeath?.Invoke();
         isDead = true;
 
@@ -76,8 +79,21 @@ public class EnemyAttributesManager : AttributesManager
             if (player != null)
             {
                 player.GainXP(_xp); // 경험치 증가 호출
-                player.AddMLP(enemyAI.mlpValue);
+                //player.AddMLP(enemyAI.mlpValue);
             }
         }
     }    
+
+    private void SpawnMLPSoul()
+    {
+        if (SoulPrefab != null)
+        {
+            GameObject soulPrefab = Instantiate(SoulPrefab, new Vector3(transform.position.x, 0.9f, transform.position.z), Quaternion.identity);
+            SoulToMLP soulToMLP = soulPrefab.GetComponent<SoulToMLP>();
+            if(soulToMLP != null)
+            {
+                soulToMLP.mlpValue = enemyAI.mlpValue;
+            }
+        }
+    }
 }

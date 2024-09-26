@@ -29,6 +29,7 @@ public class PlayerAttributesManager : AttributesManager
     public Slider xpSlider;
     public TextMeshProUGUI levelText;
     public LevelUpUI levelUpUI;
+    public TextMeshProUGUI mlpText; // MLP
 
     private PlayerAnimation _playerAnimation;
     private PlayerController _playerController;
@@ -108,9 +109,10 @@ public class PlayerAttributesManager : AttributesManager
         Debug.Log($"현재 MLP는 {currentMLP} 입니다");
     }
 
-    private void UpdateMLPUI()
+    public void UpdateMLPUI()
     {
         // 테스트 후 UI 업데이트 시켜주기
+        mlpText.text = $"{currentMLP}";
     }
     private IEnumerator animatorOnOff()
     {
