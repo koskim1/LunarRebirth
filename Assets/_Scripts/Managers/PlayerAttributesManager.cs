@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 public class PlayerAttributesManager : AttributesManager
 {
     private static PlayerAttributesManager _instance;
@@ -43,8 +44,10 @@ public class PlayerAttributesManager : AttributesManager
     public int currentLevel = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 100;
-    public int deathCount = 0;
+    public int deathCount = 0;    
     public int currentMLP = 0;
+    public int previousMLP = 0;
+    private int displayedMLP = 0;
     private void Awake()
     {
         if(_instance == null)
@@ -93,7 +96,7 @@ public class PlayerAttributesManager : AttributesManager
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(maxHealth);
         UpdateXPUI();
-        UpdateMLPUI();
+        UpdateMLPUI(previousMLP, currentMLP);
 
         if (cardCollection == null)
         {
@@ -104,15 +107,26 @@ public class PlayerAttributesManager : AttributesManager
 
     public void AddMLP(int amount)
     {        
+        previousMLP = currentMLP;
         currentMLP += amount;
-        UpdateMLPUI();
+        UpdateMLPUI(previousMLP, currentMLP);
         Debug.Log($"현재 MLP는 {currentMLP} 입니다");
     }
 
-    public void UpdateMLPUI()
-    {
-        // 테스트 후 UI 업데이트 시켜주기
-        mlpText.text = $"{currentMLP}";
+    public void UpdateMLPUI(int fromValue, int toValue)
+    {        
+        // 혹여나 너무 빨리잡아서 꼬이면 안되니 예외처리  
+        DOTween.Kill("MLPCountUp");
+
+        /*
+        DOTween.To(getter, setter, to(end value), float duration) 
+        */
+        DOTween.To(() => fromValue, x =>
+        {
+            displayedMLP = x;
+            mlpText.text = $"{displayedMLP}";
+        }, toValue, 0.5f)
+            .SetEase(Ease.OutQuad).SetId("MLPCountUp");
     }
     private IEnumerator animatorOnOff()
     {

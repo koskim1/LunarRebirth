@@ -48,7 +48,7 @@ public class SceneManagers : MonoBehaviour
         {
             PlayerAttributesManager.Instance.ResetPlayerAttribute();
             PlayerAttributesManager.Instance.UpdateXPUI();
-            PlayerAttributesManager.Instance.UpdateMLPUI();
+            PlayerAttributesManager.Instance.UpdateMLPUI(PlayerAttributesManager.Instance.previousMLP =0, PlayerAttributesManager.Instance.currentMLP =0);
         }
 
         LoadingSceneController.LoadScene("MainStory");

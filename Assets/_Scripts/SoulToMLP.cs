@@ -24,12 +24,6 @@ public class SoulToMLP : MonoBehaviour
         StartCoroutine(SoulSpawnWait());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private IEnumerator SoulSpawnWait()
     {
         yield return new WaitForSeconds(1.3f);
@@ -69,7 +63,7 @@ public class SoulToMLP : MonoBehaviour
         {
             PlayerAttributesManager.Instance.AddMLP(mlpValue);
 
-            transform.DOScale(0, .8f).OnComplete(()=>Destroy(gameObject));
+            transform.DOScale(0, .8f).OnComplete(()=>Destroy(gameObject)).SetLink(gameObject);
         }
     }
 }
