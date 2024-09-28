@@ -82,6 +82,47 @@ public class DialogueManager : MonoBehaviour
         ShowInteractionText(false);
     }
 
+    public void StartShopDialogue(Dialogue dialogue, ShopNpc npc)
+    {
+        playerController.canMove = false;
+
+        Cursor.visible = true;
+        afterDeadCam.enabled = true;
+        cinemachineFreeLook.enabled = false;
+        // NPC에게 LookAt 설정
+        if (enemyLook != null)
+        {
+            if (npc != null)
+            {
+                enemyLook.enabled = true;
+                enemyLook.m_LookAt = npc.transform;
+                enemyLook.m_XAxis.m_MaxSpeed = 0.0f;
+                enemyLook.m_YAxis.m_MaxSpeed = 0.0f;
+            }
+            else
+            {
+                Debug.LogWarning("ShopNpc 컴포넌트를 NPC에서 찾을 수 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Cinemachine LookAt 카메라가 설정되지 않았습니다.");
+        }
+        animator.SetBool("IsOpen", true);
+
+        nameText.text = dialogue.name;
+        sentences.Clear();
+
+        foreach (string sentence in dialogue.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+
+        DisplayNextSentence();
+
+        ShowInteractionText(false);
+    }
+
     public void StartMonologueDialogue(Dialogue dialogue)
     {
         playerController.canMove = false;
