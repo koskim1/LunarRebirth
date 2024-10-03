@@ -43,6 +43,7 @@ public class ShopManager : MonoBehaviour
     {
         foreach(var item in shopItems)
         {
+            Debug.Log($"아이템 생성 : {item.itemName}");
             GameObject itemGO = Instantiate(shopItemPrefab, itemContainer);
             ShopItemUI itemUI = itemGO.GetComponent<ShopItemUI>();
 
