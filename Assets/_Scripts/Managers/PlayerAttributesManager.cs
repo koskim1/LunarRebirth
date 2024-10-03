@@ -48,6 +48,8 @@ public class PlayerAttributesManager : AttributesManager
     public int currentMLP = 0;
     public int previousMLP = 0;
     private int displayedMLP = 0;
+
+    private List<ShopItem> purchasedItems = new List<ShopItem>();   // 구매한 아이템 목록
     private void Awake()
     {
         if(_instance == null)
@@ -213,7 +215,7 @@ public class PlayerAttributesManager : AttributesManager
 
         switch (statName)
         {
-            case "strength":
+            case "attack":
                 _attack += amount;
                 break;
             case "health":
@@ -242,5 +244,16 @@ public class PlayerAttributesManager : AttributesManager
         }
     }
 
-    
+    public void AddPurchasedItem(ShopItem item)
+    {
+        if (!purchasedItems.Contains(item))
+        {
+            purchasedItems.Add(item);
+        }
+    }
+
+    public bool IsItemPurchased(ShopItem item)
+    {
+        return purchasedItems.Contains(item);
+    }
 }

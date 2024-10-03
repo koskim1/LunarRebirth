@@ -22,7 +22,10 @@ public class DialogueManager : MonoBehaviour
     
     private Transform currentNPC;
     [SerializeField] private GameObject playerInteractUI;
-    // Start is called before the first frame update
+    private DialogueBoxController dialogueBoxController;
+
+    private bool isShopDialogue = false;
+
     void Awake()
     {
         if(Instance == null)
@@ -36,6 +39,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         playerController = FindObjectOfType<PlayerController>();
+        dialogueBoxController = FindObjectOfType<DialogueBoxController>();
         sentences = new Queue<string>();
 
         Cursor.visible = false;
@@ -43,6 +47,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger npc)
     {
+        dialogueBoxController.gameObject.SetActive(true);
         playerController.canMove = false;
 
         Cursor.visible = true;
@@ -84,6 +89,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartShopDialogue(Dialogue dialogue, ShopNpc npc)
     {
+        dialogueBoxController.gameObject.SetActive(true);
         playerController.canMove = false;
 
         Cursor.visible = true;
@@ -121,10 +127,13 @@ public class DialogueManager : MonoBehaviour
         DisplayNextSentence();
 
         ShowInteractionText(false);
+
+        isShopDialogue = true;
     }
 
     public void StartMonologueDialogue(Dialogue dialogue)
     {
+        dialogueBoxController.gameObject.SetActive(true);
         playerController.canMove = false;
         cinemachineFreeLook.enabled = false;
         enemyLook.enabled = false;
@@ -176,7 +185,17 @@ public class DialogueManager : MonoBehaviour
 
         animator.SetBool("IsOpen", false);
         //ShowInteractionText(true);
+
+
+
         Debug.Log("End of conversation");
+
+        if (isShopDialogue)
+        {
+            dialogueBoxController.gameObject.SetActive(false);
+            ShopManager.Instance.OpenShop();
+            isShopDialogue = false;
+        }
     }
 
     public void ShowInteractionText(bool show)

@@ -6,21 +6,29 @@ using UnityEngine.UI;
 public class ShopItemUI : MonoBehaviour
 {
     public Image itemImage;
-    public string itemName;
-    public string itemDescription;
-    public string itemPrice;
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI itemDescription;
+    public TextMeshProUGUI itemPrice;
     public Button itemBuyButton;
 
     public ShopItem shopItem;
 
     public void SetItem(ShopItem item)
     {
-        itemImage = item.itemIcon;
-        itemName = item.itemName;
-        itemDescription = item.itemDescription;
-        itemPrice = $"{item.itemPrice}MLP";
+        itemImage.sprite = item.itemIcon;
+        itemName.text = item.itemName;
+        itemDescription.text = item.itemDescription;
+        itemPrice.text = $"{item.itemPrice}MLP";
 
+        itemBuyButton.onClick.RemoveAllListeners();
         itemBuyButton.onClick.AddListener(BuyItem);
+
+        // 이미 구매한 아이템이라면 구매버튼 비활성화
+        if (PlayerAttributesManager.Instance.IsItemPurchased(item))
+        {
+            itemBuyButton.interactable = false;
+            itemBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "구매 완료";
+        }
     }
 
     public void BuyItem()
@@ -36,7 +44,7 @@ public class ShopItemUI : MonoBehaviour
             PlayerAttributesManager.Instance.UpdateMLPUI(PlayerAttributesManager.Instance.currentMLP, playerMLP);
             PlayerAttributesManager.Instance.currentMLP = playerMLP;
             // 효과 적용되게
-
+            ApplyItemEffect();
             // 구매 후
             itemBuyButton.interactable = false;
             itemBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "구매 완료";
@@ -46,6 +54,20 @@ public class ShopItemUI : MonoBehaviour
         else
         {
             Debug.Log("구매를 위한 MLP가 부족합니다");
+        }
+        PlayerAttributesManager.Instance.UpdateMLPUI(PlayerAttributesManager.Instance.currentMLP, playerMLP);
+    }
+
+    private void ApplyItemEffect()
+    {
+        switch (shopItem.itemType)
+        {
+            case ItemType.IncreaseHealth:
+                PlayerAttributesManager.Instance.IncreaseStat("health", shopItem.effectValue);
+                break;
+            case ItemType.IncreaseAttack:
+                PlayerAttributesManager.Instance.IncreaseStat("attack", shopItem.effectValue);
+                break;
         }
     }
 }
