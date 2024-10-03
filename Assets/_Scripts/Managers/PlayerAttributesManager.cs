@@ -6,25 +6,25 @@ using TMPro;
 using DG.Tweening;
 public class PlayerAttributesManager : AttributesManager
 {
-    private static PlayerAttributesManager _instance;
-    public static PlayerAttributesManager Instance
-    {
-        get
-        {
-            if(_instance == null)
-            {
-                // 인스턴스가 없으면 새로 생성
-                GameObject playerPrefab = Resources.Load<GameObject>("PlayerPrefab");
-                GameObject player = Instantiate(playerPrefab);
-                _instance = player.GetComponent<PlayerAttributesManager>();
-            }
-            return _instance;
-        }
-        set
-        {
-            _instance = value;
-        }
-    }
+    public static PlayerAttributesManager Instance;
+    //public static PlayerAttributesManager Instance
+    //{
+    //    get
+    //    {
+    //        if(_instance == null)
+    //        {
+    //            // 인스턴스가 없으면 새로 생성
+    //            GameObject playerPrefab = Resources.Load<GameObject>("PlayerPrefab");
+    //            GameObject player = Instantiate(playerPrefab);
+    //            _instance = player.GetComponent<PlayerAttributesManager>();
+    //        }
+    //        return _instance;
+    //    }
+    //    set
+    //    {
+    //        _instance = value;
+    //    }
+    //}
 
     public PlayerHealthBar healthBar;
     public Slider xpSlider;
@@ -52,9 +52,9 @@ public class PlayerAttributesManager : AttributesManager
     private List<ShopItem> purchasedItems = new List<ShopItem>();   // 구매한 아이템 목록
     private void Awake()
     {
-        if(_instance == null)
+        if(Instance == null)
         {
-            _instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
 
             InitializeComponents();

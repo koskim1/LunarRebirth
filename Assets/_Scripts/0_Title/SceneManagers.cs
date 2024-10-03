@@ -7,7 +7,6 @@ public class SceneManagers : MonoBehaviour
 {
     public static SceneManagers Instance;
     private Animator animator;
-    private PlayerAttributesManager playerAttributesManager;
 
     private void Awake()
     {
@@ -21,11 +20,6 @@ public class SceneManagers : MonoBehaviour
             Destroy(gameObject);
         }
         animator = GetComponentInChildren<Animator>();
-    }
-
-    private void Start()
-    {
-        playerAttributesManager = FindAnyObjectByType<PlayerAttributesManager>();
     }
 
     private IEnumerator animatorOnOff()
