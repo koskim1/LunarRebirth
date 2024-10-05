@@ -9,9 +9,10 @@ public class SoulToMLP : MonoBehaviour
     public float moveSpeed = 8;
     private Transform playerTransform;
     private bool isAttracted = false;
+    private bool isCollected = false;
 
     public int mlpValue = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -59,8 +60,9 @@ public class SoulToMLP : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !isCollected)
         {
+            isCollected = true;
             PlayerAttributesManager.Instance.AddMLP(mlpValue);
 
             transform.DOScale(0, .8f).OnComplete(()=>Destroy(gameObject)).SetLink(gameObject);

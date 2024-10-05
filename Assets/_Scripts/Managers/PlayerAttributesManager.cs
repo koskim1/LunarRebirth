@@ -7,24 +7,6 @@ using DG.Tweening;
 public class PlayerAttributesManager : AttributesManager
 {
     public static PlayerAttributesManager Instance;
-    //public static PlayerAttributesManager Instance
-    //{
-    //    get
-    //    {
-    //        if(_instance == null)
-    //        {
-    //            // 인스턴스가 없으면 새로 생성
-    //            GameObject playerPrefab = Resources.Load<GameObject>("PlayerPrefab");
-    //            GameObject player = Instantiate(playerPrefab);
-    //            _instance = player.GetComponent<PlayerAttributesManager>();
-    //        }
-    //        return _instance;
-    //    }
-    //    set
-    //    {
-    //        _instance = value;
-    //    }
-    //}
 
     public PlayerHealthBar healthBar;
     public Slider xpSlider;
