@@ -94,6 +94,14 @@ public class SceneManagers : MonoBehaviour
         LoadingSceneController.LoadScene("TitleScene");
     }
 
+    public void LoadBossRoom()
+    {
+        StartCoroutine(animatorOnOff());
+        animator.SetTrigger("FadeOut");
+
+        LoadingSceneController.LoadScene("BossScene");
+    }
+
     public void QuitGame()
     {
         StartCoroutine(animatorOnOff());

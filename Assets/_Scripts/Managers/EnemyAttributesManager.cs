@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAttributesManager : AttributesManager
+public class EnemyAttributesManager : AttributesManager, ILockOnTarget
 {
     public event System.Action Ondeath;
     private EnemyAnimation enemyAnimation;
@@ -55,6 +55,11 @@ public class EnemyAttributesManager : AttributesManager
         go.GetComponent<TextMeshPro>().text = damage.ToString();
     }
 
+    public Transform GetTransform()
+    {
+        return this.transform;
+    }
+
     protected override void Die()
     {
         if(enemyAnimation != null)
@@ -96,4 +101,6 @@ public class EnemyAttributesManager : AttributesManager
             }
         }
     }
+
+    public bool IsBoss { get { return false; } }
 }

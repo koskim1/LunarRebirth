@@ -17,7 +17,7 @@ public class LockOn : MonoBehaviour
     [SerializeField] CinemachineFreeLook playerCam; // 기본 플레이어Cam
     [SerializeField] CinemachineFreeLook enemyCam; // 타겟 바라보게 enemyCam연결
 
-    EnemyAttributesManager currentTarget;
+    ILockOnTarget currentTarget;
     Vector3 currentTargetPosition;
 
     public bool isFindTarget = false;
@@ -84,15 +84,15 @@ public class LockOn : MonoBehaviour
     public void FindLockOnTarget()
     {
         Collider[] findTarget = Physics.OverlapSphere(transform.position, lockOnRadius, targetLayer);
-        List<EnemyAttributesManager> potentialTargets = new List<EnemyAttributesManager>();
+        List<ILockOnTarget> potentialTargets = new List<ILockOnTarget>();
 
         foreach (Collider collider in findTarget)
         {
-            EnemyAttributesManager target = collider.GetComponent<EnemyAttributesManager>();
+            ILockOnTarget target = collider.GetComponent<ILockOnTarget>();
 
             if (target != null)
             {
-                Vector3 targetDir = target.transform.position - transform.position;
+                Vector3 targetDir = target.GetTransform().position - transform.position;
                 float viewAngle = Vector3.Angle(targetDir, cameraTransform.forward);
 
                 if (viewAngle > minViewAngle && viewAngle < maxViewAngle)
@@ -100,7 +100,7 @@ public class LockOn : MonoBehaviour
                     RaycastHit hit;
 
                     if (Physics.Linecast(transform.position,
-                        target.transform.position, out hit, targetLayer))
+                        target.GetTransform().position, out hit, targetLayer))
                     {
                         potentialTargets.Add(target);
                     }
@@ -114,14 +114,14 @@ public class LockOn : MonoBehaviour
         }
     }
 
-    private void LockOnTarget(List<EnemyAttributesManager> potentialTargets)
+    private void LockOnTarget(List<ILockOnTarget> potentialTargets)
     {
         float shortDistance = Mathf.Infinity;
 
 
         foreach(var target in potentialTargets)
         {
-            float distanceFromTarget = Vector3.Distance(transform.position, target.transform.position);
+            float distanceFromTarget = Vector3.Distance(transform.position, target.GetTransform().position);
 
             if(distanceFromTarget < shortDistance)
             {
@@ -135,9 +135,9 @@ public class LockOn : MonoBehaviour
         if(currentTarget != null)
         {
             Debug.Log("enemy캠 조절, FindTarget()으로 이동");
-            currentTargetPosition = currentTarget.transform.position;            
+            currentTargetPosition = currentTarget.GetTransform().position;            
 
-            enemyCam.m_LookAt = currentTarget.transform;
+            enemyCam.m_LookAt = currentTarget.GetTransform();
 
             // enemyCam의 위치와 회전을 playerCam과 동일하게 설정
             SynchronizeCameras();
@@ -158,8 +158,12 @@ public class LockOn : MonoBehaviour
             return;
         }
 
-        currentTargetPosition = currentTarget.transform.position;
-        lockOnImage.position = Camera.main.WorldToScreenPoint(currentTargetPosition + new Vector3(0, 1f, 0)); ;
+        currentTargetPosition = currentTarget.GetTransform().position;
+
+        // 락온 이미지 높이
+        float heightOffset = currentTarget.IsBoss ? 4.5f : 1f;
+
+        lockOnImage.position = Camera.main.WorldToScreenPoint(currentTargetPosition + new Vector3(0, heightOffset, 0)); ;
 
         Vector3 dir = (currentTargetPosition - transform.position).normalized;
         dir.y = transform.position.y;

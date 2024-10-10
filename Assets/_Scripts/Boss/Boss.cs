@@ -1,8 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class Boss : MonoBehaviour
+public enum BossPhase
+{
+    Phase1,
+    Phase2,
+    Phase3
+}
+
+public class Boss : MonoBehaviour, ILockOnTarget
 {
     /*
     
@@ -19,4 +27,54 @@ public class Boss : MonoBehaviour
     EnemyAttributesManager 붙여주고 , Layer설정 잊지말기
 
     */
+
+    public event System.Action Ondeath;
+    
+    [Header("보스 속성")]
+    [SerializeField] private int bossMaxHp = 2000;
+    private int currentHp;
+    [SerializeField] private int bossAtk = 40;
+    [SerializeField] private int bossMoveSpeed = 15;
+
+    [Header("소환관련")]
+    public GameObject spawnSkeletonPrefab;
+    public GameObject spawnGolemPrefab;
+
+
+    private BossPhase currentBossPhase;   
+
+    private Animator animator;
+    private NavMeshAgent agent;
+    private Transform player;
+
+
+    private void Start()
+    {
+        currentHp = bossMaxHp;
+        currentBossPhase = BossPhase.Phase1;
+
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindWithTag("Player").transform;
+    }
+
+    public bool IsBoss { get { return true; } }
+
+    private void Update()
+    {
+        
+    }
+
+    public Transform GetTransform()
+    {
+        return this.transform;
+    }
+
+    private void Die()
+    {
+        // 보스 사망 로직
+
+        // OnDeath 이벤트 호출
+        Ondeath?.Invoke();
+    }
 }
