@@ -36,6 +36,12 @@ public class Boss : MonoBehaviour, ILockOnTarget
     [SerializeField] private int bossAtk = 40;
     [SerializeField] private int bossMoveSpeed = 15;
 
+    [Header("공격범위 설정")]
+    public float attackRange = 5f;
+    public float sightRange = 20f;
+    private bool playerInSightRange, playerInAttackRange;
+
+
     [Header("소환관련")]
     public GameObject spawnSkeletonPrefab;
     public GameObject spawnGolemPrefab;
