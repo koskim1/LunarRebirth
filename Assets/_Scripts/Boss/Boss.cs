@@ -36,40 +36,112 @@ public class Boss : MonoBehaviour, ILockOnTarget
     [SerializeField] private int bossAtk = 40;
     [SerializeField] private int bossMoveSpeed = 15;
 
-    [Header("공격범위 설정")]
+    [Header("공격 및 탐색범위 설정")]
     public float attackRange = 5f;
     public float sightRange = 20f;
     private bool playerInSightRange, playerInAttackRange;
+    public LayerMask playerLayerMask;
 
 
     [Header("소환관련")]
     public GameObject spawnSkeletonPrefab;
     public GameObject spawnGolemPrefab;
 
+    [Header("Patroling")]
+    //Patroling
+    public Vector3 walkPoint;
+    bool walkPointSet;
+    public float walkPointRange = 20f;
 
     private BossPhase currentBossPhase;   
 
     private Animator animator;
-    private NavMeshAgent agent;
+    private NavMeshAgent navMeshAgent;
     private Transform player;
 
 
-    private void Start()
+    private void Awake()
     {
         currentHp = bossMaxHp;
         currentBossPhase = BossPhase.Phase1;
 
         animator = GetComponent<Animator>();
-        agent = GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player").transform;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player").transform;
     }
 
     public bool IsBoss { get { return true; } }
 
+    /*
+    
+        TODO
+     1. 일단 player 따라오게 만들기.
+
+    */
+
     private void Update()
     {
-        
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayerMask);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayerMask);
+         
+        if (!playerInSightRange && !playerInAttackRange) Patrolling();
+        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
+        if (playerInSightRange && playerInAttackRange) AttackPlayer();
     }
+
+    private void Patrolling()
+    {
+        if (!walkPointSet) SearchWalkPoint();
+
+        if (walkPointSet)
+            navMeshAgent.SetDestination(walkPoint);
+
+        Vector3 distanceToWalk = transform.position - walkPoint;
+
+        // Walkpoint reached
+        if (distanceToWalk.magnitude < 1f)
+            walkPointSet = false;
+
+    }
+
+    private void SearchWalkPoint()
+    {
+        // Calculate random point in range
+        float randomZ = Random.Range(-walkPointRange, walkPointRange);
+        float randomX = Random.Range(-walkPointRange, walkPointRange);
+
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
+
+        NavMeshHit hit;
+        // NavMesh.SamplePosition(Vector3 sourcePosition, out hit, float maxDistance, int areaMask)
+        // areaMask의 1은 Built-in Walkable이다
+        // -1은 AllAreas인데 Walkable로 했을때는 가끔 혼자 갈수없는 구역에 가려고 정지되어있어서 그냥 AllAreas로 수정
+        if (NavMesh.SamplePosition(walkPoint, out hit, walkPointRange, NavMesh.AllAreas))
+        {
+            NavMeshPath path = new NavMeshPath();
+            if (navMeshAgent.CalculatePath(hit.position, path))
+            {
+                if (path.status == NavMeshPathStatus.PathComplete)
+                {
+                    walkPoint = hit.position;
+                    walkPointSet = true;
+                }
+            }
+        }
+
+    }
+
+    private void ChasePlayer()
+    {
+        navMeshAgent.SetDestination(player.position);
+        navMeshAgent.speed = 8f;
+    }
+
+    private void AttackPlayer()
+    {
+
+    }
+
 
     public Transform GetTransform()
     {
