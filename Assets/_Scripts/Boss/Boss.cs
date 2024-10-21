@@ -42,6 +42,11 @@ public class Boss : MonoBehaviour, ILockOnTarget
     private bool playerInSightRange, playerInAttackRange;
     public LayerMask playerLayerMask;
 
+    //Attacking
+    [SerializeField]
+    private float timeBetweenAttacks = 1.1f;
+    bool alreadyAttacked;
+
 
     [Header("소환관련")]
     public GameObject spawnSkeletonPrefab;
@@ -139,9 +144,33 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void AttackPlayer()
     {
+        //navMeshAgent.SetDestination(transform.position);
+        navMeshAgent.isStopped = true;
 
+        Vector3 direction = (player.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5);
+
+        if (!alreadyAttacked)
+        {
+            PerformBossAttack();
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }        
     }
 
+    private void PerformBossAttack()
+    {
+        animator.SetBool("canAttack", true);
+    }
+
+    private void ResetAttack()
+    {
+        animator.SetBool("canAttack", false);
+        alreadyAttacked = false;
+
+        navMeshAgent.isStopped = false;
+    }
 
     public Transform GetTransform()
     {
