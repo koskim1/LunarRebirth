@@ -997,6 +997,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: URP - Giant01_Flat - Golem_Flat
       objectReference: {fileID: 0}
+    - target: {fileID: 7813686591248798078, guid: 08904d7883aa9f042baad8c2dee6ac35,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2365,6 +2370,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: URP - Giant01 - Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491026647172140826, guid: 2f43b993f3eaf14489c9160034e140c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3618903481352615452, guid: 2f43b993f3eaf14489c9160034e140c4,
         type: 3}
@@ -3862,12 +3872,12 @@ PrefabInstance:
     - target: {fileID: 1521541322271428187, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001702943
+      value: -0.00000001702943
       objectReference: {fileID: 0}
     - target: {fileID: 1521541322271428187, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000024613116
+      value: 0.0000000024613116
       objectReference: {fileID: 0}
     - target: {fileID: 1775150266676484154, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -4236,12 +4246,12 @@ PrefabInstance:
     - target: {fileID: 1780797386858438739, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008528705
+      value: 0.000000008528705
       objectReference: {fileID: 0}
     - target: {fileID: 1780797386858438739, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000011296418
+      value: -0.0000000011296418
       objectReference: {fileID: 0}
     - target: {fileID: 2597120609498565649, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}

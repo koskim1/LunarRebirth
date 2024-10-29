@@ -26,6 +26,22 @@ public class Boss : MonoBehaviour, ILockOnTarget
     
     EnemyAttributesManager 붙여주고 , Layer설정 잊지말기
 
+    ------------------------------
+    주말(11/02)까지 TODO
+
+    1. 보스쪽
+
+    락온시스템, 정찰, 추적, 공격까진 설정완료.
+    (1) 이제 HP, 데미지 연동.
+    페이즈 별 공격패턴 다양화
+    소환수 잘 소환되는지 체크.
+
+    공격을 위한 손에만 콜라이더 넣어놨음. 이걸로 어떻게 할지 고민.
+
+    2. 레벨업카드, 상점물품 추가. // 주말지나면 여기 주석 지우기
+
+    발매 전 꼭 해야하는 것.
+    폴리싱작업 꼭 하기. 소리효과 넣기. 찰떡인걸로
     */
 
     public event System.Action Ondeath;
@@ -76,13 +92,6 @@ public class Boss : MonoBehaviour, ILockOnTarget
     }
 
     public bool IsBoss { get { return true; } }
-
-    /*
-    
-        TODO
-     1. 일단 player 따라오게 만들기.
-
-    */
 
     private void Update()
     {

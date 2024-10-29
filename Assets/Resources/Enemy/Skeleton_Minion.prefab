@@ -2143,7 +2143,7 @@ MonoBehaviour:
   maxHealth: 100
   _health: 0
   _attack: 20
-  _xp: 1
+  _xp: 7
   isDead: 0
   healthBar: {fileID: 2238860405099128282}
   FloatingTextPrefab: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,
