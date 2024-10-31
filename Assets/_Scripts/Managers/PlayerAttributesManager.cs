@@ -69,7 +69,9 @@ public class PlayerAttributesManager : AttributesManager
         currentXP = 0;
         xpToNextLevel = 10;
         deathCount = 0;
-        currentMLP = 0;        
+        currentMLP = 0;
+        previousMLP = 0;
+        displayedMLP = 0;
     }
 
     // Start is called before the first frame update
@@ -110,7 +112,7 @@ public class PlayerAttributesManager : AttributesManager
             displayedMLP = x;
             mlpText.text = $"{displayedMLP}";
         }, toValue, 0.5f)
-            .SetEase(Ease.OutQuad).SetId("MLPCountUp");
+            .SetEase(Ease.OutQuad).SetId("MLPCountUp").SetUpdate(true);
     }
     private IEnumerator animatorOnOff()
     {
