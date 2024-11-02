@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum BossPhase
-{
-    Phase1,
-    Phase2,
-    Phase3
-}
+
 
 public class Boss : MonoBehaviour, ILockOnTarget
 {
@@ -37,12 +32,24 @@ public class Boss : MonoBehaviour, ILockOnTarget
     소환수 잘 소환되는지 체크.
 
     공격을 위한 손에만 콜라이더 넣어놨음. 이걸로 어떻게 할지 고민.
+    -> 데미지 애니메이션 이벤트로 일단 설정완료
+    이제 플레이어가 데미지 입히게 설정하고
+    페이즈별로 다양화 시키고
+    2페이즈가면 소환수 나오는지 체크
 
     2. 레벨업카드, 상점물품 추가. // 주말지나면 여기 주석 지우기
 
     발매 전 꼭 해야하는 것.
     폴리싱작업 꼭 하기. 소리효과 넣기. 찰떡인걸로
     */
+
+    public enum BossPhase
+    {
+        WaitingToStart,
+        Phase1,
+        Phase2,
+        Phase3
+    }
 
     public event System.Action Ondeath;
     
@@ -80,6 +87,8 @@ public class Boss : MonoBehaviour, ILockOnTarget
     private NavMeshAgent navMeshAgent;
     private Transform player;
 
+    [SerializeField]
+    private BoxCollider boxCollider;
 
     private void Awake()
     {
@@ -95,12 +104,55 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void Update()
     {
+        CheckBossPhase();
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayerMask);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayerMask);
          
         if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInSightRange && playerInAttackRange) AttackPlayer();
+    }
+
+    private void CheckBossPhase()
+    {
+        if(currentHp > bossMaxHp * 0.65f)
+        {
+            SetPhase(BossPhase.Phase1);
+        }
+        else if(currentHp <= bossMaxHp * 0.65f && currentHp > bossMaxHp * 0.3f)
+        {
+            SetPhase(BossPhase.Phase2);
+        }
+        else
+        {
+            SetPhase(BossPhase.Phase3);
+        }
+    }
+
+    private void SetPhase(BossPhase phase)
+    {
+        if(currentBossPhase != phase)
+        {
+            currentBossPhase = phase;
+            UpdateBossBehaviorForPhase();
+        }
+    }
+
+    private void UpdateBossBehaviorForPhase()
+    {
+        switch (currentBossPhase)
+        {
+            case BossPhase.Phase1:
+                //기본 추적 및 맨손공격
+                break;
+            case BossPhase.Phase2:
+                // 소환 및 속도 증가
+                break;
+            case BossPhase.Phase3:
+                // 부하 골렘, 공격 쿨타임 감소(아주 어렵게)
+                break;
+        }
     }
 
     private void Patrolling()
@@ -180,6 +232,17 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
         navMeshAgent.isStopped = false;
     }
+
+    public void EnableCollider()
+    {
+        boxCollider.enabled = true;
+    }
+
+    public void DisableCollider()
+    {
+        boxCollider.enabled = false;
+    }
+
 
     public Transform GetTransform()
     {

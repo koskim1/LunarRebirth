@@ -989,6 +989,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4535931661616125054, guid: 08904d7883aa9f042baad8c2dee6ac35,
         type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 1666293609}
+    - target: {fileID: 4535931661616125054, guid: 08904d7883aa9f042baad8c2dee6ac35,
+        type: 3}
       propertyPath: timeBetweenAttacks
       value: 1.5
       objectReference: {fileID: 0}
@@ -1000,7 +1005,7 @@ PrefabInstance:
     - target: {fileID: 7813686591248798078, guid: 08904d7883aa9f042baad8c2dee6ac35,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1996,6 +2001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655223831}
   - component: {fileID: 1655223832}
+  - component: {fileID: 1655223833}
   m_Layer: 14
   m_Name: AttackHitPoint
   m_TagString: Untagged
@@ -2039,6 +2045,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 0.6, z: 0.6}
   m_Center: {x: -0.025915263, y: -0.0000000064532366, z: 0.025909817}
+--- !u!114 &1655223833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655223830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1954a07cfb14183bc42c6951c560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1666293607
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,6 +2067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1666293608}
   - component: {fileID: 1666293609}
+  - component: {fileID: 1666293610}
   m_Layer: 14
   m_Name: AttackHitPoint
   m_TagString: Untagged
@@ -2092,6 +2111,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6, y: 0.6, z: 0.6}
   m_Center: {x: -0.057405386, y: -0.000000011005119, z: 0.0075680558}
+--- !u!114 &1666293610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666293607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1954a07cfb14183bc42c6951c560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1671914405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,6 +2168,7 @@ MonoBehaviour:
   spawnGolemPrefab: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 0
+  boxCollider: {fileID: 0}
 --- !u!65 &1671914407
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2374,8 +2406,13 @@ PrefabInstance:
     - target: {fileID: 2491026647172140826, guid: 2f43b993f3eaf14489c9160034e140c4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3618903481352615452, guid: 2f43b993f3eaf14489c9160034e140c4,
+        type: 3}
+      propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 1655223832}
     - target: {fileID: 3618903481352615452, guid: 2f43b993f3eaf14489c9160034e140c4,
         type: 3}
       propertyPath: timeBetweenAttacks
@@ -3872,12 +3909,12 @@ PrefabInstance:
     - target: {fileID: 1521541322271428187, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001702943
+      value: 0.00000001702943
       objectReference: {fileID: 0}
     - target: {fileID: 1521541322271428187, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000024613116
+      value: -0.0000000024613116
       objectReference: {fileID: 0}
     - target: {fileID: 1775150266676484154, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -4246,12 +4283,12 @@ PrefabInstance:
     - target: {fileID: 1780797386858438739, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008528705
+      value: -0.000000008528705
       objectReference: {fileID: 0}
     - target: {fileID: 1780797386858438739, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000011296418
+      value: 0.0000000011296418
       objectReference: {fileID: 0}
     - target: {fileID: 2597120609498565649, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}
