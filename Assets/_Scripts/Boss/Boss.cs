@@ -7,7 +7,9 @@ using UnityEngine.AI;
 
 public class Boss : MonoBehaviour, ILockOnTarget
 {
-    /*
+    /*    
+    11/04 TODO
+    UpdateBossBehaviorForPhase() 설정 마무리, 보스씬 마무리. 이제 컨텐츠 늘리고 사운드 넣고 마무리해야함
     
     HP기반 페이즈 별 패턴변화
 
@@ -22,8 +24,6 @@ public class Boss : MonoBehaviour, ILockOnTarget
     EnemyAttributesManager 붙여주고 , Layer설정 잊지말기
 
     ------------------------------
-    주말(11/02)까지 TODO
-
     1. 보스쪽
 
     락온시스템, 정찰, 추적, 공격까진 설정완료.
@@ -31,8 +31,6 @@ public class Boss : MonoBehaviour, ILockOnTarget
     페이즈 별 공격패턴 다양화
     소환수 잘 소환되는지 체크.
 
-    공격을 위한 손에만 콜라이더 넣어놨음. 이걸로 어떻게 할지 고민.
-    -> 데미지 애니메이션 이벤트로 일단 설정완료
     이제 플레이어가 데미지 입히게 설정하고
     페이즈별로 다양화 시키고
     2페이즈가면 소환수 나오는지 체크
