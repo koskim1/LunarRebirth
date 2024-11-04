@@ -55,7 +55,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
     [SerializeField] private int bossMaxHp = 2000;
     private int currentHp;
     [SerializeField] private int bossAtk = 40;
-    [SerializeField] private int bossMoveSpeed = 15;
+    //[SerializeField] private int bossMoveSpeed = 15;
 
     [Header("공격 및 탐색범위 설정")]
     public float attackRange = 5f;
@@ -64,8 +64,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
     public LayerMask playerLayerMask;
 
     //Attacking
-    [SerializeField]
-    private float timeBetweenAttacks = 1.1f;
+    private float timeBetweenAttacks = 1.5f;
     bool alreadyAttacked;
 
 
@@ -91,7 +90,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
     private void Awake()
     {
         currentHp = bossMaxHp;
-        currentBossPhase = BossPhase.Phase1;
+        currentBossPhase = BossPhase.WaitingToStart;
 
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -113,7 +112,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
     }
 
     private void CheckBossPhase()
-    {
+    {        
         if(currentHp > bossMaxHp * 0.65f)
         {
             SetPhase(BossPhase.Phase1);
@@ -139,16 +138,47 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void UpdateBossBehaviorForPhase()
     {
+        /*
+            페이즈 별 설정해줘야하는 것
+
+            1페이즈 = 기본 다가가기, 내려찍기
+            private int bossAtk = 40;
+            private int bossMoveSpeed = 15;
+            ----------------------------------------------
+            2페이즈 = 소환수 생성, 보스 공격력 증가
+            private int bossAtk = 50;
+            public GameObject spawnSkeletonPrefab;
+            ----------------------------------------------
+            3페이즈 = 미니골렘 생성, 보스 공격력 및 이동속도 완전 증가
+            private int bossAtk = 80;
+            private int bossMoveSpeed = 20;
+            public GameObject spawnGolemPrefab;
+        
+
+        여기선 그냥 기본적인 스탯만 건드리고 따로 함수 빼놔서
+        스켈레톤 소환같은거는 update문에서 페이즈일때 함수실행하도록 해야겠다.
+
+         */
         switch (currentBossPhase)
         {
             case BossPhase.Phase1:
                 //기본 추적 및 맨손공격
+                Debug.Log("페이즈 1");
+                bossAtk = 40;                
+                navMeshAgent.speed = 8f;
                 break;
             case BossPhase.Phase2:
                 // 소환 및 속도 증가
+                Debug.Log("페이즈 2");
+                bossAtk = 50;
+                navMeshAgent.speed = 12f;
                 break;
             case BossPhase.Phase3:
                 // 부하 골렘, 공격 쿨타임 감소(아주 어렵게)
+                Debug.Log("페이즈 3");
+                bossAtk = 80;
+                timeBetweenAttacks = 1.1f;
+                navMeshAgent.speed = 20f;
                 break;
         }
     }
