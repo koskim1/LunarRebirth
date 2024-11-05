@@ -178,7 +178,8 @@ public class PlayerController : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), 0.6f);
         }
-        transform.Translate(movement * _speed * Time.deltaTime, Space.World);
+        //transform.Translate(movement * _speed * Time.deltaTime, Space.World);
+        gameObject.GetComponent<Rigidbody>().velocity = movement * _speed;
     }
 
     // PC Ver
@@ -192,7 +193,8 @@ public class PlayerController : MonoBehaviour
             movement = cameraTransform.TransformDirection(movement);
             movement.y = 0f;
 
-            transform.Translate(movement * _speed * Time.deltaTime, Space.World);
+            //transform.Translate(movement * _speed * Time.deltaTime, Space.World);
+            gameObject.GetComponent<Rigidbody>().velocity = movement * _speed;
 
             // 이게 1버전 with out Ray
             if (movement != Vector3.zero)
