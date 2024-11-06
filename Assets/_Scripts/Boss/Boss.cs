@@ -4,7 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-
+public enum BossPhase
+{
+    WaitingToStart,
+    Phase1,
+    Phase2,
+    Phase3
+}
 public class Boss : MonoBehaviour, ILockOnTarget
 {
     /*    
@@ -26,14 +32,13 @@ public class Boss : MonoBehaviour, ILockOnTarget
     ------------------------------
     1. 보스쪽
 
-    락온시스템, 정찰, 추적, 공격까진 설정완료.
     (1) 이제 HP, 데미지 연동.
-    페이즈 별 공격패턴 다양화
     소환수 잘 소환되는지 체크.
 
-    이제 플레이어가 데미지 입히게 설정하고
-    페이즈별로 다양화 시키고
-    2페이즈가면 소환수 나오는지 체크
+    이제 플레이어가 데미지 받고, 입히게 설정하고, 
+    컷씬 만들어야함, 보스체력 UI설정
+
+
 
     2. 레벨업카드, 상점물품 추가. // 주말지나면 여기 주석 지우기
 
@@ -41,21 +46,16 @@ public class Boss : MonoBehaviour, ILockOnTarget
     폴리싱작업 꼭 하기. 소리효과 넣기. 찰떡인걸로
     */
 
-    public enum BossPhase
-    {
-        WaitingToStart,
-        Phase1,
-        Phase2,
-        Phase3
-    }
+
 
     public event System.Action Ondeath;
     
     [Header("보스 속성")]
     [SerializeField] private int bossMaxHp = 2000;
-    private int currentHp;
+    [SerializeField] private int currentHp;
     [SerializeField] private int bossAtk = 40;
-    //[SerializeField] private int bossMoveSpeed = 15;
+    // navMeshAgent속도로 보스속도 조절 중
+    // [SerializeField] private int bossMoveSpeed = 15;
 
     [Header("공격 및 탐색범위 설정")]
     public float attackRange = 5f;
@@ -64,7 +64,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
     public LayerMask playerLayerMask;
 
     //Attacking
-    private float timeBetweenAttacks = 1.5f;
+    private float timeBetweenAttacks = 2f;
     bool alreadyAttacked;
 
 
@@ -95,9 +95,14 @@ public class Boss : MonoBehaviour, ILockOnTarget
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player").transform;
+
+        StopBossMovement();
+        animator.SetTrigger("bossOpening");
+        Invoke(nameof(ActivateBossMovement), 2.3f);
     }
 
     public bool IsBoss { get { return true; } }
+    private bool isBossDead = false;
 
     private void Update()
     {
@@ -106,9 +111,9 @@ public class Boss : MonoBehaviour, ILockOnTarget
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, playerLayerMask);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, playerLayerMask);
          
-        if (!playerInSightRange && !playerInAttackRange) Patrolling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInSightRange && playerInAttackRange) AttackPlayer();
+        if (!playerInSightRange && !playerInAttackRange && !isBossDead) Patrolling();
+        if (playerInSightRange && !playerInAttackRange && !isBossDead) ChasePlayer();
+        if (playerInSightRange && playerInAttackRange && !isBossDead) AttackPlayer();
     }
 
     private void CheckBossPhase()
@@ -158,13 +163,15 @@ public class Boss : MonoBehaviour, ILockOnTarget
         여기선 그냥 기본적인 스탯만 건드리고 따로 함수 빼놔서
         스켈레톤 소환같은거는 update문에서 페이즈일때 함수실행하도록 해야겠다.
 
+        + 플레이어 데미지 받는거 수정이랑 보스 체력바 UI랑 데미지 입히게 만들어야함
+        UI는 컷씬 끝나고? SetActive하면 될듯
          */
         switch (currentBossPhase)
         {
             case BossPhase.Phase1:
                 //기본 추적 및 맨손공격
                 Debug.Log("페이즈 1");
-                bossAtk = 40;                
+                bossAtk = 1;                
                 navMeshAgent.speed = 8f;
                 break;
             case BossPhase.Phase2:
@@ -176,7 +183,8 @@ public class Boss : MonoBehaviour, ILockOnTarget
             case BossPhase.Phase3:
                 // 부하 골렘, 공격 쿨타임 감소(아주 어렵게)
                 Debug.Log("페이즈 3");
-                bossAtk = 80;
+                //bossAtk = 80;
+                bossAtk = 0; // 테스트
                 timeBetweenAttacks = 1.1f;
                 navMeshAgent.speed = 20f;
                 break;
@@ -185,6 +193,8 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void Patrolling()
     {
+        ActivateBossMovement();
+
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
@@ -196,6 +206,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
         if (distanceToWalk.magnitude < 1f)
             walkPointSet = false;
 
+        animator.SetBool("canChasePlayer", false);
     }
 
     private void SearchWalkPoint()
@@ -229,12 +240,14 @@ public class Boss : MonoBehaviour, ILockOnTarget
     {
         navMeshAgent.SetDestination(player.position);
         navMeshAgent.speed = 8f;
+
+        animator.SetBool("canChasePlayer", true);
     }
 
     private void AttackPlayer()
     {
         //navMeshAgent.SetDestination(transform.position);
-        navMeshAgent.isStopped = true;
+        StopBossMovement();
 
         Vector3 direction = (player.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -247,6 +260,17 @@ public class Boss : MonoBehaviour, ILockOnTarget
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }        
     }
+
+    public void TakeDamage(int damage)
+    {
+        currentHp -= damage;
+
+        if(currentHp <= 0)
+        {
+            Die();
+        }
+    }
+
 
     private void PerformBossAttack()
     {
@@ -271,6 +295,20 @@ public class Boss : MonoBehaviour, ILockOnTarget
         boxCollider.enabled = false;
     }
 
+    private void StopBossMovement()
+    {
+        navMeshAgent.isStopped = true;
+    }
+
+    private void ActivateBossMovement()
+    {
+        navMeshAgent.isStopped = false;
+    }
+
+    public int GetBossAtk()
+    {
+        return bossAtk;
+    }
 
     public Transform GetTransform()
     {
@@ -280,8 +318,24 @@ public class Boss : MonoBehaviour, ILockOnTarget
     private void Die()
     {
         // 보스 사망 로직
-
+        StopBossMovement();
         // OnDeath 이벤트 호출
+        Debug.Log("보스가 사망했습니다.");
+        if (isBossDead) return;
+        isBossDead = true;
+
+        StartCoroutine(DestroyAfterAnimation());
         Ondeath?.Invoke();
+    }
+
+    private IEnumerator DestroyAfterAnimation()
+    {
+        animator.SetBool("isDead", true);
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        navMeshAgent.speed = 0;
+        //healthBar.gameObject.SetActive(false);
+        yield return new WaitForSeconds(8f);
+
+        Destroy(gameObject);
     }
 }

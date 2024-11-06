@@ -41,6 +41,24 @@ public class Sword : MonoBehaviour
             _attributesManager.DealDamage(other.gameObject);
             _hitTimes[other.gameObject] = Time.time;
         }
+
+        var boss = other.GetComponent<Boss>();
+        if(boss != null)
+        {
+            if (_hitTimes.TryGetValue(other.gameObject, out var lastHitTime))
+            {
+                // 쿨다운 시간 내에 재충돌하면 무시
+                // 애니메이션이 검을 휘두르고 다시 올라올때 공격이 2번되던 현상 fix
+                if (Time.time - lastHitTime < _hitCooldown)
+                {
+                    Debug.Log("Cooldown in effect. Skipping damage.");
+                    return; // Cooldown 시간 내에 재충돌하면 무시
+                }
+            }
+            // 딕셔너리에 객체 추가 및 시간 업데이트.
+            boss.TakeDamage(PlayerAttributesManager.Instance._attack);
+            _hitTimes[other.gameObject] = Time.time;
+        }
     }
 
     private void OnTriggerExit(Collider other)

@@ -583,7 +583,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossMaxHp: 2000
   bossAtk: 40
-  bossMoveSpeed: 15
   attackRange: 5
   sightRange: 20
   playerLayerMask:
@@ -595,6 +594,7 @@ MonoBehaviour:
     type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
+  boxCollider: {fileID: 3259917245963344007}
 --- !u!65 &1066733300374390414
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1691,6 +1691,7 @@ Transform:
   - {fileID: 7406453420087865282}
   - {fileID: 3609127944625814934}
   - {fileID: 6447612553433999903}
+  - {fileID: 2451772880175609243}
   m_Father: {fileID: 2495561100285270148}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6077999526301956471
@@ -1729,6 +1730,72 @@ Transform:
   - {fileID: 3819002774072008921}
   m_Father: {fileID: 2963220153375455605}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6356747589080531636
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2451772880175609243}
+  - component: {fileID: 3259917245963344007}
+  - component: {fileID: 3698831152863312330}
+  m_Layer: 14
+  m_Name: AttackHitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2451772880175609243
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356747589080531636}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1501448697380098244}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3259917245963344007
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356747589080531636}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6, y: 0.6, z: 0.6}
+  m_Center: {x: -0.025915263, y: -0.0000000064532366, z: 0.025909817}
+--- !u!114 &3698831152863312330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356747589080531636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5ac1954a07cfb14183bc42c6951c560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6526071341210793719
 GameObject:
   m_ObjectHideFlags: 0
