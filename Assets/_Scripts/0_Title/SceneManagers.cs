@@ -7,7 +7,6 @@ public class SceneManagers : MonoBehaviour
 {
     public static SceneManagers Instance;
     private Animator animator;
-
     private void Awake()
     {
         if (Instance == null)
@@ -98,7 +97,8 @@ public class SceneManagers : MonoBehaviour
     {
         StartCoroutine(animatorOnOff());
         animator.SetTrigger("FadeOut");
-
+        GameManager.Instance.TogglePlayerMovement(false);
+        PlayerAttributesManager.Instance.gameObject.transform.position = new Vector3(0, 0, -18);
         LoadingSceneController.LoadScene("BossScene");
     }
 

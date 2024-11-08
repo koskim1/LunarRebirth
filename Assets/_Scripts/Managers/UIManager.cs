@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
+    public GameObject BossUI;
     private void Awake()
     {
         if(Instance == null)
@@ -17,5 +18,14 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if(BossUI != null)
+        {
+            BossUI.SetActive(false);
+        }
+    }
+
+    public void BossCinematicEnd()
+    {
+        BossUI.SetActive(true);
     }
 }

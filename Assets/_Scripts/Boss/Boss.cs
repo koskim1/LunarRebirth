@@ -31,13 +31,14 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     ------------------------------
     1. 보스쪽
-
-    (1) 이제 HP, 데미지 연동.
     소환수 잘 소환되는지 체크.
+    보스체력 UI설정
 
-    이제 플레이어가 데미지 받고, 입히게 설정하고, 
-    컷씬 만들어야함, 보스체력 UI설정
-
+    이유는 모르겠으나 
+            StopBossMovement();
+        animator.SetTrigger("bossOpening");
+        Invoke(nameof(ActivateBossMovement), 2.3f);
+    여기가 씹히는 느낌?
 
 
     2. 레벨업카드, 상점물품 추가. // 주말지나면 여기 주석 지우기
@@ -89,11 +90,16 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+
+    }
+
+    private void Start()
+    {
         currentHp = bossMaxHp;
         currentBossPhase = BossPhase.WaitingToStart;
 
-        animator = GetComponent<Animator>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player").transform;
 
         StopBossMovement();
@@ -143,29 +149,6 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void UpdateBossBehaviorForPhase()
     {
-        /*
-            페이즈 별 설정해줘야하는 것
-
-            1페이즈 = 기본 다가가기, 내려찍기
-            private int bossAtk = 40;
-            private int bossMoveSpeed = 15;
-            ----------------------------------------------
-            2페이즈 = 소환수 생성, 보스 공격력 증가
-            private int bossAtk = 50;
-            public GameObject spawnSkeletonPrefab;
-            ----------------------------------------------
-            3페이즈 = 미니골렘 생성, 보스 공격력 및 이동속도 완전 증가
-            private int bossAtk = 80;
-            private int bossMoveSpeed = 20;
-            public GameObject spawnGolemPrefab;
-        
-
-        여기선 그냥 기본적인 스탯만 건드리고 따로 함수 빼놔서
-        스켈레톤 소환같은거는 update문에서 페이즈일때 함수실행하도록 해야겠다.
-
-        + 플레이어 데미지 받는거 수정이랑 보스 체력바 UI랑 데미지 입히게 만들어야함
-        UI는 컷씬 끝나고? SetActive하면 될듯
-         */
         switch (currentBossPhase)
         {
             case BossPhase.Phase1:
@@ -193,7 +176,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void Patrolling()
     {
-        ActivateBossMovement();
+        //ActivateBossMovement();
 
         if (!walkPointSet) SearchWalkPoint();
 
@@ -282,7 +265,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
         animator.SetBool("canAttack", false);
         alreadyAttacked = false;
 
-        navMeshAgent.isStopped = false;
+        ActivateBossMovement();
     }
 
     public void EnableCollider()
@@ -295,12 +278,12 @@ public class Boss : MonoBehaviour, ILockOnTarget
         boxCollider.enabled = false;
     }
 
-    private void StopBossMovement()
+    public void StopBossMovement()
     {
         navMeshAgent.isStopped = true;
     }
 
-    private void ActivateBossMovement()
+    public void ActivateBossMovement()
     {
         navMeshAgent.isStopped = false;
     }
