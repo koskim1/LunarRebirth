@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
+    private PlayerController playerController;
     private void Awake()
     {
         if (Instance == null)
@@ -17,6 +17,19 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    public void SetPlayerController(PlayerController controller)
+    {
+        playerController = controller;
+    }
+
+    public void TogglePlayerMovement(bool canMove)
+    {
+        if (playerController != null)
+        {
+            Debug.Log("플레이어 TogglePlayerMovement");
+            playerController.SetCanMove(canMove);
+        }
     }
 }

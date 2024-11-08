@@ -32,14 +32,18 @@ public class PlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Awake()
-    {
+    {        
         isPc = true;
         canMove = false;
         _originalSpeed = _speed;        
         cameraTransform = Camera.main.transform;
 
         lockOn = GetComponent<LockOn>();
-        playerAnimator = GetComponent<Animator>();
+        playerAnimator = GetComponent<Animator>();        
+    }
+    private void Start()
+    {
+        GameManager.Instance.SetPlayerController(this);
     }
 
     private void OnEnable()
@@ -243,5 +247,10 @@ public class PlayerController : MonoBehaviour
     {
         bool isActive = minimap.activeSelf;
         minimap.SetActive(!isActive);
+    }
+
+    public void SetCanMove(bool value)
+    {
+        canMove = value;
     }
 }

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,9 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public static CameraFollow Instance;
+
+    private Camera mainCamera;
+    private CinemachineBrain cinemachineBrain;
 
     public Transform target;
     public float smoothTime = 0.3f;
@@ -18,9 +22,12 @@ public class CameraFollow : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-        }else if(Instance != null)
+            mainCamera = Camera.main;
+            cinemachineBrain = mainCamera.GetComponentInChildren<CinemachineBrain>();
+        }
+        else if(Instance != null)
         {
-            Destroy(gameObject);
+            Destroy(gameObject);    
         }
 
         if(target == null)
