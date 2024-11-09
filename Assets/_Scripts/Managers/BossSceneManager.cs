@@ -14,8 +14,10 @@ public class BossSceneManager : MonoBehaviour
     void Awake()
     {
         Debug.Log("보스씬 매니져 Start부분");
-        boss.StopBossMovement();        
-        if(bossSceneTimeline != null)
+        boss.StopBossMovement();
+        GameManager.Instance.TogglePlayerMovement(false);
+
+        if (bossSceneTimeline != null)
         {
             Debug.Log("플레이부분");
             bossSceneTimeline.Play();
@@ -39,10 +41,11 @@ public class BossSceneManager : MonoBehaviour
 
     public void BossCinematicEnd()
     {
-        UIManager.Instance.BossUI.SetActive(true);
+        UIManager.Instance.BossUI.SetActive(true);  
         GameManager.Instance.TogglePlayerMovement(true);
         GolemBoss.SetActive(true);
         boss.ActivateBossMovement();
+        boss.SetBossHealth();
         openingBoss.SetActive(false);        
         Debug.Log("보스씨네마틱 끝");
     }

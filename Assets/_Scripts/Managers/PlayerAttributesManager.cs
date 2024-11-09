@@ -131,6 +131,7 @@ public class PlayerAttributesManager : AttributesManager
     protected override void Die()
     {
         StartCoroutine(animatorOnOff());
+        UIManager.Instance.BossUI.SetActive(false);
         _playerAnimation.Dead();
     }
 

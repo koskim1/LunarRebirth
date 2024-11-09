@@ -33,12 +33,8 @@ public class Boss : MonoBehaviour, ILockOnTarget
     1. 보스쪽
     소환수 잘 소환되는지 체크.
     보스체력 UI설정
-
-    이유는 모르겠으나 
-            StopBossMovement();
-        animator.SetTrigger("bossOpening");
-        Invoke(nameof(ActivateBossMovement), 2.3f);
-    여기가 씹히는 느낌?
+    
+    UI연결 잊지말기 소환수 2페이즈 작업하고 끝내기.
 
 
     2. 레벨업카드, 상점물품 추가. // 주말지나면 여기 주석 지우기
@@ -88,11 +84,13 @@ public class Boss : MonoBehaviour, ILockOnTarget
     [SerializeField]
     private BoxCollider boxCollider;
 
+    private BossHealthBar bossHealthBar;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-
+        bossHealthBar = FindAnyObjectByType<BossHealthBar>();
     }
 
     private void Start()
@@ -145,6 +143,16 @@ public class Boss : MonoBehaviour, ILockOnTarget
             currentBossPhase = phase;
             UpdateBossBehaviorForPhase();
         }
+    }
+
+    public void SetBossHealth()
+    {
+        bossHealthBar.SetMaxHealth(bossMaxHp);
+    }
+
+    public void UpdateBossHealth()
+    {
+        bossHealthBar.SetHealth(currentHp);
     }
 
     private void UpdateBossBehaviorForPhase()
@@ -245,10 +253,11 @@ public class Boss : MonoBehaviour, ILockOnTarget
     }
 
     public void TakeDamage(int damage)
-    {
+    {        
         currentHp -= damage;
+        UpdateBossHealth();
 
-        if(currentHp <= 0)
+        if (currentHp <= 0)
         {
             Die();
         }
@@ -302,6 +311,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
     {
         // 보스 사망 로직
         StopBossMovement();
+        UIManager.Instance.BossUI.SetActive(false);
         // OnDeath 이벤트 호출
         Debug.Log("보스가 사망했습니다.");
         if (isBossDead) return;

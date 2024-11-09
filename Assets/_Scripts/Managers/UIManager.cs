@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -22,10 +24,6 @@ public class UIManager : MonoBehaviour
         {
             BossUI.SetActive(false);
         }
-    }
-
-    public void BossCinematicEnd()
-    {
-        BossUI.SetActive(true);
+        
     }
 }
