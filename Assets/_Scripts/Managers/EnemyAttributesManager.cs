@@ -74,7 +74,10 @@ public class EnemyAttributesManager : AttributesManager, ILockOnTarget
         // MLP소울 생성 ( 상점기능 위해 )
         SpawnMLPSoul();
 
-        currentRoom.OnEnemyKilled(gameObject);
+        if(currentRoom != null)
+        {
+            currentRoom.OnEnemyKilled(gameObject);
+        }        
         Ondeath?.Invoke();
         isDead = true;
 
