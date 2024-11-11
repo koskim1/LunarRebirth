@@ -31,10 +31,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     ------------------------------
     1. 보스쪽
-    소환수 잘 소환되는지 체크.
-    보스체력 UI설정
-    
-    UI연결 잊지말기 소환수 2페이즈 작업하고 끝내기.
+    2페이즈 소환수 작업
 
 
     2. 레벨업카드, 상점물품 추가. // 주말지나면 여기 주석 지우기
@@ -64,11 +61,6 @@ public class Boss : MonoBehaviour, ILockOnTarget
     private float timeBetweenAttacks = 2f;
     bool alreadyAttacked;
 
-
-    [Header("소환관련")]
-    public GameObject spawnSkeletonPrefab;
-    public GameObject spawnGolemPrefab;
-
     [Header("Patroling")]
     //Patroling
     public Vector3 walkPoint;
@@ -85,12 +77,14 @@ public class Boss : MonoBehaviour, ILockOnTarget
     private BoxCollider boxCollider;
 
     private BossHealthBar bossHealthBar;
+    private BossMinionSpawn bossMinionSpawn;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
         bossHealthBar = FindAnyObjectByType<BossHealthBar>();
+        bossMinionSpawn = FindAnyObjectByType<BossMinionSpawn>();
     }
 
     private void Start()
@@ -170,6 +164,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
                 Debug.Log("페이즈 2");
                 bossAtk = 50;
                 navMeshAgent.speed = 12f;
+                SpawnMinions();
                 break;
             case BossPhase.Phase3:
                 // 부하 골렘, 공격 쿨타임 감소(아주 어렵게)
@@ -260,6 +255,14 @@ public class Boss : MonoBehaviour, ILockOnTarget
         if (currentHp <= 0)
         {
             Die();
+        }
+    }
+
+    private void SpawnMinions()
+    {
+        foreach(Transform spawnPoint in bossMinionSpawn.spawnPoints)
+        {
+            Instantiate(bossMinionSpawn.skeletonPrefab, spawnPoint.position, Quaternion.identity);
         }
     }
 

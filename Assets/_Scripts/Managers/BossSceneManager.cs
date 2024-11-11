@@ -42,7 +42,7 @@ public class BossSceneManager : MonoBehaviour
     public void BossCinematicEnd()
     {
         UIManager.Instance.BossUI.SetActive(true);  
-        GameManager.Instance.TogglePlayerMovement(true);
+        GameManager.Instance.TogglePlayerMovement(true);              
         GolemBoss.SetActive(true);
         boss.ActivateBossMovement();
         boss.SetBossHealth();
