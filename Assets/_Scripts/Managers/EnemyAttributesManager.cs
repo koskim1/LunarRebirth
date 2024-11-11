@@ -15,6 +15,7 @@ public class EnemyAttributesManager : AttributesManager, ILockOnTarget
 
     private EnemyAI enemyAI;
 
+    public bool isBossGateKeeper = false;
     private float damageReduction = 0.5f;
 
     // Start is called before the first frame update
@@ -77,7 +78,13 @@ public class EnemyAttributesManager : AttributesManager, ILockOnTarget
         if(currentRoom != null)
         {
             currentRoom.OnEnemyKilled(gameObject);
-        }        
+        }
+
+        if (isBossGateKeeper)
+        {
+            StartCoroutine(WaitForGoingBossRoomText());
+        }
+
         Ondeath?.Invoke();
         isDead = true;
 
@@ -103,6 +110,19 @@ public class EnemyAttributesManager : AttributesManager, ILockOnTarget
                 soulToMLP.mlpValue = enemyAI.mlpValue;
             }
         }
+    }
+
+    public IEnumerator WaitForGoingBossRoomText()
+    {
+        UIManager.Instance.GoingToBossRoomText.SetActive(true);
+        yield return new WaitForSeconds(8f);
+        BossGateKeeperDead();
+    }
+
+    public void BossGateKeeperDead()
+    {
+        SceneManagers.Instance.LoadBossRoom();
+        UIManager.Instance.GoingToBossRoomText.SetActive(false);
     }
 
     public bool IsBoss { get { return false; } }

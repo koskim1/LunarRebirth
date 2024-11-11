@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public GameObject BossUI;
+    public GameObject GoingToBossRoomText;
     private void Awake()
     {
         if(Instance == null)
@@ -24,6 +25,9 @@ public class UIManager : MonoBehaviour
         {
             BossUI.SetActive(false);
         }
-        
+        if(GoingToBossRoomText != null)
+        {
+            GoingToBossRoomText.SetActive(false);
+        }
     }
 }

@@ -2327,6 +2327,8 @@ MonoBehaviour:
   FloatingTextPrefab: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,
     type: 3}
   currentRoom: {fileID: 0}
+  SoulPrefab: {fileID: 0}
+  isBossGateKeeper: 1
 --- !u!114 &2968138822936112376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2346,7 +2348,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 2048
-  enemyType: 0
+  enemyType: 1
   fireballPrefab: {fileID: 0}
   firePoint: {fileID: 0}
   fireballSpeed: 20
@@ -2358,6 +2360,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   isShielding: 0
+  mlpValue: 0
 --- !u!1 &6714125053197327506
 GameObject:
   m_ObjectHideFlags: 0

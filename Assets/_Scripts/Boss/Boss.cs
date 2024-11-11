@@ -78,6 +78,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private BossHealthBar bossHealthBar;
     private BossMinionSpawn bossMinionSpawn;
+    private Coroutine spawnMinionsCoroutine;
 
     private void Awake()
     {
@@ -165,14 +166,16 @@ public class Boss : MonoBehaviour, ILockOnTarget
                 bossAtk = 50;
                 navMeshAgent.speed = 12f;
                 SpawnMinions();
+                StartSpawnMinionsCoroutine();
                 break;
             case BossPhase.Phase3:
                 // 부하 골렘, 공격 쿨타임 감소(아주 어렵게)
                 Debug.Log("페이즈 3");
-                //bossAtk = 80;
-                bossAtk = 0; // 테스트
+                bossAtk = 80;
+                //bossAtk = 0; // 테스트
                 timeBetweenAttacks = 1.1f;
                 navMeshAgent.speed = 20f;
+                StopSpawnMinionsCoroutine();
                 break;
         }
     }
@@ -266,6 +269,37 @@ public class Boss : MonoBehaviour, ILockOnTarget
         }
     }
 
+    private IEnumerator SpawnMinionsBySeconds()
+    {
+        yield return new WaitForSeconds(6f);
+        while (true)
+        {
+            List<Transform> spawnPoints = new List<Transform>(bossMinionSpawn.spawnPoints);
+            int numSpawnPoints = Random.Range(3, 5);
+
+            for(int i=0; i < numSpawnPoints; i++)
+            {
+                int randomIndex = Random.Range(0, spawnPoints.Count);
+                Instantiate(bossMinionSpawn.skeletonPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+            }
+            // 난이도 조절 테스트 해봐야하긴 함.
+            yield return new WaitForSeconds(8f);
+        }
+    }
+
+    private void StartSpawnMinionsCoroutine()
+    {
+        spawnMinionsCoroutine = StartCoroutine(SpawnMinionsBySeconds());
+    }
+
+    private void StopSpawnMinionsCoroutine()
+    {
+        if (spawnMinionsCoroutine != null)
+        {
+            StopCoroutine(spawnMinionsCoroutine);
+            spawnMinionsCoroutine = null;
+        }
+    }
 
     private void PerformBossAttack()
     {
