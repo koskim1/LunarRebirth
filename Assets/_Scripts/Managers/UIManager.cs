@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject BossUI;
     public GameObject GoingToBossRoomText;
+    public GameObject AfterBossDeadText;
     private void Awake()
     {
         if(Instance == null)
@@ -28,6 +29,10 @@ public class UIManager : MonoBehaviour
         if(GoingToBossRoomText != null)
         {
             GoingToBossRoomText.SetActive(false);
+        }
+        if(AfterBossDeadText != null)
+        {
+            AfterBossDeadText.SetActive(false);
         }
     }
 }

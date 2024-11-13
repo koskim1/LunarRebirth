@@ -72,6 +72,8 @@ public class PlayerAttributesManager : AttributesManager
         currentMLP = 0;
         previousMLP = 0;
         displayedMLP = 0;
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(_health);
     }
 
     // Start is called before the first frame update

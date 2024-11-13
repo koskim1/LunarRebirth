@@ -35,6 +35,8 @@ public class SceneManagers : MonoBehaviour
         {
             CameraFollow.Instance.gameObject.SetActive(false);
             UIManager.Instance.gameObject.SetActive(false);
+            Destroy(CameraFollow.Instance.gameObject);
+            Destroy(UIManager.Instance.gameObject);
         }
 
         if(PlayerAttributesManager.Instance != null)
@@ -42,6 +44,17 @@ public class SceneManagers : MonoBehaviour
             PlayerAttributesManager.Instance.ResetPlayerAttribute();
             PlayerAttributesManager.Instance.UpdateXPUI();
             PlayerAttributesManager.Instance.UpdateMLPUI(PlayerAttributesManager.Instance.previousMLP =0, PlayerAttributesManager.Instance.currentMLP =0);
+            Destroy(PlayerAttributesManager.Instance.gameObject);
+        }
+
+        if(DialogueManager.Instance != null)
+        {
+            Destroy(DialogueManager.Instance.gameObject);
+        }
+
+        if(GameManager.Instance != null)
+        {
+            Destroy(GameManager.Instance.gameObject);
         }
 
         LoadingSceneController.LoadScene("MainStory");

@@ -46,7 +46,7 @@ public class LockOn : MonoBehaviour
         if (isFindTarget && currentTarget != null)
         {
             if (isTargetRange())
-            {
+            {                
                 LookAtTarget();
 
                 // 플레이어 입력에 따라 enemyCam의 카메라가 회전하도록 설정

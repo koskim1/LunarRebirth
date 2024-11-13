@@ -29,6 +29,8 @@ public class MainStoryIntro : MonoBehaviour
 
         }
         LoadingSceneController.LoadScene("MainRoom");
+
+        //SceneManager.LoadScene("MainRoom");
     }
 
 }

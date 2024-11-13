@@ -23,7 +23,7 @@ public class CameraFollow : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             mainCamera = Camera.main;
-            cinemachineBrain = mainCamera.GetComponentInChildren<CinemachineBrain>();
+            cinemachineBrain = mainCamera.GetComponentInChildren<CinemachineBrain>();            
         }
         else if(Instance != null)
         {

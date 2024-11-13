@@ -18,13 +18,11 @@ public class MainMenu : MonoBehaviour
     public GameObject optionMenu;
     
     void Awake()
-    {
-        SceneManagers sceneManager = SceneManagers.Instance;
-
-        startGameBtn.onClick.AddListener(sceneManager.LoadIntroScene);
+    {                
+        //startGameBtn.onClick.AddListener(SceneManagers.Instance.LoadIntroScene);
         optionBtn.onClick.AddListener(OpenOptionMenu);
         quitBtn.onClick.AddListener(Application.Quit);
-        continueBtn.onClick.AddListener(sceneManager.LoadMainRoom);
+        //continueBtn.onClick.AddListener(SceneManagers.Instance.LoadMainRoom);
     }
 
     private void OpenOptionMenu()

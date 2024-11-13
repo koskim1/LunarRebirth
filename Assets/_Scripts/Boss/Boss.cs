@@ -349,6 +349,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
         // 보스 사망 로직
         StopBossMovement();
         UIManager.Instance.BossUI.SetActive(false);
+        UIManager.Instance.AfterBossDeadText.SetActive(true);
         // OnDeath 이벤트 호출
         Debug.Log("보스가 사망했습니다.");
         if (isBossDead) return;
@@ -367,5 +368,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
         yield return new WaitForSeconds(8f);
 
         Destroy(gameObject);
+        UIManager.Instance.AfterBossDeadText.SetActive(false);
+        SceneManagers.Instance.LoadTitleScene();
     }
 }
