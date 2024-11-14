@@ -9727,7 +9727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attractionRange: 6
   moveSpeed: 8
-  mlpValue: 0
+  mlpValue: 1000
 --- !u!1 &7585298190900689342
 GameObject:
   m_ObjectHideFlags: 0

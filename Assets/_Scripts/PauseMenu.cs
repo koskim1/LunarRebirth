@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(true);
         optionMenu.SetActive(false);
+        Cursor.visible = true;
         Time.timeScale = 0f;
         isPaused = true;
     }
@@ -49,6 +50,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         optionMenu.SetActive(false);
+        Cursor.visible = false;
         Time.timeScale = 1f;
         isPaused = false;
     }
@@ -56,6 +58,7 @@ public class PauseMenu : MonoBehaviour
     public void GoToMainMenu()
     {
         ResumeGame();
+        Cursor.visible = true;
         SceneManagers.Instance.LoadTitleScene();       
     }
 

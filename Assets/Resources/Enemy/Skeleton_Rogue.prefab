@@ -2048,6 +2048,7 @@ MonoBehaviour:
   playerInSightRange: 0
   playerInAttackRange: 0
   isShielding: 0
+  mlpValue: 0
 --- !u!114 &2980832280677175825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2081,6 +2082,9 @@ MonoBehaviour:
   FloatingTextPrefab: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,
     type: 3}
   currentRoom: {fileID: 0}
+  SoulPrefab: {fileID: 5617639446734794196, guid: bb903a010960937488e2bd1deedfd710,
+    type: 3}
+  isBossGateKeeper: 0
 --- !u!1 &7509854068205861750
 GameObject:
   m_ObjectHideFlags: 0

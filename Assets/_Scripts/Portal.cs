@@ -7,18 +7,11 @@ public class Portal : MonoBehaviour
 {
     public static Portal Instance;
 
-    private SceneManagers sceneManagers;
-
-    private void Awake()
-    {
-        sceneManagers = GameObject.Find("SceneManager").GetComponent<SceneManagers>();
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            sceneManagers.LoadDungeon();
+            SceneManagers.Instance.LoadDungeon();            
         }
     }
 }

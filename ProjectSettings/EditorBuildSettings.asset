@@ -9,12 +9,6 @@ EditorBuildSettings:
     path: Assets/_0Scenes/TitleScene.unity
     guid: 27445a29d505a954bb7ea33cbf7a632c
   - enabled: 1
-    path: Assets/_0Scenes/LoadingScene.unity
-    guid: 62a57171866f870408677134ce09d600
-  - enabled: 1
-    path: Assets/_0Scenes/MainStory.unity
-    guid: cd7f932c85ca22e4e91df5595fb0b3ae
-  - enabled: 1
     path: Assets/_0Scenes/MainRoom.unity
     guid: 009bc2a32bb51e5449b7023d97b1e0ee
   - enabled: 1
@@ -23,6 +17,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_0Scenes/BossScene.unity
     guid: 48a25a81b1e7a32488d8ae14b62c9e4d
+  - enabled: 1
+    path: Assets/_0Scenes/MainStory.unity
+    guid: cd7f932c85ca22e4e91df5595fb0b3ae
+  - enabled: 1
+    path: Assets/_0Scenes/LoadingScene.unity
+    guid: 62a57171866f870408677134ce09d600
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 52b7b2b201156e149b5243347341979a,
       type: 2}

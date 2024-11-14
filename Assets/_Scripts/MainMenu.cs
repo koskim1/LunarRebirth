@@ -6,6 +6,10 @@ using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
+    public static MainMenu Instance;
+
+    public GameObject MainMenuUI;
+    //public GameObject InGameUI;
     public Button startGameBtn;
     //public Button goBackToGameBtn;
     public Button optionBtn;
@@ -18,14 +22,47 @@ public class MainMenu : MonoBehaviour
     public GameObject optionMenu;
     
     void Awake()
-    {                
-        //startGameBtn.onClick.AddListener(SceneManagers.Instance.LoadIntroScene);
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        
+        if (startGameBtn != null)
+        {
+            Debug.Log("startGameBtn != null");
+            startGameBtn.onClick.AddListener(SceneManagers.Instance.LoadIntroScene);
+        }
+        
         optionBtn.onClick.AddListener(OpenOptionMenu);
         quitBtn.onClick.AddListener(Application.Quit);
-        //continueBtn.onClick.AddListener(SceneManagers.Instance.LoadMainRoom);
+        continueBtn.onClick.AddListener(SceneManagers.Instance.LoadMainRoom);
+
+        //UIManager.Instance.gameObject.SetActive(false);
+        continueBtn.gameObject.SetActive(false);
     }
 
-    private void OpenOptionMenu()
+    private void Update()
+    {
+        if(PlayerAttributesManager.Instance != null)
+        {
+            if(PlayerAttributesManager.Instance.deathCount != 0)
+            {
+                continueBtn.gameObject.SetActive(true);
+            }
+            else
+            {
+                continueBtn.gameObject.SetActive(false);
+            }
+        }   
+    }
+
+    public void OpenOptionMenu()
     {
         mainMenu.SetActive(false);
         optionMenu.SetActive(true);
@@ -35,6 +72,11 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.SetActive(true);
         optionMenu.SetActive(false);
+    }
+
+    public void QuitBtn()
+    {
+        Application.Quit();
     }
 
     public void SetVolume(float volume)

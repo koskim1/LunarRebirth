@@ -2845,8 +2845,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.70316875
-      value: 0.59922385
+      time: 0.74067485
+      value: 0.5874288
       inSlope: 1.1853312
       outSlope: 1.1853312
       tangentMode: 0
@@ -2854,8 +2854,8 @@ MonoBehaviour:
       inWeight: 0.33333334
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
-      value: 1
+      time: 1.0874939
+      value: 0.70754623
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2933,10 +2933,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3618865
+  m_Radius: 0.50531304
   m_Height: 1.5034773
   m_Direction: 1
-  m_Center: {x: 0.07616985, y: 0.6945851, z: 0.06194365}
+  m_Center: {x: 0.03823129, y: 0.69458514, z: 0.08885173}
 --- !u!114 &2830208738742086459
 MonoBehaviour:
   m_ObjectHideFlags: 0

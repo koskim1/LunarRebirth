@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -6,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class SceneManagers : MonoBehaviour
 {
     public static SceneManagers Instance;
-    private Animator animator;
+
+    public Animator animator;
     private void Awake()
     {
         if (Instance == null)
@@ -21,10 +23,10 @@ public class SceneManagers : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
-    private IEnumerator animatorOnOff()
+    public IEnumerator animatorOnOff()
     {
         animator.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0f);
+        yield return null;
         animator.gameObject.SetActive(true);
     }
 
@@ -57,7 +59,8 @@ public class SceneManagers : MonoBehaviour
             Destroy(GameManager.Instance.gameObject);
         }
 
-        LoadingSceneController.LoadScene("MainStory");
+        MainMenu.Instance.MainMenuUI.SetActive(false);
+        LoadingSceneController.LoadScene("MainStory");        
         animator.SetTrigger("FadeOut");
     }
 
@@ -66,15 +69,11 @@ public class SceneManagers : MonoBehaviour
         StartCoroutine(animatorOnOff());
         Time.timeScale = 1f;
         LoadingSceneController.LoadScene("MainRoom");
+        MainMenu.Instance.MainMenuUI.SetActive(false);
         animator.SetTrigger("FadeOut");
-        //GameObject player = GameObject.FindGameObjectWithTag("Player");
-        //if(player != null)
-        //{
-        //    player.transform.position = new Vector3(0, 10f, -13f);
-        //    PlayerAttributesManager.Instance._health = PlayerAttributesManager.Instance.maxHealth;
-        //}
 
         // 씬 로드 후에 Player 초기화
+        PlayerAttributesManager.Instance.transform.position = new Vector3(0, 0, -13f);
         StartCoroutine(InitializePlayer());
 
     }
@@ -84,12 +83,8 @@ public class SceneManagers : MonoBehaviour
         StartCoroutine(animatorOnOff());
         LoadingSceneController.LoadScene("GameScene");
         animator.SetTrigger("FadeOut");
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            player.transform.position = new Vector3(0, 0f, -10f);
-        }
+        
+        PlayerAttributesManager.Instance.transform.position = new Vector3(0, 0, -10f);
     }
 
     public void LoadTitleScene()
@@ -102,7 +97,8 @@ public class SceneManagers : MonoBehaviour
         {
             PlayerAttributesManager.Instance.gameObject.SetActive(false);
         }
-
+        MainMenu.Instance.MainMenuUI.SetActive(true);
+        //UIManager.Instance.gameObject.SetActive(false);
         LoadingSceneController.LoadScene("TitleScene");
     }
 
