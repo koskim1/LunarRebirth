@@ -134,8 +134,13 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(_slowDuration);
         Time.timeScale = 1f;
     }
+    // ----------------------------------------------------------------------------------------------
 
-
+    public void AddSpeed(float amount)
+    {
+        _speed += amount;
+        _originalSpeed = _speed;
+    }
 
     // ----------------------------------------------------------------------------------------------
     // Update is called once per frame

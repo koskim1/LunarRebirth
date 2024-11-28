@@ -24,6 +24,7 @@ public class PlayerAttributesManager : AttributesManager
     private UIManager uiManager;
     private Sword _sword;
 
+    public float defense = 1f;
     public int currentLevel = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 100;
@@ -31,7 +32,8 @@ public class PlayerAttributesManager : AttributesManager
     public int currentMLP = 0;
     public int previousMLP = 0;
     private int displayedMLP = 0;
-
+    private bool isHealthRecoveryActive = false;
+    private int healthRecoveryAmount = 0;
     private List<ShopItem> purchasedItems = new List<ShopItem>();   // 구매한 아이템 목록
     private void Awake()
     {
@@ -67,6 +69,7 @@ public class PlayerAttributesManager : AttributesManager
         base._health = 100;
         base._attack = 20;
         base._xp = 20;
+        defense = 1f;
         currentLevel = 0;
         currentXP = 0;
         xpToNextLevel = 10;
@@ -74,6 +77,8 @@ public class PlayerAttributesManager : AttributesManager
         currentMLP = 0;
         previousMLP = 0;
         displayedMLP = 0;
+        healthRecoveryAmount = 0;
+        isHealthRecoveryActive = false;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(_health);
         _sword.transform.localScale = new Vector3(1, 1, 1);
@@ -129,7 +134,7 @@ public class PlayerAttributesManager : AttributesManager
     // Damage부분
     public override void TakeDamage(int damage)
     {
-        base.TakeDamage(damage);
+        base.TakeDamage(Mathf.RoundToInt(damage * defense));
         healthBar.SetHealth(_health);
     }
 
@@ -195,16 +200,27 @@ public class PlayerAttributesManager : AttributesManager
         switch (card.CardName)
         {
             #region Common등급
-            case "Health1":
+            case "Health I":
                 IncreaseStat("health", 15);
                 break;
-            case "Strength":
+            case "Strength I":
                 IncreaseStat("attack", 5);
                 break;
             case "Range":
                 Vector3 currentScale = _sword.transform.localScale;
                 currentScale.y += 0.1f;
                 _sword.transform.localScale = currentScale;
+                break;
+            case "Defense I":
+                defense -= 0.03f;
+                break;
+            case "Recovery I":
+                healthRecoveryAmount += 1;
+                if (!isHealthRecoveryActive)
+                { StartCoroutine(HealthRecovery()); }                
+                break;
+            case "Speed I":
+                _playerController.AddSpeed(0.5f);
                 break;
             #endregion
 
@@ -215,12 +231,20 @@ public class PlayerAttributesManager : AttributesManager
             case "SlowDash":
                 _playerController.CanSlowDash();
                 break;
+            case "Recovery II":
+                healthRecoveryAmount += 5;
+                if (!isHealthRecoveryActive)
+                { StartCoroutine(HealthRecovery()); }
+                break;
+            #endregion
+
+                #region Epic등급
+
                 #endregion
 
-            #region Epic등급
-            #endregion
-            #region Legendary등급
-            #endregion
+                #region Legendary등급
+
+                #endregion
 
         }
     }
@@ -240,10 +264,21 @@ public class PlayerAttributesManager : AttributesManager
                 healthBar.SetMaxHealth(maxHealth);
                 healthBar.SetHealth(maxHealth);
                 break;
-            case "intelligence":
-                // 예시로 지능 추가
-                break;
         }
+    }
+
+    private IEnumerator HealthRecovery()
+    {
+        isHealthRecoveryActive = true;
+
+        while (isHealthRecoveryActive)
+        {
+            _health = Mathf.Min(_health + healthRecoveryAmount, maxHealth);
+            healthBar.SetHealth(_health);
+            Debug.Log($"체력이 {healthRecoveryAmount}만큼 회복되었습니다. 현재 체력 : {_health}/{maxHealth}");
+            yield return new WaitForSeconds(10f);
+        }
+
     }
 
     public void UpdateXPUI()
