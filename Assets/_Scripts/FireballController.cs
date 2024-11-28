@@ -9,8 +9,8 @@ public class FireballController : MonoBehaviour
 
     private Fireball fireball;
 
-    // 테스트중
-    private bool canShootFireball = true;
+
+    private bool canShootFireball = false;
     private float shootSpeed = 17f;
     // Start is called before the first frame update
     void Start()

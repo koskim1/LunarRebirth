@@ -67,8 +67,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Health
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56bcd057abbe8d24ba7ef30ea021a7d3, type: 2}
+  m_sharedMaterial: {fileID: -2391555956172390876, guid: 56bcd057abbe8d24ba7ef30ea021a7d3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -393,7 +394,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000078678, y: -41}
+  m_AnchoredPosition: {x: -3.5000079, y: -43}
   m_SizeDelta: {x: 152.5347, y: 29.322}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1660986002049778041
@@ -426,8 +427,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: Common
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 56bcd057abbe8d24ba7ef30ea021a7d3, type: 2}
+  m_sharedMaterial: {fileID: -2391555956172390876, guid: 56bcd057abbe8d24ba7ef30ea021a7d3,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -558,10 +560,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Increase your MaxHealth +15
+  m_text: "Increase your MaxHealth +15\n\uD14C\uC2A4\uD2B8"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 70d6a91c45da2a54b95fbaf09afb6f25, type: 2}
+  m_sharedMaterial: {fileID: -9042160708334518741, guid: 70d6a91c45da2a54b95fbaf09afb6f25,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

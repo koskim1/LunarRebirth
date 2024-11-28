@@ -15,17 +15,17 @@ public class CardGenerator
     {
         float randomValue = Random.Range(0f, 100f);
 
-        if(randomValue < 70f)
+        if(randomValue < 60f)
         {
             if (cardCollection.CommonCards.Count == 0) throw new System.Exception("No Common Cards");
             return cardCollection.CommonCards[Random.Range(0, cardCollection.CommonCards.Count)];
         }
-        else if(randomValue < 90f)
+        else if(randomValue < 85f)
         {
             if (cardCollection.RareCards.Count == 0) throw new System.Exception("No RareCards Cards");
             return cardCollection.RareCards[Random.Range(0, cardCollection.RareCards.Count)];
         }
-        else if(randomValue < 99f)
+        else if(randomValue < 98f)
         {
             if (cardCollection.EpicCards.Count == 0) throw new System.Exception("No EpicCards Cards");
             return cardCollection.EpicCards[Random.Range(0, cardCollection.EpicCards.Count)];

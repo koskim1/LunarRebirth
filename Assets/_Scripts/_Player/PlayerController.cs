@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour
     private bool _lockOn = false;
 
     private float _originalSpeed;
-    private float _speed = 8f;
-    private float _dashSpeed = 20f;
+    [SerializeField]private float _speed = 8f;
+    [SerializeField]private float _dashSpeed = 20f;
     private float _dashDuration = 0.15f;
     private float _slowDuration = 0.35f;
     private float _slowTimeScale = 0.18f;
@@ -141,6 +141,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            // 삭제해야함 테스트
+            PlayerAttributesManager.Instance.LevelUp();
+            PlayerAttributesManager.Instance.UpdateXPUI();
+        }
+
         if (isPc && canMove && !PauseMenu.isPaused)
         {
             RaycastHit hit;

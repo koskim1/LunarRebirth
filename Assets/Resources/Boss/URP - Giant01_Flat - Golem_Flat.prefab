@@ -1927,7 +1927,7 @@ GameObject:
   - component: {fileID: 2335055870906534119}
   m_Layer: 14
   m_Name: URP - Giant01_Flat - Golem_Flat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1983,16 +1983,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossMaxHp: 2000
+  currentHp: 0
   bossAtk: 40
   attackRange: 5
   sightRange: 20
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  spawnSkeletonPrefab: {fileID: 8102276934802283046, guid: 8abed245dfce97e4aafd8043912bbd48,
-    type: 3}
-  spawnGolemPrefab: {fileID: 3047416377377393562, guid: 9e061e2c02fee57468c8385021da7a35,
-    type: 3}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
   boxCollider: {fileID: 6917589233266217140}

@@ -22,6 +22,7 @@ public class PlayerAttributesManager : AttributesManager
     private SceneManagers sceneManagers;
     private Animator animator;
     private UIManager uiManager;
+    private Sword _sword;
 
     public int currentLevel = 1;
     public int currentXP = 0;
@@ -53,6 +54,7 @@ public class PlayerAttributesManager : AttributesManager
         _playerAnimation = GetComponent<PlayerAnimation>();
         _playerController = GetComponent<PlayerController>();
         _fireballController = GetComponent<FireballController>();
+        _sword = GetComponentInChildren<Sword>();
         animator = GetComponent<Animator>();
         cardCollection = FindAnyObjectByType<CardCollection>();
         sceneManagers = FindAnyObjectByType<SceneManagers>();
@@ -74,6 +76,7 @@ public class PlayerAttributesManager : AttributesManager
         displayedMLP = 0;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(_health);
+        _sword.transform.localScale = new Vector3(1, 1, 1);
     }
 
     // Start is called before the first frame update
@@ -155,7 +158,15 @@ public class PlayerAttributesManager : AttributesManager
         Debug.Log("레벨 업!");
         currentLevel++;
         currentXP -= xpToNextLevel;
-        xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.5f);
+        if(currentLevel <= 10)
+        {
+            xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.4f);
+        }
+        else
+        {
+            xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.2f);
+        }
+        
         _health = maxHealth;
 
         healthBar.SetMaxHealth(maxHealth);
@@ -183,15 +194,33 @@ public class PlayerAttributesManager : AttributesManager
         // 스탯을 올려주는 시스템으로 개발 중.. 스탯들 더 추가해야함!!
         switch (card.CardName)
         {
-            case "Health":
+            #region Common등급
+            case "Health1":
                 IncreaseStat("health", 15);
                 break;
+            case "Strength":
+                IncreaseStat("attack", 5);
+                break;
+            case "Range":
+                Vector3 currentScale = _sword.transform.localScale;
+                currentScale.y += 0.1f;
+                _sword.transform.localScale = currentScale;
+                break;
+            #endregion
+
+            #region Rare등급
             case "Fireball":
                 _fireballController.EnableFireball();
                 break;
             case "SlowDash":
                 _playerController.CanSlowDash();
                 break;
+                #endregion
+
+            #region Epic등급
+            #endregion
+            #region Legendary등급
+            #endregion
 
         }
     }
@@ -236,6 +265,14 @@ public class PlayerAttributesManager : AttributesManager
         if (!purchasedItems.Contains(item))
         {
             purchasedItems.Add(item);
+        }
+    }
+
+    public void ResetPurchasedItem(ShopItem item)
+    {
+        if (!purchasedItems.Contains(item))
+        {
+            purchasedItems.Clear();
         }
     }
 

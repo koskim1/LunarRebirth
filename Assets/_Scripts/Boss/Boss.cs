@@ -326,12 +326,18 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     public void StopBossMovement()
     {
-        navMeshAgent.isStopped = true;
+        if(navMeshAgent != null)
+        {
+            navMeshAgent.isStopped = true;
+        }        
     }
 
     public void ActivateBossMovement()
     {
-        navMeshAgent.isStopped = false;
+        if(navMeshAgent != null)
+        {
+            navMeshAgent.isStopped = false;
+        }
     }
 
     public int GetBossAtk()

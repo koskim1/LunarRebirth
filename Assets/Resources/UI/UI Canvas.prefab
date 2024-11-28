@@ -5012,17 +5012,17 @@ PrefabInstance:
     - target: {fileID: 7120514806507680351, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.5686275
       objectReference: {fileID: 0}
     - target: {fileID: 7120514806507680351, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.7294118
       objectReference: {fileID: 0}
     - target: {fileID: 7120514806507680351, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.85490197
       objectReference: {fileID: 0}
     - target: {fileID: 8653570682080847028, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}

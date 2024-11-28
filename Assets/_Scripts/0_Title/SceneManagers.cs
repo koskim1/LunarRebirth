@@ -69,7 +69,10 @@ public class SceneManagers : MonoBehaviour
         StartCoroutine(animatorOnOff());
         Time.timeScale = 1f;
         LoadingSceneController.LoadScene("MainRoom");
-        MainMenu.Instance.MainMenuUI.SetActive(false);
+        if(MainMenu.Instance != null)
+        {
+            MainMenu.Instance.MainMenuUI.SetActive(false);
+        }        
         animator.SetTrigger("FadeOut");
 
         // 씬 로드 후에 Player 초기화

@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 9088953204276907037}
   m_Layer: 14
   m_Name: OpeningBoss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
