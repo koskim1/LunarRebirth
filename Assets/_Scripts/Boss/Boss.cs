@@ -80,6 +80,8 @@ public class Boss : MonoBehaviour, ILockOnTarget
     private BossMinionSpawn bossMinionSpawn;
     private Coroutine spawnMinionsCoroutine;
 
+    private List<GameObject> spawnedMinions = new List<GameObject>();
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -157,7 +159,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
             case BossPhase.Phase1:
                 //기본 추적 및 맨손공격
                 Debug.Log("페이즈 1");
-                bossAtk = 1;                
+                bossAtk = 30;                
                 navMeshAgent.speed = 8f;
                 break;
             case BossPhase.Phase2:
@@ -172,10 +174,9 @@ public class Boss : MonoBehaviour, ILockOnTarget
                 // 부하 골렘, 공격 쿨타임 감소(아주 어렵게)
                 Debug.Log("페이즈 3");
                 bossAtk = 80;
-                //bossAtk = 0; // 테스트
                 timeBetweenAttacks = 1.1f;
                 navMeshAgent.speed = 20f;
-                StopSpawnMinionsCoroutine();
+                StopSpawnMinionsCoroutine();                
                 break;
         }
     }
@@ -265,7 +266,9 @@ public class Boss : MonoBehaviour, ILockOnTarget
     {
         foreach(Transform spawnPoint in bossMinionSpawn.spawnPoints)
         {
-            Instantiate(bossMinionSpawn.skeletonPrefab, spawnPoint.position, Quaternion.identity);
+            GameObject minion = Instantiate(bossMinionSpawn.skeletonPrefab, spawnPoint.position, Quaternion.identity);
+
+            spawnedMinions.Add(minion);
         }
     }
 
@@ -280,7 +283,9 @@ public class Boss : MonoBehaviour, ILockOnTarget
             for(int i=0; i < numSpawnPoints; i++)
             {
                 int randomIndex = Random.Range(0, spawnPoints.Count);
-                Instantiate(bossMinionSpawn.skeletonPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+                GameObject minion = Instantiate(bossMinionSpawn.skeletonPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+
+                spawnedMinions.Add(minion);
             }
             // 난이도 조절 테스트 해봐야하긴 함.
             yield return new WaitForSeconds(8f);
@@ -352,6 +357,8 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void Die()
     {
+        // 보스 죽었을 때 방에 있는 모든 적 죽게 해야함.
+        KillAllSpawnedMinions();
         // 보스 사망 로직
         StopBossMovement();
         UIManager.Instance.BossUI.SetActive(false);
@@ -363,6 +370,29 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
         StartCoroutine(DestroyAfterAnimation());
         Ondeath?.Invoke();
+    }
+
+    private void KillAllSpawnedMinions()
+    {
+        foreach (GameObject minion in spawnedMinions)
+        {
+            if (minion != null)
+            {
+                // 적의 EnemyAttributesManager를 가져와서 Die() 메서드 호출
+                EnemyAttributesManager enemyAttributes = minion.GetComponent<EnemyAttributesManager>();
+                if (enemyAttributes != null)
+                {
+                    enemyAttributes.TakeDamage(int.MaxValue); // 최대 데미지를 주어 죽임
+                }
+                else
+                {
+                    // EnemyAttributesManager가 없으면 그냥 파괴
+                    Destroy(minion);
+                }
+            }
+        }
+        // 리스트 초기화
+        spawnedMinions.Clear();
     }
 
     private IEnumerator DestroyAfterAnimation()
