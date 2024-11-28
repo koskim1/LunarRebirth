@@ -231,12 +231,21 @@ public class PlayerAttributesManager : AttributesManager
             case "SlowDash":
                 _playerController.CanSlowDash();
                 break;
+            case "Health II":
+                IncreaseStat("health", 30);
+                break;
+            case "Strength II":
+                IncreaseStat("attack", 10);
+                break;
+            case "Defense II":
+                defense -= 0.05f;
+                break;
             case "Recovery II":
                 healthRecoveryAmount += 5;
                 if (!isHealthRecoveryActive)
                 { StartCoroutine(HealthRecovery()); }
                 break;
-            #endregion
+                #endregion
 
                 #region Epicµî±Þ
 

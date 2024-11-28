@@ -20,12 +20,12 @@ public class CardGenerator
             if (cardCollection.CommonCards.Count == 0) throw new System.Exception("No Common Cards");
             return cardCollection.CommonCards[Random.Range(0, cardCollection.CommonCards.Count)];
         }
-        else if(randomValue < 85f)
+        else if(randomValue < 90f)
         {
             if (cardCollection.RareCards.Count == 0) throw new System.Exception("No RareCards Cards");
             return cardCollection.RareCards[Random.Range(0, cardCollection.RareCards.Count)];
         }
-        else if(randomValue < 98f)
+        else if(randomValue < 99f)
         {
             if (cardCollection.EpicCards.Count == 0) throw new System.Exception("No EpicCards Cards");
             return cardCollection.EpicCards[Random.Range(0, cardCollection.EpicCards.Count)];

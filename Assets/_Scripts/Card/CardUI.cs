@@ -17,6 +17,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] private Image _cardImage;
     [SerializeField] private Image _elementBackground;
     [SerializeField] private Image _rarityBackground;
+    [SerializeField] private Image _rarityCornerFrame;
 
     [SerializeField] private TextMeshProUGUI _cardName;
     [SerializeField] private TextMeshProUGUI _cardType;
@@ -32,11 +33,18 @@ public class CardUI : MonoBehaviour
     [SerializeField] private Sprite _epicRarityBackground;
     [SerializeField] private Sprite _legendaryRarityBackground;
 
+    [SerializeField] private Sprite _commonRarityCorner;
+    [SerializeField] private Sprite _rareRarityCorner;
+    [SerializeField] private Sprite _epicRarityCorner;
+    [SerializeField] private Sprite _legendaryRarityCorner;
+
+    [SerializeField] private Image _highlightedCard;
     private void Awake()
     {
         _card = GetComponent<Card>();
         _cardScript = FindObjectOfType<ScriptableCard>();
         //SetCardUI();
+        _highlightedCard.gameObject.SetActive(false);
         SetCardData(_cardScript);
     }
 
@@ -54,6 +62,7 @@ public class CardUI : MonoBehaviour
             _cardImage.sprite = cardData.Image;
             SetRarityBackground(cardData.Rarity);
             SetElementFrame(cardData.Element);
+            SetRarityCornerBackGround(cardData.Rarity);
         }
     }
 
@@ -117,8 +126,33 @@ public class CardUI : MonoBehaviour
         }
     }
 
+    private void SetRarityCornerBackGround(CardRarity rarity)
+    {
+        switch (rarity)
+        {
+            case CardRarity.Common:
+                _rarityCornerFrame.sprite = _commonRarityCorner;
+                //_cardType.text = "Common";
+                break;
+            case CardRarity.Rare:
+                _rarityCornerFrame.sprite = _rareRarityCorner;
+                //_cardType.text = "Rare";
+                break;
+            case CardRarity.Epic:
+                _rarityCornerFrame.sprite = _epicRarityCorner;
+                //_cardType.text = "Epic";
+                break;
+            case CardRarity.Legendary:
+                _rarityCornerFrame.sprite = _legendaryRarityCorner;
+                //_cardType.text = "Legendary";
+                break;
+        }
+    }
+
     private void SetCardImage()
     {
         _cardImage.sprite = _card.CardData.Image;
     }
+
+    
 }

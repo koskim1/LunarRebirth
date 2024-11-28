@@ -49,11 +49,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73a9daa8659d99f4b95329ab8828fa16, type: 2}
   - {fileID: 11400000, guid: 60a230f88af74ee488897eddbf882ce7, type: 2}
   - {fileID: 11400000, guid: ba9801ce26b825142a499721261af818, type: 2}
+  - {fileID: 11400000, guid: 95a74c8d09cd71144a20d085b4ec8cdd, type: 2}
+  - {fileID: 11400000, guid: fed37907c2ea5ba45997d3d4667101ec, type: 2}
   <RareCards>k__BackingField:
   - {fileID: 11400000, guid: af761d8810a6f6048904b1155fcb56f7, type: 2}
   - {fileID: 11400000, guid: 6a9071c89ac6be84a831e2979c7a8697, type: 2}
-  - {fileID: 11400000, guid: 06aa68623803958488d0a89988deecbd, type: 2}
+  - {fileID: 11400000, guid: 01372937d271c384286f559d03b84550, type: 2}
   - {fileID: 11400000, guid: 39615cfe3e5ac034b8e3bdbacc1c98ed, type: 2}
+  - {fileID: 11400000, guid: e2e19e6c12de73845ad2d4b56c74aa32, type: 2}
+  - {fileID: 11400000, guid: 9a3eda4ecf8e1b04984ca410989e02ac, type: 2}
   <EpicCards>k__BackingField:
   - {fileID: 11400000, guid: 128862ffbfdaa9f4aa9c852f6338db1e, type: 2}
   - {fileID: 11400000, guid: 5908d6aba4130d941ad2933a5560c1f1, type: 2}
