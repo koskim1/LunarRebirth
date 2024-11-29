@@ -72,7 +72,11 @@ public class SceneManagers : MonoBehaviour
         if(MainMenu.Instance != null)
         {
             MainMenu.Instance.MainMenuUI.SetActive(false);
-        }        
+        }
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.gameObject.SetActive(true);
+        }
         animator.SetTrigger("FadeOut");
 
         // 씬 로드 후에 Player 초기화
@@ -100,7 +104,14 @@ public class SceneManagers : MonoBehaviour
         {
             PlayerAttributesManager.Instance.gameObject.SetActive(false);
         }
-        MainMenu.Instance.MainMenuUI.SetActive(true);
+        if(MainMenu.Instance != null)
+        {
+            MainMenu.Instance.MainMenuUI.SetActive(true);
+        }
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.gameObject.SetActive(false);
+        }
         //UIManager.Instance.gameObject.SetActive(false);
         LoadingSceneController.LoadScene("TitleScene");
     }

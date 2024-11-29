@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HealthRecovery
   m_EditorClassIdentifier: 
   <CardName>k__BackingField: Recovery I
-  <CardDescription>k__BackingField: "10\uCD08\uB9C8\uB2E4 \uCCB4\uB825\uC744 1\uD68C\uBCF5\uD569\uB2C8\uB2E4."
-  <Image>k__BackingField: {fileID: 21300000, guid: 3e165dd1f43d678409439a2933c9d2da,
+  <CardDescription>k__BackingField: "10\uCD08\uB9C8\uB2E4 \uCCB4\uB825\uC744 3\uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  <Image>k__BackingField: {fileID: 21300000, guid: 9385f8bfd5ab90644af53e7b362dc34e,
     type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 0

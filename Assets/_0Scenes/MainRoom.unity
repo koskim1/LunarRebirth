@@ -2125,6 +2125,28 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1028726323128020253, guid: 81b38998273ff874a8cfc0592944dab4,
+        type: 3}
+      propertyPath: <EpicCards>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028726323128020253, guid: 81b38998273ff874a8cfc0592944dab4,
+        type: 3}
+      propertyPath: <EpicCards>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d8e94b1af5532f429d46a5c439443c8,
+        type: 2}
+    - target: {fileID: 1028726323128020253, guid: 81b38998273ff874a8cfc0592944dab4,
+        type: 3}
+      propertyPath: <LegendaryCards>k__BackingField.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1028726323128020253, guid: 81b38998273ff874a8cfc0592944dab4,
+        type: 3}
+      propertyPath: <LegendaryCards>k__BackingField.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 08fd1d6fe29140442af0187364abfa77,
+        type: 2}
     - target: {fileID: 1614147066406301585, guid: 81b38998273ff874a8cfc0592944dab4,
         type: 3}
       propertyPath: m_Name
@@ -3308,12 +3330,12 @@ PrefabInstance:
     - target: {fileID: 1521541322271428187, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001702943
+      value: -0.00000001702943
       objectReference: {fileID: 0}
     - target: {fileID: 1521541322271428187, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000024613116
+      value: 0.0000000024613116
       objectReference: {fileID: 0}
     - target: {fileID: 1775150266676484154, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -3423,7 +3445,7 @@ PrefabInstance:
     - target: {fileID: 7516983569842009696, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02731106
+      value: 0.027311064
       objectReference: {fileID: 0}
     - target: {fileID: 7516983569842009696, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -3433,7 +3455,7 @@ PrefabInstance:
     - target: {fileID: 7516983569842009696, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0069340593
+      value: -0.0069340602
       objectReference: {fileID: 0}
     - target: {fileID: 7749054874347738619, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}

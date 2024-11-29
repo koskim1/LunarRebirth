@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1972010329abd574f93d5b121cc05bbb, type: 3}
-  m_Name: LegendTest3
+  m_Name: Health III
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: LegendTest3
-  <CardDescription>k__BackingField: LegendTest3
-  <Image>k__BackingField: {fileID: 21300000, guid: 4fad2fe44db9dc741b7d32c1c0c1a17d,
+  <CardName>k__BackingField: Health III
+  <CardDescription>k__BackingField: "\uCCB4\uB825\uC744 100 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  <Image>k__BackingField: {fileID: 21300000, guid: 6ef219c5ce22c2046b7392b0ca293ea5,
     type: 3}
   <Element>k__BackingField: 0
-  <Rarity>k__BackingField: 3
+  <Rarity>k__BackingField: 2

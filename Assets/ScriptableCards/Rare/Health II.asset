@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Health II
   m_EditorClassIdentifier: 
   <CardName>k__BackingField: Health II
-  <CardDescription>k__BackingField: "\uCCB4\uB825\uC744 30 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
-  <Image>k__BackingField: {fileID: 0}
+  <CardDescription>k__BackingField: "\uCCB4\uB825\uC744 50 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  <Image>k__BackingField: {fileID: 21300000, guid: 29897cd30977f104faaf3103291c4578,
+    type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 1

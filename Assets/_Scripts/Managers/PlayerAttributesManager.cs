@@ -201,7 +201,7 @@ public class PlayerAttributesManager : AttributesManager
         {
             #region Common등급
             case "Health I":
-                IncreaseStat("health", 15);
+                IncreaseStat("health", 20);
                 break;
             case "Strength I":
                 IncreaseStat("attack", 5);
@@ -215,7 +215,7 @@ public class PlayerAttributesManager : AttributesManager
                 defense -= 0.03f;
                 break;
             case "Recovery I":
-                healthRecoveryAmount += 1;
+                healthRecoveryAmount += 3;
                 if (!isHealthRecoveryActive)
                 { StartCoroutine(HealthRecovery()); }                
                 break;
@@ -232,7 +232,7 @@ public class PlayerAttributesManager : AttributesManager
                 _playerController.CanSlowDash();
                 break;
             case "Health II":
-                IncreaseStat("health", 30);
+                IncreaseStat("health", 50);
                 break;
             case "Strength II":
                 IncreaseStat("attack", 10);
@@ -241,18 +241,45 @@ public class PlayerAttributesManager : AttributesManager
                 defense -= 0.05f;
                 break;
             case "Recovery II":
-                healthRecoveryAmount += 5;
+                healthRecoveryAmount += 10;
                 if (!isHealthRecoveryActive)
                 { StartCoroutine(HealthRecovery()); }
                 break;
-                #endregion
+            #endregion
 
-                #region Epic등급
+            // 그냥 Epic이랑 전설등급은 일단 스탯뻥튀기만 해주는걸로,,
+            #region Epic등급
+            case "Health III":
+                IncreaseStat("health", 100);
+                break;
+            case "Strength III":
+                IncreaseStat("attack", 30);
+                break;
+            case "Defense III":
+                defense -= 0.08f;
+                break;
+            case "Recovery III":
+                healthRecoveryAmount += 20;
+                if (!isHealthRecoveryActive)
+                { StartCoroutine(HealthRecovery()); }
+                break;
+            #endregion
 
-                #endregion
-
-                #region Legendary등급
-
+            #region Legendary등급
+            case "Health IV":
+                IncreaseStat("health", 200);
+                break;
+            case "Strength IV":
+                IncreaseStat("attack", 50);
+                break;
+            case "Defense IV":
+                defense -= 0.1f;
+                break;
+            case "Recovery IV":
+                healthRecoveryAmount += 40;
+                if (!isHealthRecoveryActive)
+                { StartCoroutine(HealthRecovery()); }
+                break;
                 #endregion
 
         }

@@ -1213,7 +1213,7 @@ PrefabInstance:
         type: 3}
       propertyPath: skeletonPrefab
       value: 
-      objectReference: {fileID: 8102276934802283046, guid: 8abed245dfce97e4aafd8043912bbd48,
+      objectReference: {fileID: 8102276934802283046, guid: 050e7fc7d2892354da9a60059acd7d93,
         type: 3}
     - target: {fileID: 2517354209806469251, guid: f430a9a9e9b67e04c9818cebc2ab2203,
         type: 3}

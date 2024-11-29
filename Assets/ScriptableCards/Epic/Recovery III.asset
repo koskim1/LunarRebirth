@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1972010329abd574f93d5b121cc05bbb, type: 3}
-  m_Name: LegendTest2
+  m_Name: Recovery III
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: LegendTest2
-  <CardDescription>k__BackingField: LegendTest2
-  <Image>k__BackingField: {fileID: 21300000, guid: 4fad2fe44db9dc741b7d32c1c0c1a17d,
+  <CardName>k__BackingField: Recovery III
+  <CardDescription>k__BackingField: "10\uCD08\uB9C8\uB2E4 \uCCB4\uB825\uC744 20\uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  <Image>k__BackingField: {fileID: 21300000, guid: 136c8a33fb3263243914b8cb45686954,
     type: 3}
   <Element>k__BackingField: 0
-  <Rarity>k__BackingField: 3
+  <Rarity>k__BackingField: 2

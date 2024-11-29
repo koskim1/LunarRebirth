@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   <CardName>k__BackingField: Fireball
-  <CardDescription>k__BackingField: Now you can use a fireball
+  <CardDescription>k__BackingField: "\uD654\uC5FC\uAD6C\uB97C \uC0AC\uC6A9\uD560
+    \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n(\uB370\uBBF8\uC9C0 35)"
   <Image>k__BackingField: {fileID: 21300000, guid: bb18f505c51305641992b84a19a985e9,
     type: 3}
   <Element>k__BackingField: 2

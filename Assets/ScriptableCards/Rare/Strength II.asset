@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <CardName>k__BackingField: Strength II
   <CardDescription>k__BackingField: "\uACF5\uACA9\uB825\uC744 10 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
-  <Image>k__BackingField: {fileID: 0}
+  <Image>k__BackingField: {fileID: 21300000, guid: 9e145e416a392ae4e987f06d110bdf13,
+    type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 1
