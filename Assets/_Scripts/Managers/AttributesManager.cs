@@ -41,6 +41,9 @@ public abstract class AttributesManager : MonoBehaviour
                 GainXP(enemy._xp);
                 enemy.isDead = true;
             }
+
+            if (!enemy.isDead && PlayerAttributesManager.Instance.hasLifeSteal) 
+                PlayerAttributesManager.Instance.HitAndRecovery(PlayerAttributesManager.Instance.lifeStealAmount);
         }
 
         var player = target.GetComponent<PlayerAttributesManager>();

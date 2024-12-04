@@ -33,6 +33,8 @@ public class PlayerAttributesManager : AttributesManager
     public int previousMLP = 0;
     private int displayedMLP = 0;
     private bool isHealthRecoveryActive = false;
+    public bool hasLifeSteal = false;
+    public int lifeStealAmount = 0;
     private int healthRecoveryAmount = 0;
     private List<ShopItem> purchasedItems = new List<ShopItem>();   // 구매한 아이템 목록
     private void Awake()
@@ -222,6 +224,9 @@ public class PlayerAttributesManager : AttributesManager
             case "Speed I":
                 _playerController.AddSpeed(0.5f);
                 break;
+            case "LifeSteal I":
+                lifeStealAmount += 2;
+                break;
             #endregion
 
             #region Rare등급
@@ -245,6 +250,9 @@ public class PlayerAttributesManager : AttributesManager
                 if (!isHealthRecoveryActive)
                 { StartCoroutine(HealthRecovery()); }
                 break;
+            case "LifeSteal II":
+                lifeStealAmount += 4;
+                break;
             #endregion
 
             // 그냥 Epic이랑 전설등급은 일단 스탯뻥튀기만 해주는걸로,,
@@ -263,6 +271,9 @@ public class PlayerAttributesManager : AttributesManager
                 if (!isHealthRecoveryActive)
                 { StartCoroutine(HealthRecovery()); }
                 break;
+            case "LifeSteal III":
+                lifeStealAmount += 8;
+                break;
             #endregion
 
             #region Legendary등급
@@ -279,6 +290,9 @@ public class PlayerAttributesManager : AttributesManager
                 healthRecoveryAmount += 40;
                 if (!isHealthRecoveryActive)
                 { StartCoroutine(HealthRecovery()); }
+                break;
+            case "LifeSteal IV":
+                lifeStealAmount += 15;
                 break;
                 #endregion
 
@@ -355,5 +369,11 @@ public class PlayerAttributesManager : AttributesManager
     public void IncreaseAttackSpeed(float amount)
     {
         _playerAnimation.IncreaseAttackSpeed(amount);
+    }
+
+    public void HitAndRecovery(int amount)
+    {
+        _health = Mathf.Min(_health + amount, maxHealth);
+        healthBar.SetHealth(_health);
     }
 }

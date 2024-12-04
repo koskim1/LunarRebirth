@@ -77,6 +77,10 @@ public class ShopItemUI : MonoBehaviour
             case ItemType.IncreaseAtkSpeed:
                 PlayerAttributesManager.Instance.IncreaseAttackSpeed(shopItem.effectValue);
                 break;
+            case ItemType.HitAndRecovery:
+                PlayerAttributesManager.Instance.hasLifeSteal = true;
+                PlayerAttributesManager.Instance.lifeStealAmount += 5;
+                break;
 
         }
     }
