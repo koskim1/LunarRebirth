@@ -351,4 +351,9 @@ public class PlayerAttributesManager : AttributesManager
     {
         return purchasedItems.Contains(item);
     }
+
+    public void IncreaseAttackSpeed(float amount)
+    {
+        _playerAnimation.IncreaseAttackSpeed(amount);
+    }
 }

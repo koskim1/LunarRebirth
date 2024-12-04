@@ -16,10 +16,11 @@ public class PlayerAnimation : MonoBehaviour
 #pragma warning restore 414
     private bool isDead = false;
 
+    [SerializeField] private float attackSpeed = 1.0f;
     [SerializeField] private int attackIndex = 0;
-    [SerializeField] private float attackResetTime = 1.5f;
+    [SerializeField] private float attackResetTime = 0.3f;
     private float lastAttackTime;
-    // Start is called before the first frame update
+
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -36,10 +37,10 @@ public class PlayerAnimation : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && _playerController.canMove)
         {
-            Attack();
+            Attack();       
         }
 
-        if(Time.time -lastAttackTime > attackResetTime)
+        if (Time.time - lastAttackTime > attackResetTime)
         {
             ResetAttack();
         }
@@ -47,8 +48,6 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Attack()
     {
-
-        Debug.Log("Attack 실행");
         isAttack = true;
         lastAttackTime = Time.time;
 
@@ -59,18 +58,27 @@ public class PlayerAnimation : MonoBehaviour
         
     }
 
+    public void IncreaseAttackSpeed(float amount)
+    {
+        attackSpeed += amount;
+    }
+
     private void PlayAttackAnimation()
     {
+        animator.speed = attackSpeed;
+
         if (attackIndex == 0)
         {
             animator.SetBool("hit1", true);
         }
         else if (attackIndex == 1)
         {
+            animator.SetBool("hit1", false);
             animator.SetBool("hit2", true);
         }
         else if (attackIndex == 2)
         {
+            animator.SetBool("hit2", false);
             animator.SetBool("hit3", true);
         }
         else
@@ -85,6 +93,8 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("hit1", false);
         animator.SetBool("hit2", false);
         animator.SetBool("hit3", false);
+
+        animator.speed = 1.0f;
     }
 
     // 애니메이션 이벤트로 관리.

@@ -13,11 +13,14 @@ public class ShopItem : ScriptableObject
     
 
     public ItemType itemType;
-    public int effectValue;
+    public float effectValue;
 }
 
 public enum ItemType
 {
     IncreaseAttack,
     IncreaseHealth,
+    IncreaseDefense,
+    IncreaseAtkSpeed,
+    HitAndRecovery,
 }

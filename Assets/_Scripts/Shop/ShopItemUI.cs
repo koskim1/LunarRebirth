@@ -69,11 +69,15 @@ public class ShopItemUI : MonoBehaviour
         switch (shopItem.itemType)
         {
             case ItemType.IncreaseHealth:
-                PlayerAttributesManager.Instance.IncreaseStat("health", shopItem.effectValue);
+                PlayerAttributesManager.Instance.IncreaseStat("health", (int)shopItem.effectValue);
                 break;
             case ItemType.IncreaseAttack:
-                PlayerAttributesManager.Instance.IncreaseStat("attack", shopItem.effectValue);
+                PlayerAttributesManager.Instance.IncreaseStat("attack", (int)shopItem.effectValue);
                 break;
+            case ItemType.IncreaseAtkSpeed:
+                PlayerAttributesManager.Instance.IncreaseAttackSpeed(shopItem.effectValue);
+                break;
+
         }
     }
 }
