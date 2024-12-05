@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf66be295d7d5747af83c9fb9fefaaa, type: 3}
   m_Name: IncreaseAtkSpeed
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: d3e91bdd5b8999a478ed36193ad9d04f, type: 3}
   itemName: Increase AtkSpeed
   itemDescription: Increase 5% AtkSpeed
   itemPrice: 300

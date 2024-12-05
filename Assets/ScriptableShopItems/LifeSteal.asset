@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddf66be295d7d5747af83c9fb9fefaaa, type: 3}
   m_Name: LifeSteal
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 0}
+  itemIcon: {fileID: 21300000, guid: 773eea43f613d6f41889e155e6d1cede, type: 3}
   itemName: LifeSteal
   itemDescription: Gain 5hp while hitting
   itemPrice: 300
