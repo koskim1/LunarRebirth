@@ -36,13 +36,13 @@ public class LoadingSceneController : MonoBehaviour
             if (op.progress < 0.9f)
             {
                 progressBar.fillAmount = op.progress;
-                progressText.text = "로딩중,,, "+(op.progress * 100).ToString("F0") + "%";
+                progressText.text = "Loading,,, "+(op.progress * 100).ToString("F0") + "%";
             }
             else
             {
                 timer += Time.unscaledDeltaTime;
                 progressBar.fillAmount = Mathf.Lerp(0.9f, 1f, timer);
-                progressText.text = "로딩 중,,, " +(Mathf.Lerp(0.9f, 1f, timer) * 100).ToString("F0") + "%";
+                progressText.text = "Loading,,, " +(Mathf.Lerp(0.9f, 1f, timer) * 100).ToString("F0") + "%";
 
                 if (progressBar.fillAmount >= 1f)
                 {

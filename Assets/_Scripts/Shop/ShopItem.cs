@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "ShopItem")]
 public class ShopItem : ScriptableObject
 {
     public Sprite itemIcon;
-    public string itemName;
-    public string itemDescription;
+    public LocalizedString itemName;
+    public LocalizedString itemDescription;
     public int itemPrice;
     
 

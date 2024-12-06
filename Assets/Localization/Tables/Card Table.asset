@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be51871efa6c3e4eae1703925c8f5ac, type: 3}
+  m_Name: Card Table
+  m_EditorClassIdentifier: 
+  m_SharedTableData: {fileID: 11400000, guid: 004e86b51f1c7344dbcd209ae9264ce8, type: 2}
+  m_Tables:
+  - {fileID: 11400000, guid: ea651f97caec03048b6b767f1c635195, type: 2}
+  - {fileID: 11400000, guid: d3f8eb00c706cad46b1c862c477e3f01, type: 2}
+  - {fileID: 11400000, guid: e5c3ac582e16c0745bd6b53960c4cac8, type: 2}
+  m_Extensions: []
+  m_Group: String Table
+  references:
+    version: 2
+    RefIds: []

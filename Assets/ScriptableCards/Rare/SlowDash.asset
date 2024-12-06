@@ -12,10 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1972010329abd574f93d5b121cc05bbb, type: 3}
   m_Name: SlowDash
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: SlowDash
-  <CardDescription>k__BackingField: "\uB300\uC26C \uBC1C\uB3D9\uC2DC\uAC04\uB3D9\uC548 
-    \uC2AC\uB85C\uC6B0\uBAA8\uB4DC\uAC00 \uD65C\uC131\uD654\uB429\uB2C8\uB2E4."
+  cardKey: SlowDash
+  <CardName>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:004e86b51f1c7344dbcd209ae9264ce8
+    m_TableEntryReference:
+      m_KeyId: 180820157521920
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <CardDescription>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:d88b29634a69fcd4e84761a84f8c31b4
+    m_TableEntryReference:
+      m_KeyId: 4835193774080
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <Image>k__BackingField: {fileID: 21300000, guid: 41337de281975324bb5718d3676b4cce,
     type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 1
+  references:
+    version: 2
+    RefIds: []

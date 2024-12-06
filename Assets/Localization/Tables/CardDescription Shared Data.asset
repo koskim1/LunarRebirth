@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: CardDescription Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: CardDescription
+  m_TableCollectionNameGuidString: d88b29634a69fcd4e84761a84f8c31b4
+  m_Entries:
+  - m_Id: 397297180672
+    m_Key: Defense I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421477343232
+    m_Key: Defense II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434957836288
+    m_Key: Defense III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 526838259712
+    m_Key: Defense IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540427804672
+    m_Key: Health I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 556039004160
+    m_Key: Health II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 569225895936
+    m_Key: Health III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606957854720
+    m_Key: Health IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4463502942208
+    m_Key: Recovery I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4471006552064
+    m_Key: Recovery II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485929885696
+    m_Key: Recovery III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4499376824320
+    m_Key: Recovery IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4590745542656
+    m_Key: LifeSteal I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4602544119808
+    m_Key: LifeSteal II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4614338502656
+    m_Key: LifeSteal III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4625809924096
+    m_Key: LifeSteal IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4662082265088
+    m_Key: Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4693384355840
+    m_Key: Speed I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4712531353600
+    m_Key: Strength I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4731971952640
+    m_Key: Strength II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4739370704896
+    m_Key: Strength III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4748304572416
+    m_Key: Strength IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4820270440448
+    m_Key: Fireball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4835193774080
+    m_Key: SlowDash
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 2703915836885958658
+  references:
+    version: 2
+    RefIds:
+    - rid: 2703915836885958658
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables,
+        asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1733464212711

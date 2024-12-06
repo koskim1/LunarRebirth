@@ -145,6 +145,7 @@ public class PlayerAttributesManager : AttributesManager
         StartCoroutine(animatorOnOff());
         UIManager.Instance.BossUI.SetActive(false);
         _playerAnimation.Dead();
+        GameManager.Instance.TogglePlayerMovement(false);
     }
 
     // XP부분
@@ -199,7 +200,7 @@ public class PlayerAttributesManager : AttributesManager
     {
         // 여기서 SO의 이름을 기반으로 IncreaseStat에 이름 전달해주고 이를 기반으로
         // 스탯을 올려주는 시스템으로 개발 중.. 스탯들 더 추가해야함!!
-        switch (card.CardName)
+        switch (card.cardKey)
         {
             #region Common등급
             case "Health I":

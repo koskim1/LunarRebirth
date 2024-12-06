@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Card Table_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 004e86b51f1c7344dbcd209ae9264ce8, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 46959550464
+    m_Localized: Defense I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167216339345408
+    m_Localized: Defense II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167274065551360
+    m_Localized: Defense III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 167326427242496
+    m_Localized: Defense IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 170988448899072
+    m_Localized: Health I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 171046124773376
+    m_Localized: Health II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180256963158016
+    m_Localized: Health III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180277402001408
+    m_Localized: Health IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180315192680448
+    m_Localized: Strength I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180325003157504
+    m_Localized: Strength II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180393013796864
+    m_Localized: Strength III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180408163622912
+    m_Localized: Strength IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180426719223808
+    m_Localized: Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180452786823168
+    m_Localized: Recovery I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180498647343104
+    m_Localized: Recovery II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180515583942656
+    m_Localized: Recovery III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180532449239040
+    m_Localized: Recovery IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180545120231424
+    m_Localized: LifeSteal I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180596810833920
+    m_Localized: LifeSteal II
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180613193785344
+    m_Localized: LifeSteal III
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180630247825408
+    m_Localized: LifeSteal IV
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180642906234880
+    m_Localized: Speed I
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180791518814208
+    m_Localized: Fireball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 180820157521920
+    m_Localized: Matrix
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

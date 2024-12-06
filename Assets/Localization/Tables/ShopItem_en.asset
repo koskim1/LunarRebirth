@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: ShopItem_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: e4e4c10613ecce946bf249bb07cfe93f, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 6702620672
+    m_Localized: Health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 197971271680
+    m_Localized: IncreaseAtkSpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 250358128640
+    m_Localized: IncreaseAttack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 306939289600
+    m_Localized: LifeSteal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61379567616
+    m_Localized: Increase maximum Health by 50.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 235107639296
+    m_Localized: Increases attack speed by 5%.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 276337647616
+    m_Localized: Increases attack power by 15.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 323087360000
+    m_Localized: Restore 5hp when you hit the attack.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

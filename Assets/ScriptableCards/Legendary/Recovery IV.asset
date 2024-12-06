@@ -12,9 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1972010329abd574f93d5b121cc05bbb, type: 3}
   m_Name: Recovery IV
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: Recovery IV
-  <CardDescription>k__BackingField: "10\uCD08\uB9C8\uB2E4 \uCCB4\uB825\uC744 40\uD68C\uBCF5\uD569\uB2C8\uB2E4."
+  cardKey: Recovery IV
+  <CardName>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:004e86b51f1c7344dbcd209ae9264ce8
+    m_TableEntryReference:
+      m_KeyId: 180532449239040
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <CardDescription>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:d88b29634a69fcd4e84761a84f8c31b4
+    m_TableEntryReference:
+      m_KeyId: 4499376824320
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <Image>k__BackingField: {fileID: 21300000, guid: 84388844c84bfb74f890d024d62c87f1,
     type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 3
+  references:
+    version: 2
+    RefIds: []

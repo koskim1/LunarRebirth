@@ -12,9 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1972010329abd574f93d5b121cc05bbb, type: 3}
   m_Name: Strength I
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: Strength I
-  <CardDescription>k__BackingField: "\uACF5\uACA9\uB825\uC744 5 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  cardKey: Strength I
+  <CardName>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:004e86b51f1c7344dbcd209ae9264ce8
+    m_TableEntryReference:
+      m_KeyId: 180315192680448
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <CardDescription>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:d88b29634a69fcd4e84761a84f8c31b4
+    m_TableEntryReference:
+      m_KeyId: 4712531353600
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <Image>k__BackingField: {fileID: 21300000, guid: f17dbe840c1d24b47b4aff021c306350,
     type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 0
+  references:
+    version: 2
+    RefIds: []

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UI;
 public class ShopItemUI : MonoBehaviour
 {
@@ -13,18 +15,57 @@ public class ShopItemUI : MonoBehaviour
 
     public ShopItem shopItem;
 
+    private LocalizedString currentItemName;
+    private LocalizedString currentItemDescription;
+
+
+    //public void SetItem(ShopItem item)
+    //{
+    //    /*
+    //        shopItem 변수가 올바르게 설정되지 않으면, 구매 버튼을 클릭했을 때 잘못되거나 기본상태?
+    //    shopItem을 참조하게 돼서 잊지말고 참조하게 해주기.
+    //    */
+    //    shopItem = item;        
+
+    //    itemImage.sprite = item.itemIcon;
+    //    itemName.text = item.itemName;
+    //    itemDescription.text = item.itemDescription;
+    //    itemPrice.text = $"{item.itemPrice}MLP";
+
+    //    itemBuyButton.onClick.RemoveAllListeners();
+    //    itemBuyButton.onClick.AddListener(BuyItem);
+
+    //    // 이미 구매한 아이템이라면 구매버튼 비활성화
+    //    if (PlayerAttributesManager.Instance.IsItemPurchased(item))
+    //    {
+    //        itemBuyButton.interactable = false;
+    //        itemBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "구매 완료";
+    //    }
+
+    // 밑에 로컬라이징 버전으로 변경,,
+    //}
+
     public void SetItem(ShopItem item)
     {
-        /*
-            shopItem 변수가 올바르게 설정되지 않으면, 구매 버튼을 클릭했을 때 잘못되거나 기본상태?
-        shopItem을 참조하게 돼서 잊지말고 참조하게 해주기.
-        */
-        shopItem = item;        
+        if (currentItemName != null)        currentItemName.StringChanged -= OnNameChanged;
+        if (currentItemDescription != null) currentItemDescription.StringChanged -= OnDescriptionChanged;
+
+        shopItem = item;
 
         itemImage.sprite = item.itemIcon;
-        itemName.text = item.itemName;
-        itemDescription.text = item.itemDescription;
         itemPrice.text = $"{item.itemPrice}MLP";
+
+        // 현재 아이템의 LocalizedString 레퍼런스를 보관
+        currentItemName = item.itemName;
+        currentItemDescription = item.itemDescription;
+
+        // 문자열 변경 이벤트 등록
+        currentItemName.StringChanged += OnNameChanged;
+        currentItemDescription.StringChanged += OnDescriptionChanged;
+
+        // Locale이 이미 설정되어있다면 즉시 반영되도록 초기값 갱신
+        OnNameChanged(currentItemName.GetLocalizedString());
+        OnDescriptionChanged(currentItemDescription.GetLocalizedString());
 
         itemBuyButton.onClick.RemoveAllListeners();
         itemBuyButton.onClick.AddListener(BuyItem);
@@ -33,9 +74,19 @@ public class ShopItemUI : MonoBehaviour
         if (PlayerAttributesManager.Instance.IsItemPurchased(item))
         {
             itemBuyButton.interactable = false;
-            itemBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "구매 완료";
+            itemBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Purchased";
         }
     }
+    private void OnNameChanged(string translatedName)
+    {
+        itemName.text = translatedName;
+    }
+
+    private void OnDescriptionChanged(string translatedDesc)
+    {
+        itemDescription.text = translatedDesc;
+    }
+
 
     public void BuyItem()
     {
@@ -50,7 +101,7 @@ public class ShopItemUI : MonoBehaviour
             ApplyItemEffect();
             // 구매 후
             itemBuyButton.interactable = false;
-            itemBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "구매 완료";
+            itemBuyButton.GetComponentInChildren<TextMeshProUGUI>().text = "Purchased";
 
             // MLPUI업데이트 시켜주고 (from, to)니깐 여기에선 from인 currentMLP를 playerMLP로 적용
             PlayerAttributesManager.Instance.UpdateMLPUI(PlayerAttributesManager.Instance.currentMLP, playerMLP);

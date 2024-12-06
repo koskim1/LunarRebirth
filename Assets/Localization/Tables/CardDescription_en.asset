@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: CardDescription_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d88b29634a69fcd4e84761a84f8c31b4, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 397297180672
+    m_Localized: Increases defense by 3%.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 421477343232
+    m_Localized: Increases defense by 5%.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 434957836288
+    m_Localized: Increases defense by 8%.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 540427804672
+    m_Localized: Increase Maxhealth by 20
+    m_Metadata:
+      m_Items: []
+  - m_Id: 556039004160
+    m_Localized: Increase Maxhealth by 50
+    m_Metadata:
+      m_Items: []
+  - m_Id: 569225895936
+    m_Localized: Increase Maxhealth by 100
+    m_Metadata:
+      m_Items: []
+  - m_Id: 526838259712
+    m_Localized: Increases defense by 10%.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 606957854720
+    m_Localized: Increase Maxhealth by 200
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4463502942208
+    m_Localized: Heal 3health every 10 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4471006552064
+    m_Localized: Heal 10health every 10 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4485929885696
+    m_Localized: Heal 20health every 10 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4499376824320
+    m_Localized: Heal 40health every 10 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4590745542656
+    m_Localized: Heal 2 by hitting enemy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4602544119808
+    m_Localized: Heal 4 by hitting enemy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4625809924096
+    m_Localized: Heal 15 by hitting enemy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4614338502656
+    m_Localized: Heal 8 by hitting enemy.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4662082265088
+    m_Localized: Attacking range increases slightly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4693384355840
+    m_Localized: The speed of movement increases slightly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4712531353600
+    m_Localized: Increases attack strength by 5.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4731971952640
+    m_Localized: Increases attack strength by 10.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4739370704896
+    m_Localized: Increases attack strength by 30.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4748304572416
+    m_Localized: Increases attack strength by 50.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4820270440448
+    m_Localized: 'Unlock the Fireball.
+
+      ( Damage : 35 / Usage Key : E )'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4835193774080
+    m_Localized: It takes a slow time during a dash.
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

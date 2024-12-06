@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.Localization.Settings;
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager Instance;
@@ -47,109 +48,115 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger npc)
     {
-        dialogueBoxController.gameObject.SetActive(true);
-        playerController.canMove = false;
-
-        Cursor.visible = true;
-        afterDeadCam.enabled = true;
-        cinemachineFreeLook.enabled = false;
-        // NPC에게 LookAt 설정
-        if (enemyLook != null)
-        {            
-            if (npc != null)
-            {
-                enemyLook.enabled = true;
-                enemyLook.m_LookAt = npc.transform;
-                enemyLook.m_XAxis.m_MaxSpeed = 0.0f;
-                enemyLook.m_YAxis.m_MaxSpeed = 0.0f;
-            }
-            else
-            {
-                Debug.LogWarning("DialogueTrigger 컴포넌트를 NPC에서 찾을 수 없습니다.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Cinemachine LookAt 카메라가 설정되지 않았습니다.");
-        }
-        animator.SetBool("IsOpen", true);
-
-        nameText.text = dialogue.name;
-        sentences.Clear();
-
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
-        DisplayNextSentence();
-
-        ShowInteractionText(false);
+        StartCoroutine(StartDialogueRoutine(dialogue, npc));
     }
 
     public void StartShopDialogue(Dialogue dialogue, ShopNpc npc)
     {
-        dialogueBoxController.gameObject.SetActive(true);
-        playerController.canMove = false;
-
-        Cursor.visible = true;
-        afterDeadCam.enabled = true;
-        cinemachineFreeLook.enabled = false;
-        // NPC에게 LookAt 설정
-        if (enemyLook != null)
-        {
-            if (npc != null)
-            {
-                enemyLook.enabled = true;
-                enemyLook.m_LookAt = npc.transform;
-                enemyLook.m_XAxis.m_MaxSpeed = 0.0f;
-                enemyLook.m_YAxis.m_MaxSpeed = 0.0f;
-            }
-            else
-            {
-                Debug.LogWarning("ShopNpc 컴포넌트를 NPC에서 찾을 수 없습니다.");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Cinemachine LookAt 카메라가 설정되지 않았습니다.");
-        }
-        animator.SetBool("IsOpen", true);
-
-        nameText.text = dialogue.name;
-        sentences.Clear();
-
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
-
-        DisplayNextSentence();
-
-        ShowInteractionText(false);
-
         isShopDialogue = true;
+        StartCoroutine(StartShopDialogueRoutine(dialogue, npc));
     }
 
     public void StartMonologueDialogue(Dialogue dialogue)
     {
+        StartCoroutine(StartMonologueDialogueRoutine(dialogue));
+    }
+
+    private IEnumerator StartDialogueRoutine(Dialogue dialogue, DialogueTrigger npc)
+    {
+        // 로컬라이즈 문자열 로딩
+        yield return StartCoroutine(LoadLocalizedDialogue(dialogue));
+
         dialogueBoxController.gameObject.SetActive(true);
         playerController.canMove = false;
+        GameManager.Instance.TogglePlayerMovement(false);
+        Cursor.visible = true;
+        afterDeadCam.enabled = true;
+        cinemachineFreeLook.enabled = false;
+
+        if (enemyLook != null && npc != null)
+        {
+            enemyLook.enabled = true;
+            enemyLook.m_LookAt = npc.transform;
+            enemyLook.m_XAxis.m_MaxSpeed = 0.0f;
+            enemyLook.m_YAxis.m_MaxSpeed = 0.0f;
+        }
+        else
+        {
+            Debug.LogWarning("NPC 또는 Cinemachine LookAt 설정 문제");
+        }
+
+        animator.SetBool("IsOpen", true);
+
+        DisplayNextSentence();
+        ShowInteractionText(false);
+    }
+
+    private IEnumerator StartShopDialogueRoutine(Dialogue dialogue, ShopNpc npc)
+    {
+        // 로컬라이즈 문자열 로딩
+        yield return StartCoroutine(LoadLocalizedDialogue(dialogue));
+
+        dialogueBoxController.gameObject.SetActive(true);
+        playerController.canMove = false;
+        GameManager.Instance.TogglePlayerMovement(false);
+        Cursor.visible = true;
+        afterDeadCam.enabled = true;
+        cinemachineFreeLook.enabled = false;
+
+        if (enemyLook != null && npc != null)
+        {
+            enemyLook.enabled = true;
+            enemyLook.m_LookAt = npc.transform;
+            enemyLook.m_XAxis.m_MaxSpeed = 0.0f;
+            enemyLook.m_YAxis.m_MaxSpeed = 0.0f;
+        }
+        else
+        {
+            Debug.LogWarning("ShopNpc 또는 Cinemachine LookAt 설정 문제");
+        }
+
+        animator.SetBool("IsOpen", true);
+
+        DisplayNextSentence();
+        ShowInteractionText(false);
+    }
+
+    private IEnumerator StartMonologueDialogueRoutine(Dialogue dialogue)
+    {
+        // 로컬라이즈 문자열 로딩
+        yield return StartCoroutine(LoadLocalizedDialogue(dialogue));
+
+        dialogueBoxController.gameObject.SetActive(true);
+        playerController.canMove = false;
+        GameManager.Instance.TogglePlayerMovement(false);
         cinemachineFreeLook.enabled = false;
         enemyLook.enabled = false;
         afterDeadCam.enabled = true;
         Cursor.visible = true;
 
         animator.SetBool("IsOpen", true);
-        nameText.text = dialogue.name;
-        sentences.Clear();
-
-        foreach (string sentence in dialogue.sentences)
-        {
-            sentences.Enqueue(sentence);
-        }
 
         DisplayNextSentence();
+    }
+
+    // Localization 키를 이용해 실제 문자열을 가져오는 코루틴
+    private IEnumerator LoadLocalizedDialogue(Dialogue dialogue)
+    {
+        sentences.Clear();
+
+        // 이름 로딩
+        var nameHandle = LocalizationSettings.StringDatabase.GetLocalizedStringAsync("MyTable", dialogue.name);
+        yield return nameHandle;
+        nameText.text = nameHandle.Result;
+
+        // 각 문장 로딩
+        foreach (string sentenceKey in dialogue.sentences)
+        {
+            var sentenceHandle = LocalizationSettings.StringDatabase.GetLocalizedStringAsync("MyTable", sentenceKey);
+            yield return sentenceHandle;
+            sentences.Enqueue(sentenceHandle.Result);
+        }
     }
 
     public void DisplayNextSentence()
@@ -178,15 +185,13 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         playerController.canMove = true;
+        GameManager.Instance.TogglePlayerMovement(true);
         cinemachineFreeLook.enabled = true;
         enemyLook.enabled = true;
         afterDeadCam.enabled = false;
-        Cursor.visible = false;        
+        Cursor.visible = false;
 
         animator.SetBool("IsOpen", false);
-        //ShowInteractionText(true);
-
-
 
         Debug.Log("End of conversation");
 
@@ -200,16 +205,9 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowInteractionText(bool show)
     {
-        if (show)
+        if (playerInteractUI != null)
         {
-            if (playerInteractUI != null)
-            {
-                playerInteractUI.SetActive(true);
-            }
-        }
-        else
-        {
-            playerInteractUI.SetActive(false);
+            playerInteractUI.SetActive(show);
         }
     }
 }

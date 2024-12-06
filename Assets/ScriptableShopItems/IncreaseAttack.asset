@@ -13,8 +13,27 @@ MonoBehaviour:
   m_Name: IncreaseAttack
   m_EditorClassIdentifier: 
   itemIcon: {fileID: 21300000, guid: 173eb32e2d6f1ee43a0b30231a22bb2b, type: 3}
-  itemName: Increase Attack
-  itemDescription: Add +15 Strength
+  itemName:
+    m_TableReference:
+      m_TableCollectionName: GUID:e4e4c10613ecce946bf249bb07cfe93f
+    m_TableEntryReference:
+      m_KeyId: 250358128640
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  itemDescription:
+    m_TableReference:
+      m_TableCollectionName: GUID:e4e4c10613ecce946bf249bb07cfe93f
+    m_TableEntryReference:
+      m_KeyId: 276337647616
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   itemPrice: 450
   itemType: 0
   effectValue: 15
+  references:
+    version: 2
+    RefIds: []

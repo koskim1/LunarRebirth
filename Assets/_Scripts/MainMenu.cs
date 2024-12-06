@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
     public static MainMenu Instance;
 
     public GameObject MainMenuUI;
+    public GameObject TitleImage;
+
     //public GameObject InGameUI;
     public Button startGameBtn;
     //public Button goBackToGameBtn;
@@ -66,12 +68,14 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.SetActive(false);
         optionMenu.SetActive(true);
+        TitleImage.SetActive(false);
     }
 
     public void GoBackToMain()
     {
         mainMenu.SetActive(true);
         optionMenu.SetActive(false);
+        TitleImage.SetActive(true);
     }
 
     public void QuitBtn()

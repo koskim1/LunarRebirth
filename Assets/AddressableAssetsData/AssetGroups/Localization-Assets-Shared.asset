@@ -22,6 +22,21 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 004e86b51f1c7344dbcd209ae9264ce8
+    m_Address: Assets/Localization/Tables/Card Table Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d88b29634a69fcd4e84761a84f8c31b4
+    m_Address: Assets/Localization/Tables/CardDescription Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4e4c10613ecce946bf249bb07cfe93f
+    m_Address: Assets/Localization/Tables/ShopItem Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: ce6e835be185244429e3ec737c1d07a0, type: 2}
   m_SchemaSet:

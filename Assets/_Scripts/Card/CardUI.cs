@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Localization.Components;
 
 /// <summary>
 /// Will update the UI-visuals of each card, depending on it's data
@@ -12,6 +13,9 @@ public class CardUI : MonoBehaviour
 {
     private Card _card;
     private ScriptableCard _cardScript;
+
+    [SerializeField] private LocalizeStringEvent cardNameLocalizeEvent;
+    [SerializeField] private LocalizeStringEvent cardDescriptionLocalizeEvent;
 
     [Header("Prefabs Elements")]
     [SerializeField] private Image _cardImage;
@@ -55,34 +59,19 @@ public class CardUI : MonoBehaviour
 
     public void SetCardData(ScriptableCard cardData)
     {
+        // 여기서 번역 들어가야하는데.
         if(cardData != null)
-        {
-            _cardName.text = cardData.CardName;
-            _cardDescription.text = cardData.CardDescription;
+        {            
+            cardNameLocalizeEvent.StringReference = cardData.CardName;
+            cardDescriptionLocalizeEvent.StringReference = cardData.CardDescription;
+            //_cardName.text = cardData.CardName;
+            //_cardDescription.text = cardData.CardDescription;
             _cardImage.sprite = cardData.Image;
             SetRarityBackground(cardData.Rarity);
             SetElementFrame(cardData.Element);
             SetRarityCornerBackGround(cardData.Rarity);
         }
     }
-
-    //private void SetCardUI()
-    //{
-    //    if(_card != null && _card.CardData != null)
-    //    {
-    //        SetCardTexts();
-    //        SetRarityBackground();
-    //        SetElementFrame();
-    //        SetCardImage();
-    //    }
-    //}
-
-    private void SetCardTexts()
-    {
-        _cardName.text = _card.CardData.CardName;
-        _cardDescription.text = _card.CardData.CardDescription;
-    }
-
 
     private void SetRarityBackground(CardRarity rarity)
     {

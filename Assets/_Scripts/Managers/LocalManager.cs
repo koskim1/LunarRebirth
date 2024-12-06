@@ -5,7 +5,22 @@ using UnityEngine.Localization.Settings;
 
 public class LocalManager : MonoBehaviour
 {
-    bool isChanging;
+    public static LocalManager Instance;
+
+    public bool isChanging;
+
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public void ChangeLocale(int index)
     {
@@ -14,7 +29,7 @@ public class LocalManager : MonoBehaviour
             return;
         }
 
-        StartCoroutine(ChangeRoutine(index));
+        StartCoroutine(ChangeRoutine(index));        
     }
 
     IEnumerator ChangeRoutine(int index)

@@ -12,9 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1972010329abd574f93d5b121cc05bbb, type: 3}
   m_Name: Defense III
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: Defense III
-  <CardDescription>k__BackingField: "\uBC29\uC5B4\uB825\uC744 8% \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  cardKey: Defense III
+  <CardName>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:004e86b51f1c7344dbcd209ae9264ce8
+    m_TableEntryReference:
+      m_KeyId: 167274065551360
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <CardDescription>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:d88b29634a69fcd4e84761a84f8c31b4
+    m_TableEntryReference:
+      m_KeyId: 434957836288
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <Image>k__BackingField: {fileID: 21300000, guid: cbb6432782be1cd4281456b59b256ef9,
     type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 2
+  references:
+    version: 2
+    RefIds: []

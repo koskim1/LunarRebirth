@@ -31,6 +31,122 @@ MonoBehaviour:
     m_Key: UI_Pause
     m_Metadata:
       m_Items: []
+  - m_Id: 207834868473856
+    m_Key: UI_Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 208137927909376
+    m_Key: UI_GoBackToTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 208342538641408
+    m_Key: UI_Option
+    m_Metadata:
+      m_Items: []
+  - m_Id: 208451280166912
+    m_Key: UI_QuitGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 208833226072064
+    m_Key: UI_Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 215671971635200
+    m_Key: UI_GameStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 215912011653120
+    m_Key: UI_GameContinue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 220112166707200
+    m_Key: MainStory_1st
+    m_Metadata:
+      m_Items: []
+  - m_Id: 220993389977600
+    m_Key: MainStory_2nd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 221154354782208
+    m_Key: MainStory_3rd
+    m_Metadata:
+      m_Items: []
+  - m_Id: 221713723940864
+    m_Key: AfterBossDead
+    m_Metadata:
+      m_Items: []
+  - m_Id: 222918474850304
+    m_Key: AfterDoorKeeperDied
+    m_Metadata:
+      m_Items: []
+  - m_Id: 234315585806336
+    m_Key: UI_Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 262004250107904
+    m_Key: UI_Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 265283235340288
+    m_Key: UI_BossName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270734190567424
+    m_Key: Brian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270792264900608
+    m_Key: Brian0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 270926704926720
+    m_Key: Brian1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272459479769088
+    m_Key: Brian2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272471282540544
+    m_Key: Brian3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272493621403648
+    m_Key: Brian4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272504442707968
+    m_Key: Brian5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272514274156544
+    m_Key: Brian6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272535589609472
+    m_Key: Brian7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272558440177664
+    m_Key: Brian8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 272580342833152
+    m_Key: Brian9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 276287621029888
+    m_Key: UnknownMerchant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 276573404127232
+    m_Key: Merchant0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 276643809714176
+    m_Key: Merchant1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

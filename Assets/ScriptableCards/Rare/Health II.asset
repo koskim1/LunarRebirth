@@ -12,9 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1972010329abd574f93d5b121cc05bbb, type: 3}
   m_Name: Health II
   m_EditorClassIdentifier: 
-  <CardName>k__BackingField: Health II
-  <CardDescription>k__BackingField: "\uCCB4\uB825\uC744 50 \uC99D\uAC00\uC2DC\uD0B5\uB2C8\uB2E4."
+  cardKey: Health II
+  <CardName>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:004e86b51f1c7344dbcd209ae9264ce8
+    m_TableEntryReference:
+      m_KeyId: 171046124773376
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  <CardDescription>k__BackingField:
+    m_TableReference:
+      m_TableCollectionName: GUID:d88b29634a69fcd4e84761a84f8c31b4
+    m_TableEntryReference:
+      m_KeyId: 556039004160
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
   <Image>k__BackingField: {fileID: 21300000, guid: 29897cd30977f104faaf3103291c4578,
     type: 3}
   <Element>k__BackingField: 0
   <Rarity>k__BackingField: 1
+  references:
+    version: 2
+    RefIds: []
