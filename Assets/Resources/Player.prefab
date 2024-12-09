@@ -2823,6 +2823,8 @@ MonoBehaviour:
   isPc: 1
   canMove: 0
   _canDash: 1
+  _speed: 8
+  _dashSpeed: 20
   dashCurve:
     serializedVersion: 2
     m_Curve:
@@ -3061,8 +3063,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5049159936708501205}
+  attackSpeed: 1
   attackIndex: 0
-  attackResetTime: 0.4
+  attackResetTime: 0.3
 --- !u!114 &8315163823154968239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3085,12 +3088,15 @@ MonoBehaviour:
   levelText: {fileID: 0}
   levelUpUI: {fileID: 0}
   mlpText: {fileID: 0}
+  defense: 0.6
   currentLevel: 1
   currentXP: 0
   xpToNextLevel: 10
   deathCount: 0
-  currentMLP: 1000
+  currentMLP: 0
   previousMLP: 0
+  hasLifeSteal: 0
+  lifeStealAmount: 0
 --- !u!114 &2505581010853484483
 MonoBehaviour:
   m_ObjectHideFlags: 0

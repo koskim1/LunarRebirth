@@ -166,6 +166,110 @@ MonoBehaviour:
       item for MoonLightPoint.'
     m_Metadata:
       m_Items: []
+  - m_Id: 1377597833469952
+    m_Localized: The Withered Knight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1378178513887232
+    m_Localized: Oh, a new recruit... It's been a while since someone new showed
+      up.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1378197069488128
+    m_Localized: 'The world has been destroyed, and time has long since passed, my
+      friend.
+
+      Even that merchant wizard over there is now exhausted from endless
+      exploration.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1378491027283968
+    m_Localized: 'I''m too worn out to keep doing this... I''m just waiting for my
+      final day.
+
+
+      But life is precious, so I''ll tell you what you need to
+      know to survive here.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1417095757815808
+    m_Localized: Keyboard Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1417750799048704
+    m_Localized: 'WASD: Movement'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1417952419241984
+    m_Localized: 'E: Interact/Use Ability (requires ability unlock)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1418081528307712
+    m_Localized: 'SpaceBar: Dash'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1418183353425920
+    m_Localized: 'M: Mini-map'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1418304703029248
+    m_Localized: Mouse Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1418401385930752
+    m_Localized: 'Left Click: Basic Attack
+
+
+      Right Click: Enemy Focus (within
+      range)'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1418565332885504
+    m_Localized: Game Flow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1418666482720768
+    m_Localized: '1.Explore procedurally generated dungeons
+
+      2.Level up and
+      grow stronger
+
+      3.Defeat the final boss'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1418823416799232
+    m_Localized: Boss Information
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1418947287179264
+    m_Localized: Locate boss guard using the Mini-map (M key)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1419153676296192
+    m_Localized: "Use souls from defeated monsters \nto access the shop"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1419298593693696
+    m_Localized: Leveling Up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1419398132916224
+    m_Localized: 'Receive cards of various rarities:
+
+      Common / Rare / Epic
+      / Legendary
+
+
+      Choose wisely to clear dungeons and defeat bosses'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1419575346454528
+    m_Localized: 'If game freezes, press ESC twice.
+
+
+      Good luck!'
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

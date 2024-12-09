@@ -25,7 +25,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject playerInteractUI;
     private DialogueBoxController dialogueBoxController;
 
+    private Tuto_Npc tutorialNpc;
     private bool isShopDialogue = false;
+    private bool isTutoDialogue = false;
 
     void Awake()
     {
@@ -41,6 +43,7 @@ public class DialogueManager : MonoBehaviour
 
         playerController = FindObjectOfType<PlayerController>();
         dialogueBoxController = FindObjectOfType<DialogueBoxController>();
+        tutorialNpc = FindObjectOfType<Tuto_Npc>();
         sentences = new Queue<string>();
 
         Cursor.visible = false;
@@ -48,6 +51,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue, DialogueTrigger npc)
     {
+        isTutoDialogue = true;
         StartCoroutine(StartDialogueRoutine(dialogue, npc));
     }
 
@@ -193,14 +197,19 @@ public class DialogueManager : MonoBehaviour
 
         animator.SetBool("IsOpen", false);
 
-        Debug.Log("End of conversation");
-
         if (isShopDialogue)
         {
             dialogueBoxController.gameObject.SetActive(false);
             ShopManager.Instance.OpenShop();
             isShopDialogue = false;
         }
+        if (isTutoDialogue)
+        {
+            dialogueBoxController.gameObject.SetActive(false);
+            tutorialNpc.OpenTutorial();
+            isTutoDialogue = false;
+        }
+
     }
 
     public void ShowInteractionText(bool show)

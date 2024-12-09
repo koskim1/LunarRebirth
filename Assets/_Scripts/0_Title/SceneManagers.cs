@@ -117,7 +117,7 @@ public class SceneManagers : MonoBehaviour
     }
 
     public void LoadBossRoom()
-    {
+        {
         StartCoroutine(animatorOnOff());
         animator.SetTrigger("FadeOut");
         GameManager.Instance.TogglePlayerMovement(false);
