@@ -21,6 +21,7 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private float attackResetTime = 0.3f;
     private float lastAttackTime;
 
+    [SerializeField] private AudioClip[] attackSoundClip;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -55,7 +56,6 @@ public class PlayerAnimation : MonoBehaviour
 
         PlayAttackAnimation();
         attackIndex++;
-        
     }
 
     public void IncreaseAttackSpeed(float amount)
@@ -69,17 +69,15 @@ public class PlayerAnimation : MonoBehaviour
 
         if (attackIndex == 0)
         {
-            animator.SetBool("hit1", true);
+            animator.SetTrigger("Attacking");            
         }
         else if (attackIndex == 1)
         {
-            animator.SetBool("hit1", false);
-            animator.SetBool("hit2", true);
+            animator.SetTrigger("Attacking");            
         }
         else if (attackIndex == 2)
         {
-            animator.SetBool("hit2", false);
-            animator.SetBool("hit3", true);
+            animator.SetTrigger("Attacking");            
         }
         else
         {
@@ -90,9 +88,6 @@ public class PlayerAnimation : MonoBehaviour
     private void ResetAttack()
     {
         attackIndex = 0;
-        animator.SetBool("hit1", false);
-        animator.SetBool("hit2", false);
-        animator.SetBool("hit3", false);
 
         animator.speed = 1.0f;
     }
@@ -120,6 +115,10 @@ public class PlayerAnimation : MonoBehaviour
         animator.SetBool("isDead", true);
         // EnemyAnimation도 마찬가지지만 완전 원본 애니메이션 이름을 적어야 함
         StartCoroutine(DestroyAfterAnimation("Die01_SwordAndShield"));
+    }
+    public void PlaySwordSwingSound()
+    {
+        AudioManager.Instance.PlayRandomSoundFXClip(attackSoundClip, transform, 0.3f);
     }
 
     private IEnumerator DestroyAfterAnimation(string clipName)

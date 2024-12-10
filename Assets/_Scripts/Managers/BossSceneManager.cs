@@ -49,12 +49,4 @@ public class BossSceneManager : MonoBehaviour
         openingBoss.SetActive(false);        
         Debug.Log("º¸½º¾¾³×¸¶Æ½ ³¡");
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            SceneManagers.Instance.LoadBossRoom();
-        }
-    }
 }
