@@ -943,6 +943,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4619741729188071243, guid: 309e622d28ad6f24891f0edd38ebe1cd,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4619741729188071243, guid: 309e622d28ad6f24891f0edd38ebe1cd,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6278569191990731674, guid: 309e622d28ad6f24891f0edd38ebe1cd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -997,6 +1007,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VikingGateKeeper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659176534187833632, guid: 309e622d28ad6f24891f0edd38ebe1cd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2379,7 +2394,7 @@ PrefabInstance:
     - target: {fileID: 1593871301343667671, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2461581584773045913, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
@@ -2394,12 +2409,12 @@ PrefabInstance:
     - target: {fileID: 3706003319909165341, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3706003319909165341, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5589196291163594183, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
@@ -2409,12 +2424,12 @@ PrefabInstance:
     - target: {fileID: 7114441266778116853, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.693
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7114441266778116853, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7198155012654368948, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
@@ -3121,7 +3136,7 @@ PrefabInstance:
     - target: {fileID: 4255172751482902590, guid: e362bb3e4f6e11648bc54339c475063d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3392,7 +3407,7 @@ PrefabInstance:
     - target: {fileID: 7749054874347738619, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.027311064
+      value: 0.02731106
       objectReference: {fileID: 0}
     - target: {fileID: 7749054874347738619, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -3402,7 +3417,7 @@ PrefabInstance:
     - target: {fileID: 7749054874347738619, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0069340602
+      value: -0.0069340593
       objectReference: {fileID: 0}
     - target: {fileID: 7828331203988729556, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -3523,12 +3538,12 @@ PrefabInstance:
     - target: {fileID: 4353033351836485426, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4353033351836485426, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8102276934802283046, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
@@ -3538,7 +3553,7 @@ PrefabInstance:
     - target: {fileID: 8102276934802283046, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8879622221833388188, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}

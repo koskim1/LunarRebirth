@@ -1666,7 +1666,7 @@ MonoBehaviour:
   - {fileID: 7564045955438682973}
   - {fileID: 964147249939098982}
   - {fileID: 5650297774456935060}
-  bossPrefab: {fileID: 6615308912986884640, guid: 822c23fdf69b82f469cdbb4aabcef388,
+  bossPrefab: {fileID: 6659176534187833632, guid: 309e622d28ad6f24891f0edd38ebe1cd,
     type: 3}
   enemies: []
   neighborRooms:

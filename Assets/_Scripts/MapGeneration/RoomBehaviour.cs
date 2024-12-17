@@ -69,13 +69,32 @@ public class RoomBehaviour : MonoBehaviour
         if (neighborRooms[3] != null) neighborRooms[3].woodDoors[2].SetActive(false); // 왼쪽 방의 오른쪽 문
 
         doorsLocked = false;
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (doors[i].activeSelf && neighborRooms[i] != null)
+            {
+                neighborRooms[i].ActivateEnemies();
+            }
+        }
     }
 
     private void Update()
     {
         if(doorsLocked && enemies.Count == 0)
         {
-            UnlockDoors();
+            UnlockDoors();            
+        }
+    }
+
+    public void ActivateEnemies()
+    {
+        foreach (var enemy in enemies)
+        {
+            if (enemy != null && !enemy.activeSelf)
+            {
+                enemy.SetActive(true);
+            }
         }
     }
 

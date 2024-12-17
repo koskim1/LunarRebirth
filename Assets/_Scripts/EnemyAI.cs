@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour
         Minion,
         Warrior,
         Rogue,
+        GateKeeper
     }
 
     public EnemyType enemyType;
@@ -86,6 +87,11 @@ public class EnemyAI : MonoBehaviour
                 timeBetweenAttacks = 1.067f;
                 mlpValue = Random.Range(8, 20);
                 break;
+            case EnemyType.GateKeeper:
+                sightRange = 7;
+                attackRange = 1.5f;
+                mlpValue = 300;
+                break;
         }
     }
 
@@ -116,7 +122,11 @@ public class EnemyAI : MonoBehaviour
             walkPointSet = false;
 
         // 게이트키퍼
-        animator.SetBool("startChase", false);
+        if (enemyType == EnemyType.GateKeeper)
+        {
+            animator.SetBool("startChase", false);
+        }
+        
     }
 
     private void SearchWalkPoint()
@@ -158,7 +168,11 @@ public class EnemyAI : MonoBehaviour
         }
 
         // 게이트키퍼
-        animator.SetBool("startChase", true);
+        if (enemyType == EnemyType.GateKeeper)
+        {
+            navMeshAgent.speed = 2f;
+            animator.SetBool("startChase", true);
+        }
     }
     private void AttackPlayer()
     {
@@ -183,6 +197,9 @@ public class EnemyAI : MonoBehaviour
                     break;
                 case EnemyType.Warrior:
                     PerformWarriorAttack();
+                    break;
+                case EnemyType.GateKeeper:
+                    PerformMinionAttack();
                     break;
             }
 

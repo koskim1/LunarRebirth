@@ -18,6 +18,8 @@ public class DungeonGenerator : MonoBehaviour
     public GameObject bossPrefab;
     public GameObject[] enemyPrefab;
 
+    private bool firstRoom;
+
     List<Cell> board;
 
     public RoomBehaviour[,] roomGrid; // 2D 배열로 각 방을 저장
@@ -53,8 +55,11 @@ public class DungeonGenerator : MonoBehaviour
                     }
                     else
                     {
+                        if (i == 0 && j == 0) firstRoom = true;
+                        else firstRoom = false;
+
                         // 일반 방에 적 생성
-                        SpawnEnemies(newRoom, currentCell.distanceFromStart);
+                        SpawnEnemies(newRoom, currentCell.distanceFromStart);                        
                     }
 
                     newRoom.name = room.name + " " + i + "-" + j;
@@ -197,7 +202,9 @@ public class DungeonGenerator : MonoBehaviour
                 currentEnemy.currentRoom = room;
             }
 
-            room.enemies.Add(enemy);            
+            room.enemies.Add(enemy);
+
+            if(!firstRoom)  enemy.SetActive(false);
         }
     }
 

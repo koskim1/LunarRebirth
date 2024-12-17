@@ -933,7 +933,7 @@ MonoBehaviour:
   startPos: 0
   room: {fileID: 8485498356581720850, guid: 2230416b262966e48bebf57ff29a280a, type: 3}
   offset: {x: 61, y: 58}
-  bossPrefab: {fileID: 6615308912986884640, guid: 822c23fdf69b82f469cdbb4aabcef388,
+  bossPrefab: {fileID: 6659176534187833632, guid: 309e622d28ad6f24891f0edd38ebe1cd,
     type: 3}
   enemyPrefab:
   - {fileID: 8102276934802283046, guid: 8abed245dfce97e4aafd8043912bbd48, type: 3}
@@ -1387,6 +1387,7 @@ MonoBehaviour:
     type: 3}
   currentRoom: {fileID: 0}
   SoulPrefab: {fileID: 0}
+  isBossGateKeeper: 0
 --- !u!224 &1847570387 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6225830132305715951, guid: fc86dfe9ca2d5804081b4ca518fe80ac,
