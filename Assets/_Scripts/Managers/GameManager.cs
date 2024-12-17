@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
   
     public void ChangeLocale(int index)
     {
+        UIManager.Instance.PlayClickSound();
         if (LocalManager.Instance.isChanging)
         {
             return;

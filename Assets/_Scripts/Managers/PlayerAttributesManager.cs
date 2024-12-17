@@ -162,6 +162,7 @@ public class PlayerAttributesManager : AttributesManager
 
     public void LevelUp()
     {
+        AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.levelUpSFX, transform, .5f);
         // 레벨업 로직
         Debug.Log("레벨 업!");
         currentLevel++;

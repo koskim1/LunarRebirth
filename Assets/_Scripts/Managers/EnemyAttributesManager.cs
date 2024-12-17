@@ -46,7 +46,7 @@ public class EnemyAttributesManager : AttributesManager, ILockOnTarget
         {
             ShowFloatingText(damage);
         }
-        
+        AudioManager.Instance.PlayRandomSoundFXClip(AudioManager.Instance.enemyHitSounds, transform, 0.5f);
         healthBar.SetHealth(_health);
     }
 

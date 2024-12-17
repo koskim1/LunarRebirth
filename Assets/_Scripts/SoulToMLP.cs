@@ -62,6 +62,7 @@ public class SoulToMLP : MonoBehaviour
     {
         if (other.CompareTag("Player") && !isCollected)
         {
+            AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.gainMLPSFX, transform, .5f);
             isCollected = true;
             PlayerAttributesManager.Instance.AddMLP(mlpValue);
 

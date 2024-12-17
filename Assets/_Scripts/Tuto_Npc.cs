@@ -43,6 +43,7 @@ public class Tuto_Npc : MonoBehaviour
     
     public void OpenTutorial()
     {
+        UIManager.Instance.PlayClickSound();
         Cursor.visible = true;
         Time.timeScale = 0;
         Tuto_Board.SetActive(true);
@@ -65,6 +66,7 @@ public class Tuto_Npc : MonoBehaviour
 
     public void NextPage()
     {
+        UIManager.Instance.PlayClickSound();
         if (currentIndex < tutorialPages.Length - 1)
         {
             currentIndex++;
@@ -74,6 +76,7 @@ public class Tuto_Npc : MonoBehaviour
 
     public void PrevPage()
     {
+        UIManager.Instance.PlayClickSound();
         if (currentIndex > 0)
         {
             currentIndex--;
@@ -83,6 +86,7 @@ public class Tuto_Npc : MonoBehaviour
 
     public void CloseTutorial()
     {
+        UIManager.Instance.PlayClickSound();
         Tuto_Board.SetActive(false);
         Time.timeScale = 1f;        
         Cursor.visible = false;

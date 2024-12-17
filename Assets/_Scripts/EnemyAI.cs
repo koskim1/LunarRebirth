@@ -115,6 +115,8 @@ public class EnemyAI : MonoBehaviour
         if (distanceToWalk.magnitude < 1f)
             walkPointSet = false;
 
+        // 게이트키퍼
+        animator.SetBool("startChase", false);
     }
 
     private void SearchWalkPoint()
@@ -154,6 +156,9 @@ public class EnemyAI : MonoBehaviour
             animator.SetBool("isShielding", true);
             isShielding = true;
         }
+
+        // 게이트키퍼
+        animator.SetBool("startChase", true);
     }
     private void AttackPlayer()
     {

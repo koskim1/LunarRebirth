@@ -22,7 +22,9 @@ public class MainMenu : MonoBehaviour
 
     public GameObject mainMenu;
     public GameObject optionMenu;
-    
+
+    public AudioSource mainMenuAudioSource;
+    public AudioClip clickSound;
     void Awake()
     {
         if (Instance == null)
@@ -63,12 +65,28 @@ public class MainMenu : MonoBehaviour
             }
         }   
     }
+    public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        // 오브젝트 생성
+        AudioSource audioSource = Instantiate(mainMenuAudioSource, spawnTransform.position, Quaternion.identity);
 
+        audioSource.clip = audioClip;
+
+        audioSource.volume = volume;
+
+        audioSource.Play();
+
+        float audioLength = audioSource.clip.length;
+
+        Destroy(audioSource.gameObject, audioLength);
+    }
     public void OpenOptionMenu()
     {
         mainMenu.SetActive(false);
         optionMenu.SetActive(true);
         TitleImage.SetActive(false);
+
+        PlaySoundFXClip(clickSound, transform, .5f);
     }
 
     public void GoBackToMain()
@@ -76,6 +94,7 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(true);
         optionMenu.SetActive(false);
         TitleImage.SetActive(true);
+        PlaySoundFXClip(clickSound, transform, .5f);
     }
 
     public void QuitBtn()

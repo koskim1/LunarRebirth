@@ -28,6 +28,13 @@ public class MainStoryIntro : MonoBehaviour
             }
 
         }
+
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.soundFXObject.gameObject.SetActive(true);
+            AudioManager.Instance.BGM.gameObject.SetActive(true);
+        }
+
         LoadingSceneController.LoadScene("MainRoom");
 
         //SceneManager.LoadScene("MainRoom");

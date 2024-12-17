@@ -50,6 +50,7 @@ public class PauseMenu : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         optionMenu.SetActive(false);
+        UIManager.Instance.PlayClickSound();
         Cursor.visible = false;
         Time.timeScale = 1f;
         isPaused = false;
@@ -59,17 +60,20 @@ public class PauseMenu : MonoBehaviour
     {
         ResumeGame();
         Cursor.visible = true;
+        UIManager.Instance.PlayClickSound();
         SceneManagers.Instance.LoadTitleScene();       
     }
 
     public void OptionMenu()
     {
+        UIManager.Instance.PlayClickSound();
         pauseMenu.SetActive(false);
         optionMenu.SetActive(true);
     }
 
     public void BackBtn()
     {
+        UIManager.Instance.PlayClickSound();
         optionMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }

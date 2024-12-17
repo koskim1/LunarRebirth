@@ -30,7 +30,7 @@ public class PlayerAnimation : MonoBehaviour
         _playerController = FindObjectOfType<PlayerController>();
         _healthBar = FindObjectOfType<PlayerHealthBar>();
 
-        _swordCollider.enabled = false;
+        _swordCollider.enabled = false;        
     }
 
     // Update is called once per frame
@@ -118,7 +118,7 @@ public class PlayerAnimation : MonoBehaviour
     }
     public void PlaySwordSwingSound()
     {
-        AudioManager.Instance.PlayRandomSoundFXClip(attackSoundClip, transform, 0.3f);
+        AudioManager.Instance.PlayRandomSoundFXClip(attackSoundClip, transform, 0.5f);
     }
 
     private IEnumerator DestroyAfterAnimation(string clipName)

@@ -41,13 +41,13 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -2627737563214240231}
-    m_Duration: 5
+    m_Duration: 6.183333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1819626763815311752}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: 2.4166666666666665
+    m_BlendOutDuration: 3.0833333333333335
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -107,16 +107,16 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Virtual Camera
   - m_Version: 1
-    m_Start: 2.5833333333333335
+    m_Start: 3.1
     m_ClipIn: 0
     m_Asset: {fileID: 443426247013282421}
-    m_Duration: 5
+    m_Duration: 9.083333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1819626763815311752}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 2.4166666666666665
-    m_BlendOutDuration: 1.333333333333334
+    m_BlendInDuration: 3.0833333333333335
+    m_BlendOutDuration: 2.6833333333333336
     m_MixInCurve:
       serializedVersion: 2
       m_Curve: []
@@ -140,15 +140,15 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: Virtual Camera (1)
   - m_Version: 1
-    m_Start: 6.25
+    m_Start: 9.5
     m_ClipIn: 0
     m_Asset: {fileID: 8278004994733684762}
-    m_Duration: 4.050000000000001
+    m_Duration: 5.4833333333333325
     m_TimeScale: 1
     m_ParentTrack: {fileID: -1819626763815311752}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: 1.333333333333334
+    m_BlendInDuration: 2.6833333333333336
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
@@ -158,25 +158,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4

@@ -54,7 +54,7 @@ public class ShopManager : MonoBehaviour
     public void OpenShop()
     {
         shopUI.SetActive(true);
-
+        UIManager.Instance.PlayClickSound();
         Time.timeScale = 0f;
         playerController.canMove = false;
 
@@ -63,6 +63,7 @@ public class ShopManager : MonoBehaviour
 
     public void CloseShop()
     {
+        UIManager.Instance.PlayClickSound();
         shopUI.SetActive(false);
         Time.timeScale = 1f;
         playerController.canMove = true;

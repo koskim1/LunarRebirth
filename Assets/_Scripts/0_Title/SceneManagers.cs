@@ -77,6 +77,11 @@ public class SceneManagers : MonoBehaviour
         {
             UIManager.Instance.gameObject.SetActive(true);
         }
+        if(AudioManager.Instance != null)
+        {
+            AudioManager.Instance.soundFXObject.gameObject.SetActive(true);
+            AudioManager.Instance.BGM.gameObject.SetActive(true);
+        }
         animator.SetTrigger("FadeOut");
 
         // 씬 로드 후에 Player 초기화
@@ -111,6 +116,11 @@ public class SceneManagers : MonoBehaviour
         if (UIManager.Instance != null)
         {
             UIManager.Instance.gameObject.SetActive(false);
+        }
+        if(AudioManager.Instance != null)
+        {
+            AudioManager.Instance.soundFXObject.gameObject.SetActive(false);
+            AudioManager.Instance.BGM.gameObject.SetActive(false);
         }
         //UIManager.Instance.gameObject.SetActive(false);
         LoadingSceneController.LoadScene("TitleScene");

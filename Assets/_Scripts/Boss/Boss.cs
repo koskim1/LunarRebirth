@@ -88,6 +88,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
         navMeshAgent = GetComponent<NavMeshAgent>();
         bossHealthBar = FindAnyObjectByType<BossHealthBar>();
         bossMinionSpawn = FindAnyObjectByType<BossMinionSpawn>();
+        AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.bossIntroSFX, transform, .8f);
     }
 
     private void Start()
@@ -255,7 +256,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
     {        
         currentHp -= damage;
         UpdateBossHealth();
-
+        AudioManager.Instance.PlayRandomSoundFXClip(AudioManager.Instance.enemyHitSounds, transform, .5f);
         if (currentHp <= 0)
         {
             Die();
@@ -308,7 +309,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
     private void PerformBossAttack()
     {
-        animator.SetBool("canAttack", true);
+        animator.SetBool("canAttack", true);        
     }
 
     private void ResetAttack()
@@ -327,6 +328,11 @@ public class Boss : MonoBehaviour, ILockOnTarget
     public void DisableCollider()
     {
         boxCollider.enabled = false;
+    }
+
+    public void PlayBossAtkSound()
+    {
+        AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.bossAttackSFX, transform, .5f);
     }
 
     public void StopBossMovement()
@@ -370,6 +376,8 @@ public class Boss : MonoBehaviour, ILockOnTarget
 
         StartCoroutine(DestroyAfterAnimation());
         Ondeath?.Invoke();
+
+        AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.bossDeadSFX, transform, .5f);
     }
 
     private void KillAllSpawnedMinions()

@@ -1173,6 +1173,8 @@ MonoBehaviour:
   BossUI: {fileID: 5655888557847115146}
   GoingToBossRoomText: {fileID: 3689616355611412211}
   AfterBossDeadText: {fileID: 7966617105420157821}
+  AudioMixer: {fileID: 24100000, guid: 276390ea202074548b10c5cd8f07fe85, type: 2}
+  clickSound: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
 --- !u!1 &2448397045590547946
 GameObject:
   m_ObjectHideFlags: 0
@@ -5521,6 +5523,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 913025540023083919}
     m_Modifications:
+    - target: {fileID: 164326710960141830, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4025580443748198809}
+    - target: {fileID: 164326710960141830, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 323526971847150176, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_AnchoredPosition.y
