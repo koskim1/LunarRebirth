@@ -72,7 +72,7 @@ public class PlayerAttributesManager : AttributesManager
         base._attack = 20;
         base._xp = 20;
         defense = 1f;
-        currentLevel = 0;
+        currentLevel = 1;
         currentXP = 0;
         xpToNextLevel = 10;
         deathCount = 0;
@@ -84,6 +84,68 @@ public class PlayerAttributesManager : AttributesManager
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(_health);
         _sword.transform.localScale = new Vector3(1, 1, 1);
+
+        if(_fireballController != null)
+        {
+            _fireballController.canShootFireball = false;
+        }
+        if (_playerController != null)
+        {
+            _playerController._canSlowDash = false;
+        }
+    }
+
+    public void SavePlayerData()
+    {
+        PlayerPrefs.SetInt("MaxHealth", maxHealth);
+        PlayerPrefs.SetInt("CurrentHealth", _health);
+        PlayerPrefs.SetInt("Attack", _attack);
+        PlayerPrefs.SetFloat("Defense", defense);
+        PlayerPrefs.SetInt("CurrentLevel", currentLevel);
+        PlayerPrefs.SetInt("CurrentXP", currentXP);
+        PlayerPrefs.SetInt("XpToNextLevel", xpToNextLevel);
+        PlayerPrefs.SetInt("PreviousMLP", previousMLP);
+        PlayerPrefs.SetInt("CurrentMLP", currentMLP);
+        PlayerPrefs.SetInt("HealthRecoveryAmount", healthRecoveryAmount);
+
+        PlayerPrefs.SetInt("CanShootFireball", _fireballController.canShootFireball ? 1 : 0);
+        PlayerPrefs.SetInt("CanSlowDash", _playerController._canSlowDash ? 1 : 0);
+
+        PlayerPrefs.Save();
+
+        Debug.Log("플레이어의 데이터가 저장되었습니다.");
+    }
+
+    public void LoadPlayerData()
+    {
+        // 만약 저장된 데이터가 없다면
+        if (!PlayerPrefs.HasKey("MaxHealth"))
+        {
+            Debug.Log("저장된 플레이어 데이터가 없습니다.");
+            return;
+        }
+
+        maxHealth = PlayerPrefs.GetInt("MaxHealth");
+        _health = PlayerPrefs.GetInt("MaxHealth");
+        _attack = PlayerPrefs.GetInt("Attack");
+        defense = PlayerPrefs.GetFloat("Defense");
+        currentLevel = PlayerPrefs.GetInt("CurrentLevel");
+        currentXP = PlayerPrefs.GetInt("CurrentXP");
+        xpToNextLevel = PlayerPrefs.GetInt("XpToNextLevel");
+        previousMLP = PlayerPrefs.GetInt("PreviousMLP");
+        currentMLP = PlayerPrefs.GetInt("CurrentMLP");
+        healthRecoveryAmount = PlayerPrefs.GetInt("HealthRecoveryAmount");
+
+        _fireballController.canShootFireball = PlayerPrefs.GetInt("CanShootFireball") == 1 ? true : false;
+        _playerController._canSlowDash = PlayerPrefs.GetInt("CanSlowDash") == 1 ? true : false;
+
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(_health);
+        
+        UpdateXPUI();
+        UpdateMLPUI(previousMLP,currentMLP);
+
+        Debug.Log("플레이어 데이터를 불러왔습니다.");
     }
 
     // Start is called before the first frame update

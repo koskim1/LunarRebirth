@@ -10,7 +10,7 @@ public class FireballController : MonoBehaviour
     private Fireball fireball;
 
 
-    private bool canShootFireball = false;    
+    public bool canShootFireball = false;    
     [SerializeField] private int maxCharges = 3;       // 최대 충전 가능한 탄 수
     private int currentCharges;                        // 현재 남아있는 탄 수
     [SerializeField] private float rechargeTime = 3f;  // 한 발 재충전에 필요한 시간

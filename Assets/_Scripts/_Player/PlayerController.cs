@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
 
-    private bool _canSlowDash = false;
+    public bool _canSlowDash = false;
     private bool _isDashing = false;
     [SerializeField]private bool _canDash = true;
     private bool _lockOn = false;

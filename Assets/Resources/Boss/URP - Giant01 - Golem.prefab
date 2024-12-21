@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b9e0d9c6be25447b83d2bae7a77d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossMaxHp: 2000
+  bossMaxHp: 50000
   currentHp: 0
   bossAtk: 1
   attackRange: 5

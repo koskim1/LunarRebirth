@@ -2822,6 +2822,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPc: 1
   canMove: 0
+  _canSlowDash: 0
   _canDash: 1
   _speed: 8
   _dashSpeed: 20
@@ -3066,6 +3067,10 @@ MonoBehaviour:
   attackSpeed: 1
   attackIndex: 0
   attackResetTime: 0.3
+  attackSoundClip:
+  - {fileID: 8300000, guid: 91f032abbb834f04cbd42ebe08b90da2, type: 3}
+  - {fileID: 8300000, guid: f716276499ac9c947a41a929ea711641, type: 3}
+  - {fileID: 8300000, guid: ab70e29f14bb83b48a72b4ea037d98c3, type: 3}
 --- !u!114 &8315163823154968239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3088,7 +3093,7 @@ MonoBehaviour:
   levelText: {fileID: 0}
   levelUpUI: {fileID: 0}
   mlpText: {fileID: 0}
-  defense: 0.6
+  defense: 1
   currentLevel: 1
   currentXP: 0
   xpToNextLevel: 10
@@ -3112,6 +3117,9 @@ MonoBehaviour:
   Fireball: {fileID: 8104551673898448437, guid: 0ab9dadcf47a31843a40db9d502f7ac2,
     type: 3}
   shootPoint: {fileID: 903025957517428749}
+  canShootFireball: 0
+  maxCharges: 3
+  rechargeTime: 3
 --- !u!114 &5197548967244557970
 MonoBehaviour:
   m_ObjectHideFlags: 0

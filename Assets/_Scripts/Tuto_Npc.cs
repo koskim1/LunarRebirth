@@ -45,10 +45,10 @@ public class Tuto_Npc : MonoBehaviour
     {
         UIManager.Instance.PlayClickSound();
         Cursor.visible = true;
-        Time.timeScale = 0;
         Tuto_Board.SetActive(true);
         currentIndex = 0;
         ShowPage(currentIndex);
+        Time.timeScale = 0;        
     }
     
     private void ShowPage(int index)

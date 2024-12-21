@@ -33,6 +33,9 @@ public class SceneManagers : MonoBehaviour
     public void LoadIntroScene()
     {
         StartCoroutine(animatorOnOff());
+
+        PlayerPrefs.DeleteAll();
+
         if(CameraFollow.Instance != null && UIManager.Instance != null)
         {
             CameraFollow.Instance.gameObject.SetActive(false);
@@ -107,6 +110,7 @@ public class SceneManagers : MonoBehaviour
         // Player 오브젝트를 비활성화
         if (PlayerAttributesManager.Instance != null)
         {
+            PlayerAttributesManager.Instance.SavePlayerData();
             PlayerAttributesManager.Instance.gameObject.SetActive(false);
         }
         if(MainMenu.Instance != null)
@@ -137,6 +141,11 @@ public class SceneManagers : MonoBehaviour
 
     public void QuitGame()
     {
+        if (PlayerAttributesManager.Instance != null)
+        {
+            PlayerAttributesManager.Instance.SavePlayerData();            
+        }
+
         StartCoroutine(animatorOnOff());
         animator.SetTrigger("FadeOut");
         Application.Quit();
@@ -162,8 +171,9 @@ public class SceneManagers : MonoBehaviour
 
             // Player 위치 및 상태 초기화
             PlayerAttributesManager.Instance.transform.position = new Vector3(0, 0f, -13f);
-            PlayerAttributesManager.Instance._health = PlayerAttributesManager.Instance.maxHealth;
-            PlayerAttributesManager.Instance.healthBar.SetHealth(PlayerAttributesManager.Instance._health);
+            PlayerAttributesManager.Instance.LoadPlayerData();
+            //PlayerAttributesManager.Instance._health = PlayerAttributesManager.Instance.maxHealth;
+            //PlayerAttributesManager.Instance.healthBar.SetHealth(PlayerAttributesManager.Instance._health);
         }
     }
 }

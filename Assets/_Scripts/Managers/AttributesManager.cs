@@ -25,6 +25,7 @@ public abstract class AttributesManager : MonoBehaviour
 
         if (_health <= 0)
         {
+            _health = 0;
             Die();
         }
     }
