@@ -171,6 +171,7 @@ public class PlayerAttributesManager : AttributesManager
         currentMLP += amount;
         UpdateMLPUI(previousMLP, currentMLP);
         Debug.Log($"현재 MLP는 {currentMLP} 입니다");
+        SavePlayerData();
     }
 
     public void UpdateMLPUI(int fromValue, int toValue)
@@ -208,6 +209,7 @@ public class PlayerAttributesManager : AttributesManager
         UIManager.Instance.BossUI.SetActive(false);
         _playerAnimation.Dead();
         GameManager.Instance.TogglePlayerMovement(false);
+        SavePlayerData();
     }
 
     // XP부분
@@ -257,6 +259,8 @@ public class PlayerAttributesManager : AttributesManager
             Debug.Log("레벨업UI");
             levelUpUI.ShowLevelUpOptions(card1, card2, card3);
         }
+
+        SavePlayerData();
     }
 
     public void ApplyCardEffect(ScriptableCard card)

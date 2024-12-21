@@ -25,7 +25,7 @@ public class LockOn : MonoBehaviour
 
     void Awake()
     {
-        cameraTransform = Camera.main.transform;
+        //cameraTransform = Camera.main.transform;
         enemyCam.GetRig(0).m_LookAt = this.transform;
         enemyCam.GetRig(1).m_LookAt = this.transform;
         enemyCam.GetRig(2).m_LookAt = this.transform;
@@ -34,6 +34,19 @@ public class LockOn : MonoBehaviour
         enemyCam.m_Follow = this.transform;
 
         enemyCam.Priority = 0;
+    }
+
+    private void OnEnable()
+    {
+        // 씬이 바뀌거나 오브젝트가 다시 Enable될 때, Camera.main이 달라질 가능성 있으므로 갱신
+        if (Camera.main != null)
+        {
+            cameraTransform = Camera.main.transform;
+        }
+        else
+        {
+            Debug.LogWarning("No main camera found!");
+        }
     }
 
     private void Start()
@@ -140,9 +153,10 @@ public class LockOn : MonoBehaviour
             enemyCam.m_LookAt = currentTarget.GetTransform();
 
             // enemyCam의 위치와 회전을 playerCam과 동일하게 설정
-            SynchronizeCameras();
+            StartCoroutine(SyncCamerasNextFrame());
 
-            enemyCam.Priority = 11;
+            //SynchronizeCameras();
+            //enemyCam.Priority = 11;
 
             FindTarget();
 
@@ -226,6 +240,13 @@ public class LockOn : MonoBehaviour
         // 필요에 따라 추가적으로 카메라의 상태를 동기화
         enemyCam.m_XAxis.Value = playerCam.m_XAxis.Value;
         enemyCam.m_YAxis.Value = playerCam.m_YAxis.Value;
+    }
+
+    IEnumerator SyncCamerasNextFrame()
+    {
+        yield return null;
+        SynchronizeCameras();
+        enemyCam.Priority = 11;
     }
 
 }

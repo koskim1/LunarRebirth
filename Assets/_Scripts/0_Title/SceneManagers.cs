@@ -71,6 +71,7 @@ public class SceneManagers : MonoBehaviour
     {
         StartCoroutine(animatorOnOff());
         Time.timeScale = 1f;
+        PlayerAttributesManager.Instance.LoadPlayerData();
         LoadingSceneController.LoadScene("MainRoom");
         if(MainMenu.Instance != null)
         {
@@ -107,10 +108,11 @@ public class SceneManagers : MonoBehaviour
         StartCoroutine(animatorOnOff());
         animator.SetTrigger("FadeOut");
 
+        PlayerAttributesManager.Instance.SavePlayerData();
+
         // Player 오브젝트를 비활성화
         if (PlayerAttributesManager.Instance != null)
-        {
-            PlayerAttributesManager.Instance.SavePlayerData();
+        {            
             PlayerAttributesManager.Instance.gameObject.SetActive(false);
         }
         if(MainMenu.Instance != null)
@@ -146,6 +148,8 @@ public class SceneManagers : MonoBehaviour
             PlayerAttributesManager.Instance.SavePlayerData();            
         }
 
+        PlayerAttributesManager.Instance.SavePlayerData();
+
         StartCoroutine(animatorOnOff());
         animator.SetTrigger("FadeOut");
         Application.Quit();
@@ -170,8 +174,7 @@ public class SceneManagers : MonoBehaviour
             }
 
             // Player 위치 및 상태 초기화
-            PlayerAttributesManager.Instance.transform.position = new Vector3(0, 0f, -13f);
-            PlayerAttributesManager.Instance.LoadPlayerData();
+            PlayerAttributesManager.Instance.transform.position = new Vector3(0, 0f, -13f);            
             //PlayerAttributesManager.Instance._health = PlayerAttributesManager.Instance.maxHealth;
             //PlayerAttributesManager.Instance.healthBar.SetHealth(PlayerAttributesManager.Instance._health);
         }
