@@ -127,6 +127,8 @@ public class PlayerController : MonoBehaviour
     public void CanSlowDash()
     {
         _canSlowDash = true;
+        //DataManager.Instance.CanSlowDash = true;
+        //DataManager.Instance.SaveData();
     }
     private IEnumerator SlowTime()
     {

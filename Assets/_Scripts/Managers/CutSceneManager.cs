@@ -8,7 +8,11 @@ public class CutSceneManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(SceneManager.GetActiveScene().name == "MainRoom" && PlayerAttributesManager.Instance.deathCount == 0)
+        //if(SceneManager.GetActiveScene().name == "MainRoom" && PlayerAttributesManager.Instance.deathCount == 0)
+        //{
+        //    PlayIntroCutScene();
+        //}
+        if (SceneManager.GetActiveScene().name == "MainRoom" && DataManager.Instance.deathCount == 0)
         {
             PlayIntroCutScene();
         }

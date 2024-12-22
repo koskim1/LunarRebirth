@@ -21,11 +21,20 @@ public class DialogueMonologue : MonoBehaviour
 
     void Start()
     {
-        if (introTimeline != null && PlayerAttributesManager.Instance.deathCount == 0)
+        //if (introTimeline != null && PlayerAttributesManager.Instance.deathCount == 0)
+        //{
+        //    introTimeline.stopped += OnTimelineEnd; // 타임라인이 끝나면 실행될 함수 등록
+        //    introTimeline.Play(); // 타임라인 재생
+        //}else
+        //{
+        //    PlayerMonologue();
+        //}
+        if (introTimeline != null && DataManager.Instance.deathCount == 0)
         {
             introTimeline.stopped += OnTimelineEnd; // 타임라인이 끝나면 실행될 함수 등록
             introTimeline.Play(); // 타임라인 재생
-        }else
+        }
+        else
         {
             PlayerMonologue();
         }
@@ -46,8 +55,9 @@ public class DialogueMonologue : MonoBehaviour
             Debug.LogError("PlayerMonologue: 필요한 컴포넌트가 설정되지 않았습니다.");
             return;
         }
-        
-        int deathCount = PlayerAttributesManager.Instance.deathCount;
+
+        //int deathCount = PlayerAttributesManager.Instance.deathCount;
+        int deathCount = DataManager.Instance.deathCount;
         int deathSentence = dialogues[0].sentences.Length;
 
         if(deathCount >= deathSentence)

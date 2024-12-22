@@ -112,6 +112,10 @@ public class PlayerAnimation : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
+        //PlayerAttributesManager.Instance.deathCount++;
+        DataManager.Instance.deathCount++;
+        DataManager.Instance.SaveDeathCount();
+
         animator.SetBool("isDead", true);
         // EnemyAnimation도 마찬가지지만 완전 원본 애니메이션 이름을 적어야 함
         StartCoroutine(DestroyAfterAnimation("Die01_SwordAndShield"));
@@ -131,7 +135,7 @@ public class PlayerAnimation : MonoBehaviour
         SceneManagers.Instance.LoadMainRoom();
         isDead = false;
         animator.SetBool("isDead", false);
-        PlayerAttributesManager.Instance.deathCount++;
+        //PlayerAttributesManager.Instance.deathCount++;
         _healthBar.SetHealth(PlayerAttributesManager.Instance.maxHealth);
     }
 

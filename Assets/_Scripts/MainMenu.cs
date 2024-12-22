@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
 
     public AudioSource mainMenuAudioSource;
     public AudioClip clickSound;
+    
     void Awake()
     {
         if (Instance == null)
@@ -40,12 +41,16 @@ public class MainMenu : MonoBehaviour
         if (startGameBtn != null)
         {
             Debug.Log("startGameBtn != null");
-            startGameBtn.onClick.AddListener(SceneManagers.Instance.LoadIntroScene);
+            //startGameBtn.onClick.AddListener(SceneManagers.Instance.LoadIntroScene);
+            startGameBtn.onClick.AddListener(() => SceneManagers.Instance.LoadIntroScene());
         }
         
         optionBtn.onClick.AddListener(OpenOptionMenu);
         quitBtn.onClick.AddListener(Application.Quit);
-        continueBtn.onClick.AddListener(SceneManagers.Instance.LoadMainRoom);
+        // 2021~2022 유니티버젼 AddListener은 람다식을 이용해야함
+        // 그냥 밑에처럼하면 ArgumentExepction이 발생함
+        //continueBtn.onClick.AddListener(SceneManagers.Instance.LoadMainRoom);
+        continueBtn.onClick.AddListener(()=>SceneManagers.Instance.LoadMainRoom());
 
         //UIManager.Instance.gameObject.SetActive(false);
         continueBtn.gameObject.SetActive(false);
@@ -53,9 +58,10 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if(PlayerAttributesManager.Instance != null)
+        // PlayerAttributesManager 없이, DataManager만 확인
+        if (DataManager.Instance != null)
         {
-            if(PlayerAttributesManager.Instance.deathCount != 0)
+            if (DataManager.Instance.CanContinueGame())
             {
                 continueBtn.gameObject.SetActive(true);
             }
@@ -63,8 +69,13 @@ public class MainMenu : MonoBehaviour
             {
                 continueBtn.gameObject.SetActive(false);
             }
-        }   
+        }
+        else
+        {
+            continueBtn.gameObject.SetActive(false);
+        }
     }
+
     public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         // 오브젝트 생성

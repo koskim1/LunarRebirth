@@ -33,6 +33,8 @@ public class FireballController : MonoBehaviour
     public void EnableFireball()
     {
         canShootFireball = true;
+        //DataManager.Instance.CanShootFireball = true;
+        //DataManager.Instance.SaveData();
     }
 
     private void TryShoot()

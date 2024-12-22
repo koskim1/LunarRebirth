@@ -20,7 +20,8 @@ public class MainStoryIntro : MonoBehaviour
             PlayerAttributesManager.Instance.currentLevel = 1;
             PlayerAttributesManager.Instance.currentXP = 0;
             PlayerAttributesManager.Instance.xpToNextLevel = 10;
-            PlayerAttributesManager.Instance.deathCount = 0;
+            //PlayerAttributesManager.Instance.deathCount = 0;
+            DataManager.Instance.deathCount = 0;
             if (CameraFollow.Instance != null && UIManager.Instance != null)
             {
                 CameraFollow.Instance.gameObject.SetActive(true);

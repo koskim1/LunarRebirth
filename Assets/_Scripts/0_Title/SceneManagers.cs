@@ -21,6 +21,8 @@ public class SceneManagers : MonoBehaviour
             Destroy(gameObject);
         }
         animator = GetComponentInChildren<Animator>();
+
+        Debug.Log($"플레이어 데스카운트 : {PlayerPrefs.GetInt("DeathCount")}");
     }
 
     public IEnumerator animatorOnOff()
@@ -35,7 +37,7 @@ public class SceneManagers : MonoBehaviour
         StartCoroutine(animatorOnOff());
 
         PlayerPrefs.DeleteAll();
-
+        DataManager.Instance.deathCount = 0;
         if(CameraFollow.Instance != null && UIManager.Instance != null)
         {
             CameraFollow.Instance.gameObject.SetActive(false);
@@ -71,7 +73,7 @@ public class SceneManagers : MonoBehaviour
     {
         StartCoroutine(animatorOnOff());
         Time.timeScale = 1f;
-        PlayerAttributesManager.Instance.LoadPlayerData();
+        //PlayerAttributesManager.Instance.LoadPlayerData();
         LoadingSceneController.LoadScene("MainRoom");
         if(MainMenu.Instance != null)
         {
@@ -89,7 +91,12 @@ public class SceneManagers : MonoBehaviour
         animator.SetTrigger("FadeOut");
 
         // 씬 로드 후에 Player 초기화
-        PlayerAttributesManager.Instance.transform.position = new Vector3(0, 0, -13f);
+        if (PlayerAttributesManager.Instance != null)
+        {
+            PlayerAttributesManager.Instance.transform.position = new Vector3(0, 0, -13f);
+            PlayerAttributesManager.Instance.RestoreHealth();
+        }
+       
         StartCoroutine(InitializePlayer());
 
     }
@@ -108,11 +115,12 @@ public class SceneManagers : MonoBehaviour
         StartCoroutine(animatorOnOff());
         animator.SetTrigger("FadeOut");
 
-        PlayerAttributesManager.Instance.SavePlayerData();
+        Debug.Log($"플레이어 데스카운트 : {PlayerPrefs.GetInt("DeathCount")}");
 
         // Player 오브젝트를 비활성화
         if (PlayerAttributesManager.Instance != null)
-        {            
+        {
+            PlayerAttributesManager.Instance.SavePlayerData();
             PlayerAttributesManager.Instance.gameObject.SetActive(false);
         }
         if(MainMenu.Instance != null)
@@ -147,8 +155,6 @@ public class SceneManagers : MonoBehaviour
         {
             PlayerAttributesManager.Instance.SavePlayerData();            
         }
-
-        PlayerAttributesManager.Instance.SavePlayerData();
 
         StartCoroutine(animatorOnOff());
         animator.SetTrigger("FadeOut");

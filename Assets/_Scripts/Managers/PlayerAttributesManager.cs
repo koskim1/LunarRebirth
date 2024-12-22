@@ -28,7 +28,7 @@ public class PlayerAttributesManager : AttributesManager
     public int currentLevel = 1;
     public int currentXP = 0;
     public int xpToNextLevel = 100;
-    public int deathCount = 0;    
+    //public int deathCount = 0;    
     public int currentMLP = 0;
     public int previousMLP = 0;
     private int displayedMLP = 0;
@@ -75,7 +75,7 @@ public class PlayerAttributesManager : AttributesManager
         currentLevel = 1;
         currentXP = 0;
         xpToNextLevel = 10;
-        deathCount = 0;
+        //deathCount = 0;
         currentMLP = 0;
         previousMLP = 0;
         displayedMLP = 0;
@@ -104,6 +104,7 @@ public class PlayerAttributesManager : AttributesManager
         PlayerPrefs.SetInt("CurrentLevel", currentLevel);
         PlayerPrefs.SetInt("CurrentXP", currentXP);
         PlayerPrefs.SetInt("XpToNextLevel", xpToNextLevel);
+        //PlayerPrefs.SetInt("PlayerDeathCount", deathCount);
         PlayerPrefs.SetInt("PreviousMLP", previousMLP);
         PlayerPrefs.SetInt("CurrentMLP", currentMLP);
         PlayerPrefs.SetInt("HealthRecoveryAmount", healthRecoveryAmount);
@@ -131,6 +132,7 @@ public class PlayerAttributesManager : AttributesManager
         defense = PlayerPrefs.GetFloat("Defense");
         currentLevel = PlayerPrefs.GetInt("CurrentLevel");
         currentXP = PlayerPrefs.GetInt("CurrentXP");
+        //deathCount = PlayerPrefs.GetInt("PlayerDeathCount");
         xpToNextLevel = PlayerPrefs.GetInt("XpToNextLevel");
         previousMLP = PlayerPrefs.GetInt("PreviousMLP");
         currentMLP = PlayerPrefs.GetInt("CurrentMLP");
@@ -163,6 +165,16 @@ public class PlayerAttributesManager : AttributesManager
             Debug.Log("CardCollection이 설정되지 않았습니다.");
         }
         cardGenerator = new CardGenerator(cardCollection);
+
+        LoadPlayerData();
+        PlayerPrefs.Save();
+    }
+
+    public void RestoreHealth()
+    {
+        _health = maxHealth;
+        healthBar.SetHealth(_health);
+        PlayerPrefs.SetInt("CurrentHealth", _health);
     }
 
     public void AddMLP(int amount)
