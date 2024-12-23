@@ -20,6 +20,8 @@ public class LocalManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        ChangeLocale(0);
     }
 
     public void ChangeLocale(int index)

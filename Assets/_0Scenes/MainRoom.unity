@@ -257,6 +257,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MoonLightSoul
       objectReference: {fileID: 0}
+    - target: {fileID: 5617639446734794196, guid: bb903a010960937488e2bd1deedfd710,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8300436022663588012, guid: bb903a010960937488e2bd1deedfd710,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1044,7 +1049,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1154064871}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.001587879, y: 0.98391926, z: -0.17839214, w: -0.008757924}
+  m_LocalRotation: {x: -0.0015878852, y: 0.98391926, z: -0.17839214, w: -0.008757957}
   m_LocalPosition: {x: 0.044152834, y: 0.93, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3285,12 +3290,12 @@ PrefabInstance:
     - target: {fileID: 1521541322271428187, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000001702943
+      value: -0.00000001702943
       objectReference: {fileID: 0}
     - target: {fileID: 1521541322271428187, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000024613116
+      value: 0.0000000024613116
       objectReference: {fileID: 0}
     - target: {fileID: 1775150266676484154, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -3400,7 +3405,7 @@ PrefabInstance:
     - target: {fileID: 7516983569842009696, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02731106
+      value: 0.027311064
       objectReference: {fileID: 0}
     - target: {fileID: 7516983569842009696, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -3410,7 +3415,7 @@ PrefabInstance:
     - target: {fileID: 7516983569842009696, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0069340593
+      value: -0.0069340602
       objectReference: {fileID: 0}
     - target: {fileID: 7749054874347738619, guid: ccbf642d413ef9743b8c9ce0aadf122c,
         type: 3}
@@ -3561,12 +3566,12 @@ PrefabInstance:
     - target: {fileID: 4353033351836485426, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4353033351836485426, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8102276934802283046, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
@@ -3576,7 +3581,7 @@ PrefabInstance:
     - target: {fileID: 8102276934802283046, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8879622221833388188, guid: 8abed245dfce97e4aafd8043912bbd48,
         type: 3}
