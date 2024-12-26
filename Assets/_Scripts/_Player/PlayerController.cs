@@ -151,7 +151,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L))
         {
             // 삭제해야함 테스트
-            //PlayerAttributesManager.Instance.LevelUp();
+            PlayerAttributesManager.Instance.LevelUp();
             //PlayerAttributesManager.Instance.UpdateXPUI();
         }
 

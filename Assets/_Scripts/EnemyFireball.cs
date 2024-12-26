@@ -14,14 +14,15 @@ public class EnemyFireball : MonoBehaviour
             {
                 var impact = Instantiate(impactVFX, collisionInfo.contacts[0].point, Quaternion.identity) as GameObject;
                 Destroy(impact, 2f);
-                PlayerAttributesManager.Instance.TakeDamage(35);
+                PlayerAttributesManager.Instance.TakeDamage(45);
+                AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.fireballExplosionSFX, transform, .5f);
                 Destroy(gameObject);
             }
         }
         else
         {
             var impact = Instantiate(impactVFX, collisionInfo.contacts[0].point, Quaternion.identity) as GameObject;
-
+            AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.fireballExplosionSFX, transform, .5f);
             Destroy(impact, 2f);
             Destroy(gameObject);
         }

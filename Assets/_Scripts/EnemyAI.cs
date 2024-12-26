@@ -66,26 +66,26 @@ public class EnemyAI : MonoBehaviour
                 sightRange = 10f;
                 attackRange = 10f;
                 timeBetweenAttacks = 1.8f;
-                mlpValue = Random.Range(10, 25);
+                mlpValue = Random.Range(17, 32);
                 break;
             case EnemyType.Minion:
                 sightRange = 7;
                 attackRange = 1.5f;
                 timeBetweenAttacks = 1.6f;
-                mlpValue = Random.Range(5, 15);
+                mlpValue = Random.Range(5, 11);
                 break;
             case EnemyType.Rogue:
                 sightRange = 7;
                 attackRange = 1.5f;
                 navMeshAgent.speed = 6f;
                 timeBetweenAttacks = 1.167f;
-                mlpValue = Random.Range(7, 18);
+                mlpValue = Random.Range(11, 17);
                 break;
             case EnemyType.Warrior:
                 sightRange = 9f;
                 attackRange = 1.4f;
                 timeBetweenAttacks = 1.067f;
-                mlpValue = Random.Range(8, 20);
+                mlpValue = Random.Range(20, 41);
                 break;
             case EnemyType.GateKeeper:
                 sightRange = 7;
@@ -223,7 +223,7 @@ public class EnemyAI : MonoBehaviour
     private void ShootFireball()
     {
         GameObject fireball = Instantiate(fireballPrefab, firePoint.position, Quaternion.identity);
-
+        AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.fireballSFX, transform, .5f);
         Vector3 direction = (Player.position - firePoint.position).normalized;
         fireball.GetComponent<Rigidbody>().velocity = direction * fireballSpeed;
 

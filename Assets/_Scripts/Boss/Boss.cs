@@ -160,13 +160,13 @@ public class Boss : MonoBehaviour, ILockOnTarget
             case BossPhase.Phase1:
                 //기본 추적 및 맨손공격
                 Debug.Log("페이즈 1");
-                bossAtk = 30;                
+                bossAtk = 40;                
                 navMeshAgent.speed = 8f;
                 break;
             case BossPhase.Phase2:
                 // 소환 및 속도 증가
                 Debug.Log("페이즈 2");
-                bossAtk = 50;
+                bossAtk = 70;
                 navMeshAgent.speed = 12f;
                 SpawnMinions();
                 StartSpawnMinionsCoroutine();
@@ -174,7 +174,7 @@ public class Boss : MonoBehaviour, ILockOnTarget
             case BossPhase.Phase3:
                 // 부하 골렘, 공격 쿨타임 감소(아주 어렵게)
                 Debug.Log("페이즈 3");
-                bossAtk = 80;
+                bossAtk = 120;
                 timeBetweenAttacks = 1.1f;
                 navMeshAgent.speed = 20f;
                 StopSpawnMinionsCoroutine();                

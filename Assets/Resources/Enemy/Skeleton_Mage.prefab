@@ -521,10 +521,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48946f5baf2b03a40b5835791b3f42f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 310
   _health: 0
   _attack: 20
-  _xp: 1
+  _xp: 14
   isDead: 0
   healthBar: {fileID: 5776596321405128981}
   FloatingTextPrefab: {fileID: 2029843060262406330, guid: 114eb4f9d93334d409f8f97b2381f513,
