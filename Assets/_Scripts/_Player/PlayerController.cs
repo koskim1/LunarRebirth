@@ -148,12 +148,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            // 삭제해야함 테스트
-            PlayerAttributesManager.Instance.LevelUp();
-            //PlayerAttributesManager.Instance.UpdateXPUI();
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    삭제해야함 테스트
+        //    PlayerAttributesManager.Instance.LevelUp();
+        //    PlayerAttributesManager.Instance.UpdateXPUI();
+        //}
 
         if (isPc && canMove && !PauseMenu.isPaused)
         {

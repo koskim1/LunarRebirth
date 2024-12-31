@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: RianB
+  companyName: Maxbong
   productName: 'Lunar Rebirth: Dungeon of Eternal Return'
   defaultCursor: {fileID: 2800000, guid: a5f9cc9a5efbe894eb85de4851711ba8, type: 3}
   cursorHotspot: {x: 80, y: 16}

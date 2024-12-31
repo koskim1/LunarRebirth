@@ -81,6 +81,8 @@ public class PlayerAttributesManager : AttributesManager
         displayedMLP = 0;
         healthRecoveryAmount = 0;
         isHealthRecoveryActive = false;
+        hasLifeSteal = false;
+        lifeStealAmount = 0;
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(_health);
         _sword.transform.localScale = new Vector3(1, 1, 1);
@@ -107,8 +109,10 @@ public class PlayerAttributesManager : AttributesManager
         //PlayerPrefs.SetInt("PlayerDeathCount", deathCount);
         PlayerPrefs.SetInt("PreviousMLP", previousMLP);
         PlayerPrefs.SetInt("CurrentMLP", currentMLP);
-        PlayerPrefs.SetInt("HealthRecoveryAmount", healthRecoveryAmount);
+        PlayerPrefs.SetInt("HealthRecoveryAmount", healthRecoveryAmount);        
+        PlayerPrefs.SetInt("LifeStealAmount", lifeStealAmount);
 
+        PlayerPrefs.SetInt("HasLifeSteal", hasLifeSteal ? 1 : 0);
         PlayerPrefs.SetInt("CanShootFireball", _fireballController.canShootFireball ? 1 : 0);
         PlayerPrefs.SetInt("CanSlowDash", _playerController._canSlowDash ? 1 : 0);
 
@@ -136,8 +140,10 @@ public class PlayerAttributesManager : AttributesManager
         xpToNextLevel = PlayerPrefs.GetInt("XpToNextLevel");
         previousMLP = PlayerPrefs.GetInt("PreviousMLP");
         currentMLP = PlayerPrefs.GetInt("CurrentMLP");
-        healthRecoveryAmount = PlayerPrefs.GetInt("HealthRecoveryAmount");
+        healthRecoveryAmount = PlayerPrefs.GetInt("HealthRecoveryAmount");        
+        lifeStealAmount = PlayerPrefs.GetInt("LifeStealAmount");
 
+        hasLifeSteal = PlayerPrefs.GetInt("HasLifeSteal") == 1 ? true : false;
         _fireballController.canShootFireball = PlayerPrefs.GetInt("CanShootFireball") == 1 ? true : false;
         _playerController._canSlowDash = PlayerPrefs.GetInt("CanSlowDash") == 1 ? true : false;
 
@@ -299,13 +305,14 @@ public class PlayerAttributesManager : AttributesManager
             case "Recovery I":
                 healthRecoveryAmount += 3;
                 if (!isHealthRecoveryActive)
-                { StartCoroutine(HealthRecovery()); }                
+                { StartCoroutine(HealthRecovery()); }
                 break;
             case "Speed I":
                 _playerController.AddSpeed(0.5f);
                 break;
             case "LifeSteal I":
                 lifeStealAmount += 2;
+                hasLifeSteal = true;
                 break;
             #endregion
 
@@ -332,6 +339,7 @@ public class PlayerAttributesManager : AttributesManager
                 break;
             case "LifeSteal II":
                 lifeStealAmount += 4;
+                hasLifeSteal = true;
                 break;
             #endregion
 
@@ -353,6 +361,7 @@ public class PlayerAttributesManager : AttributesManager
                 break;
             case "LifeSteal III":
                 lifeStealAmount += 8;
+                hasLifeSteal = true;
                 break;
             #endregion
 
@@ -373,6 +382,7 @@ public class PlayerAttributesManager : AttributesManager
                 break;
             case "LifeSteal IV":
                 lifeStealAmount += 15;
+                hasLifeSteal = true;
                 break;
                 #endregion
 
