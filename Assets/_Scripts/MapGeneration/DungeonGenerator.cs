@@ -183,7 +183,7 @@ public class DungeonGenerator : MonoBehaviour
     {
         // 던전 길이에 따른 적 강도 설정
 
-        // 깊이에 따라 적 선택
+        // 출발 지점에서로 부터 깊이에 따라 적 선택
         int enemyIndex = Mathf.Min(distanceFromStart / 2, enemyPrefab.Length - 1);
 
         // 랜덤으로 적 수 선택
@@ -204,7 +204,9 @@ public class DungeonGenerator : MonoBehaviour
 
             room.enemies.Add(enemy);
 
-            if(!firstRoom)  enemy.SetActive(false);
+            // 프레임 및 메모리를 위해 처음 입장한 방 제외하고는 일단 비활성화
+            // 이에 대한 관리는 RoomBehaviour.cs의 ActivateEnemies()에서 하고있음.
+            if (!firstRoom)  enemy.SetActive(false);
         }
     }
 

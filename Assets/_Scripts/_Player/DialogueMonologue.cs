@@ -52,11 +52,10 @@ public class DialogueMonologue : MonoBehaviour
     {
         if (dialogueManager == null || playerAttributesManager == null)
         {
-            Debug.LogError("PlayerMonologue: 필요한 컴포넌트가 설정되지 않았습니다.");
+            Debug.LogError("PlayerMonologue: 참조 확인바람.");
             return;
         }
-
-        //int deathCount = PlayerAttributesManager.Instance.deathCount;
+        
         int deathCount = DataManager.Instance.deathCount;
         int deathSentence = dialogues[0].sentences.Length;
 
@@ -67,6 +66,7 @@ public class DialogueMonologue : MonoBehaviour
 
 
         // deathCount만큼 리스트안의 인덱스를 부르고 싶어서 selectedDialogue생성
+        // 게임자체의 컨셉이 아무래도 죽을 때 마다 되살아나는 능력이니,, 로컬라이징 잊지 말기
         Dialogue selectedDialogue = new Dialogue
         {
             name = dialogues[0].name,
