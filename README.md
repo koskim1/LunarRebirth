@@ -4,9 +4,9 @@
 
 <div align=center> 스팀페이지 : https://store.steampowered.com/app/3405580/Lunar_Rebirth_Dungeon_of_Eternal_Return/</div>
 <hr>
-루나리버스는 던전 탐험과 보스 전투를 중심으로 한 액션 RPG 게임입니다.
+루나리버스는 던전 탐험과 보스 전투를 중심으로 한 1인으로 개발한 액션 RPG 게임입니다.
 
-무작위로 생성되는 던전과 다단계 보스 전투를 통해 플레이어에게 새로운 도전을 제공합니다.  
+절차적으로 생성되는 던전과 다단계 보스 전투를 통해 플레이어에게 새로운 도전을 제공합니다.  
 |제목|내용|
 |------|---|
 |타이틀 씬|<div align=center><img src="https://github.com/user-attachments/assets/1227fe2f-32e0-480e-87ed-ddd900b54048" width="600" height="300" /> </div>
@@ -46,6 +46,7 @@
 *Assets/ShopItem* 에 있습니다.
 
 <br>
+<hr>
 
 ![Image Sequence_008_0003](https://github.com/user-attachments/assets/a13c3475-de7f-4b6b-9071-8742c50ae913)
 더욱 자세한 게임의 정보는 스팀페이지에서 확인하실 수 있습니다.
