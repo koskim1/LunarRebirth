@@ -52,6 +52,7 @@ public class PauseMenu : MonoBehaviour
         optionMenu.SetActive(false);
         UIManager.Instance.PlayClickSound();
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         Time.timeScale = 1f;
         isPaused = false;
     }

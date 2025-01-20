@@ -143,5 +143,6 @@ public class LevelUpUI : MonoBehaviour
         );
 
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 }

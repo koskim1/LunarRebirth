@@ -194,6 +194,7 @@ public class DialogueManager : MonoBehaviour
         enemyLook.enabled = true;
         afterDeadCam.enabled = false;
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
 
         animator.SetBool("IsOpen", false);
 
