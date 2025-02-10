@@ -932,7 +932,7 @@ MonoBehaviour:
   size: {x: 4, y: 4}
   startPos: 0
   room: {fileID: 8485498356581720850, guid: 2230416b262966e48bebf57ff29a280a, type: 3}
-  offset: {x: 61, y: 58}
+  offset: {x: 43, y: 41}
   bossPrefab: {fileID: 6659176534187833632, guid: 309e622d28ad6f24891f0edd38ebe1cd,
     type: 3}
   enemyPrefab:
@@ -2072,13 +2072,13 @@ SceneRoots:
   - {fileID: 1269768696}
   - {fileID: 1887339156745278657}
   - {fileID: 1484906949}
-  - {fileID: 7638971006966139604}
   - {fileID: 1223439839}
   - {fileID: 1872829882}
   - {fileID: 1665971432}
   - {fileID: 2032366778}
   - {fileID: 1659712718}
   - {fileID: 1099776728}
+  - {fileID: 7638971006966139604}
   - {fileID: 70282508}
   - {fileID: 407951313}
   - {fileID: 1992256999}

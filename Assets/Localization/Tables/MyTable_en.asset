@@ -267,6 +267,10 @@ MonoBehaviour:
     m_Localized: 'If game freezes, press ESC twice.
 
 
+      If Cursor is gone press
+      Alt to visible cursor.
+
+
       Good luck!'
     m_Metadata:
       m_Items: []
