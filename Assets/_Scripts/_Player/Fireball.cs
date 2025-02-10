@@ -20,7 +20,7 @@ public class Fireball : MonoBehaviour
                 AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.fireballExplosionSFX, transform, .5f);
                 Destroy(impact, 2f);
 
-                enemy.TakeDamage(35);
+                enemy.TakeDamage(55);
                 Destroy(gameObject);
             }
             else
@@ -29,7 +29,7 @@ public class Fireball : MonoBehaviour
                 AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.fireballExplosionSFX, transform, .5f);
                 Destroy(impact, 2f);
 
-                boss.TakeDamage(35);
+                boss.TakeDamage(55);
                 Destroy(gameObject);
             }
         }
@@ -40,7 +40,7 @@ public class Fireball : MonoBehaviour
                 var impact = Instantiate(impactVFX, collisionInfo.contacts[0].point, Quaternion.identity) as GameObject;
                 AudioManager.Instance.PlaySoundFXClip(AudioManager.Instance.fireballExplosionSFX, transform, .5f);
                 Destroy(impact, 2f);
-                PlayerAttributesManager.Instance.TakeDamage(35);
+                PlayerAttributesManager.Instance.TakeDamage(40);
                 Destroy(gameObject);
             }
         }

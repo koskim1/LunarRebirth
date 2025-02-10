@@ -114,6 +114,14 @@ MonoBehaviour:
     m_Localized: Matrix
     m_Metadata:
       m_Items: []
+  - m_Id: 24270623488466944
+    m_Localized: Health X2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24270625552064512
+    m_Localized: Strength X2
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

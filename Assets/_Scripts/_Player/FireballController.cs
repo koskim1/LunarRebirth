@@ -24,7 +24,7 @@ public class FireballController : MonoBehaviour
 
     private void Update()
     {
-        if (canShootFireball && Input.GetKeyDown(KeyCode.E))
+        if (canShootFireball && Input.GetKeyDown(KeyCode.F))
         {
             TryShoot();
         }

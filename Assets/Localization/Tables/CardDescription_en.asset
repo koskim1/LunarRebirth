@@ -109,11 +109,19 @@ MonoBehaviour:
   - m_Id: 4820270440448
     m_Localized: 'Unlock the Fireball.
 
-      ( Damage : 35 / Usage Key : E )'
+      ( Damage : 55 / Usage Key : F )'
     m_Metadata:
       m_Items: []
   - m_Id: 4835193774080
     m_Localized: It takes a slow time during a dash.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24086812775538688
+    m_Localized: Increases attack strength by 2 times.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24086809332015104
+    m_Localized: Increases health by 2 times.
     m_Metadata:
       m_Items: []
   references:

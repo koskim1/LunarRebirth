@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public bool isPc = true;
     public bool canMove = true;
+    private bool _isInDialogue = false;
     private Vector2 move, mouseLook, joystickLook;
     private Vector3 rotationTarget;
 
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private LockOn lockOn;
     private Animator playerAnimator;
 
-    public GameObject minimap;
+    public GameObject minimap;    
 
     // Start is called before the first frame update
     void Awake()
@@ -53,6 +54,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        // 대화 중이면 입력 무시
+        if (_isInDialogue) return;
+
         move = context.ReadValue<Vector2>();
         playerAnimator.SetFloat("x", move.x);
         playerAnimator.SetFloat("y", move.y);
@@ -68,6 +72,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
+        // 대화 중이면 대쉬 입력 무시
+        if (_isInDialogue) return;
+
         if (context.performed && !_isDashing && _canDash)
         {
             StartCoroutine(Dash());
@@ -135,6 +142,12 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = _slowTimeScale;
         yield return new WaitForSecondsRealtime(_slowDuration);
         Time.timeScale = 1f;
+    }
+
+    // 대화 상태 설정 메서드 추가
+    public void SetDialogueState(bool isInDialogue)
+    {
+        _isInDialogue = isInDialogue;
     }
     // ----------------------------------------------------------------------------------------------
 

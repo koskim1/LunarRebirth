@@ -70,26 +70,26 @@ public class EnemyAI : MonoBehaviour
                 break;
             case EnemyType.Minion:
                 sightRange = 7;
-                attackRange = 1.5f;
+                attackRange = 1.1f;
                 timeBetweenAttacks = 1.6f;
                 mlpValue = Random.Range(5, 11);
                 break;
             case EnemyType.Rogue:
                 sightRange = 7;
-                attackRange = 1.5f;
+                attackRange = 1.1f;
                 navMeshAgent.speed = 6f;
                 timeBetweenAttacks = 1.167f;
                 mlpValue = Random.Range(11, 17);
                 break;
             case EnemyType.Warrior:
                 sightRange = 9f;
-                attackRange = 1.4f;
+                attackRange = 1.1f;
                 timeBetweenAttacks = 1.067f;
                 mlpValue = Random.Range(20, 41);
                 break;
             case EnemyType.GateKeeper:
                 sightRange = 7;
-                attackRange = 1.5f;
+                attackRange = 1.1f;
                 mlpValue = 300;
                 break;
         }
@@ -217,7 +217,7 @@ public class EnemyAI : MonoBehaviour
         animator.SetBool("canSpell", true);
 
         // 쿨다운 밸런스 조절좀 해야할듯
-        Invoke(nameof(ShootFireball), 1.2f);
+        Invoke(nameof(ShootFireball), 1.6f);
     }
 
     private void ShootFireball()

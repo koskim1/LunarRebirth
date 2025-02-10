@@ -13,6 +13,7 @@ public class PlayerAttributesManager : AttributesManager
     public TextMeshProUGUI levelText;
     public LevelUpUI levelUpUI;
     public TextMeshProUGUI mlpText; // MLP
+    public AudioClip[] playerTakeDamageSoundClip;
 
     private PlayerAnimation _playerAnimation;
     private PlayerController _playerController;
@@ -23,6 +24,7 @@ public class PlayerAttributesManager : AttributesManager
     private Animator animator;
     private UIManager uiManager;
     private Sword _sword;
+
 
     public float defense = 1f;
     public int currentLevel = 1;
@@ -53,6 +55,7 @@ public class PlayerAttributesManager : AttributesManager
         
 
     }
+
     private void InitializeComponents()
     {
         _playerAnimation = GetComponent<PlayerAnimation>();
@@ -131,7 +134,7 @@ public class PlayerAttributesManager : AttributesManager
         }
 
         maxHealth = PlayerPrefs.GetInt("MaxHealth");
-        _health = PlayerPrefs.GetInt("MaxHealth");
+        _health = PlayerPrefs.GetInt("CurrentHealth");
         _attack = PlayerPrefs.GetInt("Attack");
         defense = PlayerPrefs.GetFloat("Defense");
         currentLevel = PlayerPrefs.GetInt("CurrentLevel");
@@ -218,6 +221,8 @@ public class PlayerAttributesManager : AttributesManager
     public override void TakeDamage(int damage)
     {
         base.TakeDamage(Mathf.RoundToInt(damage * defense));
+        animator.SetTrigger("getHit");
+        AudioManager.Instance.PlayRandomSoundFXClip(playerTakeDamageSoundClip, transform, 0.5f);
         healthBar.SetHealth(_health);
     }
 
@@ -342,8 +347,7 @@ public class PlayerAttributesManager : AttributesManager
                 hasLifeSteal = true;
                 break;
             #endregion
-
-            // 그냥 Epic이랑 전설등급은 일단 스탯뻥튀기만 해주는걸로,,
+            
             #region Epic등급
             case "Health III":
                 IncreaseStat("health", 100);
@@ -362,6 +366,15 @@ public class PlayerAttributesManager : AttributesManager
             case "LifeSteal III":
                 lifeStealAmount += 8;
                 hasLifeSteal = true;
+                break;
+            case "HealthX2":
+                maxHealth *= 2;
+                _health = maxHealth;
+                healthBar.SetMaxHealth(maxHealth);
+                healthBar.SetHealth(maxHealth);
+                break;
+            case "StrengthX2":
+                _attack *= 2;
                 break;
             #endregion
 

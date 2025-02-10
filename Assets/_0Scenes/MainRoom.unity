@@ -3056,21 +3056,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 56514259921834972, guid: ff775f7ac68668f4bb72c8d75a649f7f,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 56514259921834972, guid: ff775f7ac68668f4bb72c8d75a649f7f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 56514259921834972, guid: ff775f7ac68668f4bb72c8d75a649f7f,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.6666667
-      objectReference: {fileID: 0}
     - target: {fileID: 167048292297499476, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3186,11 +3171,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1190757746364600752, guid: ff775f7ac68668f4bb72c8d75a649f7f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1593871301343667671, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
       propertyPath: m_Name
@@ -3215,16 +3195,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4948460584474742664, guid: ff775f7ac68668f4bb72c8d75a649f7f,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.6666667
-      objectReference: {fileID: 0}
-    - target: {fileID: 4948460584474742664, guid: ff775f7ac68668f4bb72c8d75a649f7f,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5589196291163594183, guid: ff775f7ac68668f4bb72c8d75a649f7f,
         type: 3}
@@ -3962,11 +3932,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 396741914581087879, guid: e362bb3e4f6e11648bc54339c475063d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3478671988099056260, guid: e362bb3e4f6e11648bc54339c475063d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4021,13 +3986,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tuto_Knight
-      objectReference: {fileID: 0}
-    - target: {fileID: 6487290665197991007, guid: e362bb3e4f6e11648bc54339c475063d,
-        type: 3}
-      propertyPath: m_text
-      value: "\uAC8C\uC784\uC774 \uBA48\uCD94\uAC70\uB098 \uBB38\uC81C\uAC00 \uC0DD\uACBC\uC744
-        \uB550\nEsc\uB97C \uB450\uBC88 \uB20C\uB7EC\uBCF4\uC138\uC694.\n\n\uADF8\uB7FC
-        \uD589\uC6B4\uC744 \uBE55\uB2C8\uB2E4!"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4595,12 +4553,12 @@ PrefabInstance:
     - target: {fileID: 1780797386858438739, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008528705
+      value: 0.000000008528705
       objectReference: {fileID: 0}
     - target: {fileID: 1780797386858438739, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000011296418
+      value: -0.0000000011296418
       objectReference: {fileID: 0}
     - target: {fileID: 2597120609498565649, guid: 1d4a6a1bcaaa68c45963983e596f12cf,
         type: 3}

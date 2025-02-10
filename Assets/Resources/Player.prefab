@@ -3093,11 +3093,14 @@ MonoBehaviour:
   levelText: {fileID: 0}
   levelUpUI: {fileID: 0}
   mlpText: {fileID: 0}
+  playerTakeDamageSoundClip:
+  - {fileID: 8300000, guid: 3469d76e476de7440add5b6c91da2de3, type: 3}
+  - {fileID: 8300000, guid: 5ae4f30eaa54fe340a7d1457eb9394cd, type: 3}
+  - {fileID: 8300000, guid: a5c0fd0c697f69b4ab4b5ad5178affa1, type: 3}
   defense: 1
   currentLevel: 1
   currentXP: 0
   xpToNextLevel: 10
-  deathCount: 0
   currentMLP: 0
   previousMLP: 0
   hasLifeSteal: 0

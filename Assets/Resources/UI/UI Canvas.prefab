@@ -2432,7 +2432,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: DisplayNextSentence
+        m_MethodName: OnNextButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5541,12 +5541,12 @@ PrefabInstance:
     - target: {fileID: 472853965459041258, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 472853965459041258, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 522145814688099906, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
@@ -5822,17 +5822,17 @@ PrefabInstance:
     - target: {fileID: 4822048879498442686, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 4822048879498442686, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4822048879498442686, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 4832683262170350150, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
@@ -5897,7 +5897,7 @@ PrefabInstance:
     - target: {fileID: 5955438071253759442, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6599442808225355733, guid: 75e204e9ef0ca9942a91145e1cec5b5e,
         type: 3}

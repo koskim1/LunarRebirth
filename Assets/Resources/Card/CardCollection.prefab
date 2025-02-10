@@ -65,6 +65,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a8c54e77f2c0e044a0c865e626c55c7, type: 2}
   - {fileID: 11400000, guid: 7d8e94b1af5532f429d46a5c439443c8, type: 2}
   - {fileID: 11400000, guid: f9dbf4ca0f11a0a468e7a01bc7801b14, type: 2}
+  - {fileID: 11400000, guid: b571fd239b4ecd44f9eacb76a9d98803, type: 2}
+  - {fileID: 11400000, guid: 12c7fe1935022b34b9d20cbdc4d1941f, type: 2}
   <LegendaryCards>k__BackingField:
   - {fileID: 11400000, guid: 4d344efc37a96c441af9332c03587c88, type: 2}
   - {fileID: 11400000, guid: 30278941f5c960b41a25bd98c1da7ba0, type: 2}

@@ -111,6 +111,14 @@ MonoBehaviour:
     m_Key: SlowDash
     m_Metadata:
       m_Items: []
+  - m_Id: 24270623488466944
+    m_Key: HealthX2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24270625552064512
+    m_Key: StrengthX2
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
