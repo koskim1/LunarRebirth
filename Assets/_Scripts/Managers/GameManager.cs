@@ -20,6 +20,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftAlt))
+        {
+            Cursor.visible = !Cursor.visible;
+        }
+    }
+
     public void SetPlayerController(PlayerController controller)
     {
         playerController = controller;

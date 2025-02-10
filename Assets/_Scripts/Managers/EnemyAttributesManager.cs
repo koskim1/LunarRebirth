@@ -15,6 +15,8 @@ public class EnemyAttributesManager : AttributesManager, ILockOnTarget
 
     private EnemyAI enemyAI;
 
+    private Sword EnemySword;
+
     public bool isBossGateKeeper = false;
     private float damageReduction = 0.5f;
 
@@ -23,6 +25,7 @@ public class EnemyAttributesManager : AttributesManager, ILockOnTarget
     {
         enemyAnimation = GetComponent<EnemyAnimation>();        
         enemyAI = GetComponent<EnemyAI>();
+        EnemySword = GetComponentInChildren<Sword>();
 
         base.Start();
         healthBar.SetMaxHealth(maxHealth);
@@ -66,6 +69,10 @@ public class EnemyAttributesManager : AttributesManager, ILockOnTarget
         if(enemyAnimation != null)
         {
             enemyAnimation.Dead();
+            if(EnemySword != null)
+            {
+                EnemySword.gameObject.SetActive(false);
+            }
         }
         else
         {

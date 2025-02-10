@@ -192,7 +192,7 @@ public class DungeonGenerator : MonoBehaviour
         for(int i = 0; i < enemyCount; i++)
         {
             GameObject enemy = Instantiate(enemyPrefab[enemyIndex], room.transform.position
-                + new Vector3(Random.Range(-28, 28), 0, Random.Range(-30, 20)), Quaternion.identity, room.transform);
+                + new Vector3(Random.Range(-25, 25), 0, Random.Range(-30, 20)), Quaternion.identity, room.transform);
             // 방에있는 적이 죽으면 Remove해줘야함
 
             EnemyAttributesManager currentEnemy = enemy.GetComponent<EnemyAttributesManager>();
